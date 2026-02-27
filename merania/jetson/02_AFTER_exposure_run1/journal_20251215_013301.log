@@ -1,0 +1,101 @@
+-- Logs begin at Mon 2024-06-17 20:29:40 UTC, end at Mon 2025-12-15 14:54:32 UTC. --
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Setting priority nice level to 19
+Dec 15 14:54:29 dcs systemd[6303]: Started D-Bus User Message Bus.
+Dec 15 14:54:29 dcs tracker-extract[6310]: Set scheduler policy to SCHED_IDLE
+Dec 15 14:54:29 dcs tracker-extract[6310]: Setting priority nice level to 19
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.Daemon' unit='gvfs-daemon.service' requested by ':1.1' (uid=1000 pid=6310 comm="/usr/libexec/tracker-extract " label="kernel")
+Dec 15 14:54:29 dcs systemd[6303]: Starting Virtual filesystem service...
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.Daemon'
+Dec 15 14:54:29 dcs systemd[6303]: Started Virtual filesystem service.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &DOCUMENTS. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &MUSIC. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &PICTURES. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &VIDEOS. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &DOWNLOAD. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &DOCUMENTS. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &MUSIC. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &PICTURES. Ignoring this location.
+Dec 15 14:54:29 dcs tracker-miner-f[6311]: Unable to get XDG user directory path for special directory &VIDEOS. Ignoring this location.
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.UDisks2VolumeMonitor' unit='gvfs-udisks2-volume-monitor.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:29 dcs systemd[6303]: Starting Virtual filesystem service - disk device monitor...
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.UDisks2VolumeMonitor'
+Dec 15 14:54:29 dcs systemd[6303]: Started Virtual filesystem service - disk device monitor.
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.GoaVolumeMonitor' unit='gvfs-goa-volume-monitor.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:29 dcs systemd[6303]: Starting Virtual filesystem service - GNOME Online Accounts monitor...
+Dec 15 14:54:29 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating service name='org.gnome.OnlineAccounts' requested by ':1.6' (uid=1000 pid=6388 comm="/usr/libexec/gvfs-goa-volume-monitor " label="kernel")
+Dec 15 14:54:29 dcs sshd[6393]: Received disconnect from 192.168.55.100 port 51022:11: disconnected by user
+Dec 15 14:54:29 dcs sshd[6393]: Disconnected from user dcs_user 192.168.55.100 port 51022
+Dec 15 14:54:29 dcs sshd[6300]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 14:54:29 dcs systemd-logind[479]: Session 42 logged out. Waiting for processes to exit.
+Dec 15 14:54:29 dcs systemd[1]: session-42.scope: Succeeded.
+Dec 15 14:54:29 dcs systemd-logind[479]: Removed session 42.
+Dec 15 14:54:30 dcs goa-daemon[6396]: goa-daemon version 3.36.1 starting
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating service name='org.gnome.Identity' requested by ':1.7' (uid=1000 pid=6396 comm="/usr/libexec/goa-daemon " label="kernel")
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gnome.OnlineAccounts'
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gnome.Identity'
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.GoaVolumeMonitor'
+Dec 15 14:54:30 dcs systemd[6303]: Started Virtual filesystem service - GNOME Online Accounts monitor.
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.MTPVolumeMonitor' unit='gvfs-mtp-volume-monitor.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:30 dcs systemd[6303]: Starting Virtual filesystem service - Media Transfer Protocol monitor...
+Dec 15 14:54:30 dcs sshd[6399]: Accepted publickey for dcs_user from 192.168.55.100 port 51028 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 14:54:30 dcs sshd[6399]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.MTPVolumeMonitor'
+Dec 15 14:54:30 dcs systemd[6303]: Started Virtual filesystem service - Media Transfer Protocol monitor.
+Dec 15 14:54:30 dcs systemd-logind[479]: New session 44 of user dcs_user.
+Dec 15 14:54:30 dcs systemd[1]: Started Session 44 of user dcs_user.
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.AfcVolumeMonitor' unit='gvfs-afc-volume-monitor.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:30 dcs systemd[6303]: Starting Virtual filesystem service - Apple File Conduit monitor...
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.AfcVolumeMonitor'
+Dec 15 14:54:30 dcs systemd[6303]: Started Virtual filesystem service - Apple File Conduit monitor.
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.gtk.vfs.GPhoto2VolumeMonitor' unit='gvfs-gphoto2-volume-monitor.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:30 dcs systemd[6303]: Starting Virtual filesystem service - digital camera monitor...
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.gtk.vfs.GPhoto2VolumeMonitor'
+Dec 15 14:54:30 dcs systemd[6303]: Started Virtual filesystem service - digital camera monitor.
+Dec 15 14:54:30 dcs systemd[6303]: Started Tracker metadata extractor.
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Activating via systemd: service name='org.freedesktop.Tracker1' unit='tracker-store.service' requested by ':1.2' (uid=1000 pid=6311 comm="/usr/libexec/tracker-miner-fs " label="kernel")
+Dec 15 14:54:30 dcs systemd[6303]: Starting Tracker metadata database store and lookup manager...
+Dec 15 14:54:30 dcs systemd[6303]: Started Tracker file system data miner.
+Dec 15 14:54:30 dcs sudo[6478]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --boot --no-pager
+Dec 15 14:54:30 dcs sudo[6478]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 14:54:30 dcs dbus-daemon[6313]: [session uid=1000 pid=6313] Successfully activated service 'org.freedesktop.Tracker1'
+Dec 15 14:54:30 dcs systemd[6303]: Started Tracker metadata database store and lookup manager.
+Dec 15 14:54:31 dcs sudo[6478]: pam_unix(sudo:session): session closed for user root
+Dec 15 14:54:31 dcs sudo[6475]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg
+Dec 15 14:54:31 dcs sudo[6475]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 14:54:31 dcs sudo[6475]: pam_unix(sudo:session): session closed for user root
+Dec 15 14:54:31 dcs sshd[6472]: Received disconnect from 192.168.55.100 port 51028:11: disconnected by user
+Dec 15 14:54:31 dcs sshd[6472]: Disconnected from user dcs_user 192.168.55.100 port 51028
+Dec 15 14:54:31 dcs sshd[6399]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 14:54:31 dcs systemd[1]: session-44.scope: Succeeded.
+Dec 15 14:54:31 dcs systemd-logind[479]: Session 44 logged out. Waiting for processes to exit.
+Dec 15 14:54:31 dcs systemd-logind[479]: Removed session 44.
+Dec 15 14:54:31 dcs sshd[6487]: Accepted publickey for dcs_user from 192.168.55.100 port 51040 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 14:54:31 dcs sshd[6487]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 14:54:31 dcs sshd[6486]: Accepted publickey for dcs_user from 192.168.55.100 port 51042 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 14:54:31 dcs sshd[6486]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 14:54:31 dcs sshd[6489]: Accepted publickey for dcs_user from 192.168.55.100 port 51066 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 14:54:31 dcs sshd[6489]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 14:54:31 dcs sshd[6488]: Accepted publickey for dcs_user from 192.168.55.100 port 51060 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 14:54:31 dcs systemd-logind[479]: New session 45 of user dcs_user.
+Dec 15 14:54:31 dcs sshd[6488]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 14:54:31 dcs systemd[1]: Started Session 45 of user dcs_user.
+Dec 15 14:54:31 dcs systemd-logind[479]: New session 46 of user dcs_user.
+Dec 15 14:54:31 dcs systemd[1]: Started Session 46 of user dcs_user.
+Dec 15 14:54:31 dcs systemd-logind[479]: New session 47 of user dcs_user.
+Dec 15 14:54:31 dcs systemd[1]: Started Session 47 of user dcs_user.
+Dec 15 14:54:31 dcs systemd-logind[479]: New session 48 of user dcs_user.
+Dec 15 14:54:31 dcs systemd[1]: Started Session 48 of user dcs_user.
+Dec 15 14:54:32 dcs rtkit-daemon[1742]: Supervising 3 threads of 1 processes of 2 users.
+Dec 15 14:54:32 dcs sudo[6665]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/tegrastats --interval 1000
+Dec 15 14:54:32 dcs sudo[6664]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg --follow
+Dec 15 14:54:32 dcs sudo[6665]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 14:54:32 dcs sudo[6664]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 14:54:32 dcs sshd[6660]: Received disconnect from 192.168.55.100 port 51066:11: disconnected by user
+Dec 15 14:54:32 dcs sshd[6660]: Disconnected from user dcs_user 192.168.55.100 port 51066
+Dec 15 14:54:32 dcs sshd[6489]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 14:54:32 dcs systemd[1]: session-47.scope: Succeeded.
+Dec 15 14:54:32 dcs systemd-logind[479]: Session 47 logged out. Waiting for processes to exit.
+Dec 15 14:54:32 dcs systemd-logind[479]: Removed session 47.
+Dec 15 14:54:32 dcs rtkit-daemon[1742]: Supervising 3 threads of 1 processes of 2 users.
+Dec 15 14:54:32 dcs sudo[6682]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --no-pager --lines=100
+Dec 15 14:54:32 dcs sudo[6682]: pam_unix(sudo:session): session opened for user root by (uid=0)

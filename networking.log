@@ -1,0 +1,34 @@
+Laptop
+    localip  192.168.88.14/24
+    radio    10.11.1.18/27
+
+RPI4 rpi@ip dronecore
+    localip 192.168.88.15/24
+    radio   10.11.1.17/27
+    rpi     192.168.50.1/30
+    jetson  192.168.55.100/24
+RPI3 rpi@ip dronecore
+    localip 192.168.88.13/24
+    radio   ---
+    rpi     192.168.50.2/30
+    jetson  10.42.0.xx/24   doesnt matter
+Jetson dcs_user@ip dronecore
+    localip ----
+    radio   ---
+    RPI3    10.42.0.1/24
+    RPI4    192.168.55.1/24
+
+sudo nmcli con mod "<ETH_CONN_NAME>" +ipv4.addresses 192.168.50.1/30
+sudo nmcli con mod "<ETH_CONN_NAME>" ipv4.never-default yes
+sudo nmcli con up "<ETH_CONN_NAME>"
+
+
+run on RPI4:
+./scripts/rpi4.sh
+
+run on RPI3:
+./scripts/rpi3.sh
+
+run on PC
+./jetson_logs.sh
+./mavlink_logger.sh

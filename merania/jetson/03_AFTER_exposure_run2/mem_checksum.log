@@ -1,0 +1,2 @@
+MEMCHK_START continuous mode, alloc_interval=30s check_interval=60s min_free=80%
+t=    0.0s CHECK_ALL blocks=0 errors=0 free=6088.3MB (88.8%)

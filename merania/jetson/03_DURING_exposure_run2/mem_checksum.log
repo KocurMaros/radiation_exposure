@@ -1,0 +1,70 @@
+MEMCHK_START continuous mode, alloc_interval=30s check_interval=60s min_free=80%
+t=    0.0s CHECK_ALL blocks=0 errors=0 free=6098.1MB (89.0%)
+t=   30.0s ALLOC block_id=1 size=64MB free=6097.5MB (89.0%) blocks=1 chk=b08d32d169ffd905fc24ed87ca7a033dee7014c9c2fa3d92a6ca14f888b0cb98
+t=   60.4s ALLOC block_id=2 size=64MB free=6032.6MB (88.0%) blocks=2 chk=34df0b0cbea2526052e32e0cb8a35d8f0e2b3884b7b4ce71c672e8f2644918c9
+t=   60.4s CHECK_ALL blocks=2 errors=0 free=5968.7MB (87.1%)
+t=   90.9s ALLOC block_id=3 size=64MB free=5970.7MB (87.1%) blocks=3 chk=820ef8f0c5321bdb5150d8d01b3336dc9482b39005fe123671275f011241c580
+t=  121.2s ALLOC block_id=4 size=64MB free=5906.2MB (86.2%) blocks=4 chk=af92b0a1d15c941d90b0447df0d2a1e15f9ace7d3c1d610221fcce771e586357
+t=  121.2s CHECK_ALL blocks=4 errors=0 free=5842.5MB (85.2%)
+t=  151.8s ALLOC block_id=5 size=64MB free=5842.6MB (85.2%) blocks=5 chk=e61fb44c8cb43e28adf9b318d308a6e9ee7226c468c82fe5398f89decae7a9c6
+t=  182.1s ALLOC block_id=6 size=64MB free=5778.3MB (84.3%) blocks=6 chk=a64c88e23ad500e88f360af84dc20eb2bafe6e5e0a056eba6415f8fd63855355
+t=  182.1s CHECK_ALL blocks=6 errors=0 free=5714.2MB (83.4%)
+t=  212.8s ALLOC block_id=7 size=64MB free=5714.2MB (83.4%) blocks=7 chk=9c46550e9baa1650ac8dfc2e495194553bbbf11272e5e8f60afa64fb86151c51
+t=  242.1s CHECK_ALL blocks=7 errors=0 free=5649.3MB (82.4%)
+t=  243.5s ALLOC block_id=8 size=64MB free=5650.5MB (82.4%) blocks=8 chk=2f5ba849b78c8ee1879c1198078f89ed101d92a4fb357deaf14dcd89d74f5d64
+t=  273.8s ALLOC block_id=9 size=64MB free=5586.5MB (81.5%) blocks=9 chk=471fc63e73e27b464ae3fd6489c45a364486fe12467cb427dc5965a3444cf683
+t=  302.2s CHECK_ALL blocks=9 errors=0 free=5521.6MB (80.6%)
+t=  304.6s ALLOC block_id=10 size=64MB free=5522.1MB (80.6%) blocks=10 chk=9c21f816fc3cc83f021299d15e411b0fdb43b66fac73699f3296fb8ce6e63777
+t=  335.0s ALLOC_SKIP free=5456.1MB (79.6%) < 80%, blocks=10
+t=  363.0s CHECK_ALL blocks=10 errors=0 free=5456.2MB (79.6%)
+t=  365.5s ALLOC_SKIP free=5456.2MB (79.6%) < 80%, blocks=10
+t=  395.5s ALLOC_SKIP free=5455.9MB (79.6%) < 80%, blocks=10
+t=  423.6s CHECK_ALL blocks=10 errors=0 free=5456.7MB (79.6%)
+t=  426.0s ALLOC_SKIP free=5456.5MB (79.6%) < 80%, blocks=10
+t=  456.1s ALLOC_SKIP free=5455.5MB (79.6%) < 80%, blocks=10
+t=  484.1s CHECK_ALL blocks=10 errors=0 free=5455.5MB (79.6%)
+t=  486.6s ALLOC_SKIP free=5456.6MB (79.6%) < 80%, blocks=10
+t=  516.6s ALLOC_SKIP free=5456.8MB (79.6%) < 80%, blocks=10
+t=  544.6s CHECK_ALL blocks=10 errors=0 free=5455.8MB (79.6%)
+t=  547.1s ALLOC_SKIP free=5455.8MB (79.6%) < 80%, blocks=10
+t=  577.1s ALLOC_SKIP free=5455.8MB (79.6%) < 80%, blocks=10
+t=  605.2s CHECK_ALL blocks=10 errors=0 free=5455.8MB (79.6%)
+t=  607.6s ALLOC_SKIP free=5456.3MB (79.6%) < 80%, blocks=10
+t=  637.7s ALLOC_SKIP free=5456.8MB (79.6%) < 80%, blocks=10
+t=  665.7s CHECK_ALL blocks=10 errors=0 free=5456.6MB (79.6%)
+t=  668.2s ALLOC_SKIP free=5454.7MB (79.6%) < 80%, blocks=10
+t=  698.2s ALLOC_SKIP free=5456.6MB (79.6%) < 80%, blocks=10
+t=  726.2s CHECK_ALL blocks=10 errors=0 free=5456.2MB (79.6%)
+t=  728.7s ALLOC_SKIP free=5455.4MB (79.6%) < 80%, blocks=10
+t=  758.7s ALLOC_SKIP free=5455.7MB (79.6%) < 80%, blocks=10
+t=  786.8s CHECK_ALL blocks=10 errors=0 free=5455.9MB (79.6%)
+t=  789.2s ALLOC_SKIP free=5455.7MB (79.6%) < 80%, blocks=10
+t=  819.3s ALLOC_SKIP free=5454.4MB (79.6%) < 80%, blocks=10
+t=  847.3s CHECK_ALL blocks=10 errors=0 free=5454.2MB (79.6%)
+t=  849.8s ALLOC_SKIP free=5454.2MB (79.6%) < 80%, blocks=10
+t=  879.8s ALLOC_SKIP free=5455.2MB (79.6%) < 80%, blocks=10
+t=  907.8s CHECK_ALL blocks=10 errors=0 free=5455.5MB (79.6%)
+t=  910.3s ALLOC_SKIP free=5455.5MB (79.6%) < 80%, blocks=10
+t=  940.3s ALLOC_SKIP free=5455.1MB (79.6%) < 80%, blocks=10
+t=  968.4s CHECK_ALL blocks=10 errors=0 free=5454.9MB (79.6%)
+t=  970.8s ALLOC_SKIP free=5454.9MB (79.6%) < 80%, blocks=10
+t= 1000.9s ALLOC_SKIP free=5454.4MB (79.6%) < 80%, blocks=10
+t= 1028.9s CHECK_ALL blocks=10 errors=0 free=5454.2MB (79.6%)
+t= 1031.4s ALLOC_SKIP free=5454.6MB (79.6%) < 80%, blocks=10
+t= 1061.4s ALLOC_SKIP free=5454.2MB (79.6%) < 80%, blocks=10
+t= 1089.4s CHECK_ALL blocks=10 errors=0 free=5454.5MB (79.6%)
+t= 1091.9s ALLOC_SKIP free=5454.4MB (79.6%) < 80%, blocks=10
+t= 1121.9s ALLOC_SKIP free=5453.5MB (79.6%) < 80%, blocks=10
+t= 1150.0s CHECK_ALL blocks=10 errors=0 free=5454.1MB (79.6%)
+t= 1152.4s ALLOC_SKIP free=5454.1MB (79.6%) < 80%, blocks=10
+t= 1182.5s ALLOC_SKIP free=5454.1MB (79.6%) < 80%, blocks=10
+t= 1210.5s CHECK_ALL blocks=10 errors=0 free=5454.6MB (79.6%)
+t= 1213.0s ALLOC_SKIP free=5454.6MB (79.6%) < 80%, blocks=10
+t= 1243.0s ALLOC_SKIP free=5455.2MB (79.6%) < 80%, blocks=10
+t= 1271.0s CHECK_ALL blocks=10 errors=0 free=5454.9MB (79.6%)
+t= 1273.5s ALLOC_SKIP free=5455.0MB (79.6%) < 80%, blocks=10
+t= 1303.5s ALLOC_SKIP free=5455.0MB (79.6%) < 80%, blocks=10
+t= 1331.6s CHECK_ALL blocks=10 errors=0 free=5455.0MB (79.6%)
+t= 1334.0s ALLOC_SKIP free=5455.0MB (79.6%) < 80%, blocks=10
+t= 1364.1s ALLOC_SKIP free=5454.3MB (79.6%) < 80%, blocks=10
+t= 1392.1s CHECK_ALL blocks=10 errors=0 free=5454.1MB (79.6%)

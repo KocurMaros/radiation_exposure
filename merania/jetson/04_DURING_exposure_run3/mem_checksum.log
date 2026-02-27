@@ -1,0 +1,27 @@
+MEMCHK_START continuous mode, alloc_interval=30s check_interval=60s min_free=80%
+t=    0.0s CHECK_ALL blocks=0 errors=0 free=6096.6MB (88.9%)
+t=   30.0s ALLOC block_id=1 size=64MB free=6097.0MB (89.0%) blocks=1 chk=e6eadbd79987a2e71b38f5b40c2095344822e8e82a6652dd4c4abe7cc6f1db59
+t=   60.4s ALLOC block_id=2 size=64MB free=6031.8MB (88.0%) blocks=2 chk=9103552d909dcf81e1df1de39425acbbe62a14ac1dff48a46812017e420afb30
+t=   60.4s CHECK_ALL blocks=2 errors=0 free=5967.2MB (87.1%)
+t=   90.8s ALLOC block_id=3 size=64MB free=5967.1MB (87.1%) blocks=3 chk=016aa06908cbcd797b7a2fed31a3ce3c260924896d2bc0ee6687971438a19720
+t=  121.2s ALLOC block_id=4 size=64MB free=5903.0MB (86.1%) blocks=4 chk=27bb6921232b31f02e2653c48fa040c852aef55ba783cca96e5b8b88ae48f4b3
+t=  121.2s CHECK_ALL blocks=4 errors=0 free=5838.6MB (85.2%)
+t=  151.8s ALLOC block_id=5 size=64MB free=5839.1MB (85.2%) blocks=5 chk=1e9252b0646ea1bf84c6ed00dac33ebb9c2ede2e5d11057a17f71b23f27ec9a4
+t=  182.1s ALLOC block_id=6 size=64MB free=5774.9MB (84.3%) blocks=6 chk=ec7a351b862037536b9803ae9153e1c72ffc60ce3ea7a17b2b0f9c05040f5981
+t=  182.1s CHECK_ALL blocks=6 errors=0 free=5710.5MB (83.3%)
+t=  212.8s ALLOC block_id=7 size=64MB free=5711.0MB (83.3%) blocks=7 chk=2f502fe171a725f9799d5e69f665664a5d443a770d4f4a06ddbd3d8d1eafc0e4
+t=  243.1s ALLOC block_id=8 size=64MB free=5647.3MB (82.4%) blocks=8 chk=3a6ea82d547e744dd1f49879d31d1654be1f8f939cf57b62bd2ba558f58428c5
+t=  243.1s CHECK_ALL blocks=8 errors=0 free=5583.2MB (81.5%)
+t=  273.8s ALLOC block_id=9 size=64MB free=5582.8MB (81.4%) blocks=9 chk=5a61c5d4bd33ec1793ace17a01a6fa692da6c62254995420290bb1718b3520bb
+t=  303.2s CHECK_ALL blocks=9 errors=0 free=5518.5MB (80.5%)
+t=  304.6s ALLOC block_id=10 size=64MB free=5518.6MB (80.5%) blocks=10 chk=ed634232328b30182cc313246f5bdc98191abb1f8de5bd7fca6fc64b26ae14c1
+t=  335.0s ALLOC_SKIP free=5454.7MB (79.6%) < 80%, blocks=10
+t=  364.0s CHECK_ALL blocks=10 errors=0 free=5454.5MB (79.6%)
+t=  365.5s ALLOC_SKIP free=5454.7MB (79.6%) < 80%, blocks=10
+t=  395.5s ALLOC_SKIP free=5455.0MB (79.6%) < 80%, blocks=10
+t=  424.6s CHECK_ALL blocks=10 errors=0 free=5454.5MB (79.6%)
+t=  426.1s ALLOC_SKIP free=5454.6MB (79.6%) < 80%, blocks=10
+t=  456.1s ALLOC_SKIP free=5454.6MB (79.6%) < 80%, blocks=10
+t=  485.1s CHECK_ALL blocks=10 errors=0 free=5453.6MB (79.6%)
+t=  486.6s ALLOC_SKIP free=5455.1MB (79.6%) < 80%, blocks=10
+t=  516.7s ALLOC_SKIP free=5455.1MB (79.6%) < 80%, blocks=10

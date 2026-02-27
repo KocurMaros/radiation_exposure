@@ -1,0 +1,101 @@
+-- Logs begin at Mon 2024-06-17 20:29:40 UTC, end at Mon 2025-12-15 13:03:32 UTC. --
+Dec 15 13:03:13 dcs sudo[4117]:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/platform/pwm-fan/hwmon/hwmon4/pwm1
+Dec 15 13:03:13 dcs sudo[4117]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:13 dcs boost_clocks_and_fan.sh[4118]: 252
+Dec 15 13:03:13 dcs sudo[4117]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:13 dcs sudo[4121]:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/platform/pwm-fan/hwmon/hwmon4/pwm1
+Dec 15 13:03:13 dcs sudo[4121]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:13 dcs boost_clocks_and_fan.sh[4122]: 253
+Dec 15 13:03:13 dcs sudo[4121]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:13 dcs sudo[4125]:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/platform/pwm-fan/hwmon/hwmon4/pwm1
+Dec 15 13:03:13 dcs sudo[4125]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:13 dcs boost_clocks_and_fan.sh[4126]: 254
+Dec 15 13:03:13 dcs sudo[4125]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:13 dcs sudo[4129]:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/platform/pwm-fan/hwmon/hwmon4/pwm1
+Dec 15 13:03:13 dcs sudo[4129]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:13 dcs boost_clocks_and_fan.sh[4130]: 255
+Dec 15 13:03:13 dcs sudo[4129]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:13 dcs systemd[1]: boost_clocks_and_fan.service: Succeeded.
+Dec 15 13:03:14 dcs sshd[3657]: Received disconnect from 192.168.55.100 port 41376:11: disconnected by user
+Dec 15 13:03:14 dcs sshd[3712]: Received disconnect from 192.168.55.100 port 41378:11: disconnected by user
+Dec 15 13:03:14 dcs sshd[3657]: Disconnected from user dcs_user 192.168.55.100 port 41376
+Dec 15 13:03:14 dcs sshd[3712]: Disconnected from user dcs_user 192.168.55.100 port 41378
+Dec 15 13:03:14 dcs sshd[3464]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 13:03:14 dcs sshd[3465]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 13:03:14 dcs systemd-logind[500]: Session 6 logged out. Waiting for processes to exit.
+Dec 15 13:03:14 dcs systemd-logind[500]: Session 5 logged out. Waiting for processes to exit.
+Dec 15 13:03:14 dcs systemd[2989]: pulseaudio.service: Succeeded.
+Dec 15 13:03:14 dcs dhcpd[1389]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:14 dcs dhcpd[1389]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:14 dcs sudo[3718]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:14 dcs systemd[1]: session-6.scope: Succeeded.
+Dec 15 13:03:14 dcs systemd-logind[500]: Removed session 6.
+Dec 15 13:03:16 dcs systemd[2989]: tracker-extract.service: Succeeded.
+Dec 15 13:03:17 dcs whoopsie[1374]: [13:03:17] Cannot reach: https://daisy.ubuntu.com
+Dec 15 13:03:17 dcs systemd-resolved[321]: Using degraded feature set (UDP) for DNS server 8.8.8.8.
+Dec 15 13:03:20 dcs dhcpd[1389]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 via l4tbr0: lease 192.168.55.100 unavailable.
+Dec 15 13:03:20 dcs dhcpd[1389]: DHCPNAK on 192.168.55.100 to ba:c1:d3:53:b1:04 via l4tbr0
+Dec 15 13:03:20 dcs dhcpd[1389]: DHCPDISCOVER from ba:c1:d3:53:b1:04 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 13:03:21 dcs dhcpd[1389]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:21 dcs dhcpd[1389]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:22 dcs dhcpd[1389]: DHCPDISCOVER from ba:c1:d3:53:b1:04 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 13:03:27 dcs dhcpd[1389]: DHCPDISCOVER from ba:c1:d3:53:b1:04 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 13:03:28 dcs tracker-store[2564]: OK
+Dec 15 13:03:28 dcs systemd[1651]: tracker-store.service: Succeeded.
+Dec 15 13:03:29 dcs dhcpd[1389]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:29 dcs dhcpd[1389]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:06 (raspberrypi) via l4tbr0
+Dec 15 13:03:30 dcs sshd[4137]: Accepted publickey for dcs_user from 192.168.55.100 port 46550 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:30 dcs sshd[4137]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:30 dcs systemd-logind[500]: New session 9 of user dcs_user.
+Dec 15 13:03:30 dcs systemd[1]: Started Session 9 of user dcs_user.
+Dec 15 13:03:30 dcs sshd[4183]: Received disconnect from 192.168.55.100 port 46550:11: disconnected by user
+Dec 15 13:03:30 dcs sshd[4183]: Disconnected from user dcs_user 192.168.55.100 port 46550
+Dec 15 13:03:30 dcs sshd[4137]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 13:03:30 dcs systemd[1]: session-9.scope: Succeeded.
+Dec 15 13:03:30 dcs systemd-logind[500]: Session 9 logged out. Waiting for processes to exit.
+Dec 15 13:03:30 dcs systemd-logind[500]: Removed session 9.
+Dec 15 13:03:30 dcs sshd[4185]: Accepted publickey for dcs_user from 192.168.55.100 port 46562 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:30 dcs sshd[4185]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:30 dcs systemd-logind[500]: New session 10 of user dcs_user.
+Dec 15 13:03:30 dcs systemd[1]: Started Session 10 of user dcs_user.
+Dec 15 13:03:31 dcs sudo[4234]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --boot --no-pager
+Dec 15 13:03:31 dcs sudo[4234]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:31 dcs sudo[4234]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:31 dcs sudo[4232]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg
+Dec 15 13:03:31 dcs sudo[4232]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:31 dcs sudo[4232]: pam_unix(sudo:session): session closed for user root
+Dec 15 13:03:31 dcs sshd[4231]: Received disconnect from 192.168.55.100 port 46562:11: disconnected by user
+Dec 15 13:03:31 dcs sshd[4231]: Disconnected from user dcs_user 192.168.55.100 port 46562
+Dec 15 13:03:31 dcs sshd[4185]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 13:03:31 dcs systemd[1]: session-10.scope: Succeeded.
+Dec 15 13:03:31 dcs systemd-logind[500]: Session 10 logged out. Waiting for processes to exit.
+Dec 15 13:03:31 dcs systemd-logind[500]: Removed session 10.
+Dec 15 13:03:31 dcs sshd[4238]: Accepted publickey for dcs_user from 192.168.55.100 port 46570 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:31 dcs sshd[4238]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:31 dcs sshd[4239]: Accepted publickey for dcs_user from 192.168.55.100 port 46572 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:31 dcs sshd[4240]: Accepted publickey for dcs_user from 192.168.55.100 port 46584 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:31 dcs sshd[4239]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:31 dcs systemd-logind[500]: New session 11 of user dcs_user.
+Dec 15 13:03:31 dcs sshd[4240]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:31 dcs systemd[1]: Started Session 11 of user dcs_user.
+Dec 15 13:03:31 dcs sshd[4241]: Accepted publickey for dcs_user from 192.168.55.100 port 46582 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 13:03:31 dcs sshd[4241]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 13:03:31 dcs systemd-logind[500]: New session 12 of user dcs_user.
+Dec 15 13:03:31 dcs systemd[1]: Started Session 12 of user dcs_user.
+Dec 15 13:03:31 dcs systemd-logind[500]: New session 13 of user dcs_user.
+Dec 15 13:03:31 dcs systemd[1]: Started Session 13 of user dcs_user.
+Dec 15 13:03:31 dcs systemd-logind[500]: New session 14 of user dcs_user.
+Dec 15 13:03:31 dcs systemd[1]: Started Session 14 of user dcs_user.
+Dec 15 13:03:32 dcs sudo[4401]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/tegrastats --interval 1000
+Dec 15 13:03:32 dcs sudo[4401]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:32 dcs sudo[4425]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg --follow
+Dec 15 13:03:32 dcs sudo[4425]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:32 dcs sudo[4432]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --no-pager --lines=100
+Dec 15 13:03:32 dcs sudo[4432]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 13:03:32 dcs sshd[4415]: Received disconnect from 192.168.55.100 port 46584:11: disconnected by user
+Dec 15 13:03:32 dcs sshd[4415]: Disconnected from user dcs_user 192.168.55.100 port 46584
+Dec 15 13:03:32 dcs sshd[4240]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 13:03:32 dcs systemd[1]: systemd-hostnamed.service: Succeeded.
+Dec 15 13:03:32 dcs systemd[1]: session-13.scope: Succeeded.
+Dec 15 13:03:32 dcs systemd-logind[500]: Session 13 logged out. Waiting for processes to exit.
+Dec 15 13:03:32 dcs systemd-logind[500]: Removed session 13.

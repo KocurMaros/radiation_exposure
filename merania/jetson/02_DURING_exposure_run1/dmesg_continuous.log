@@ -1,0 +1,1872 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x4e0f0040]
+[    0.000000] Linux version 5.10.120-tegra (msedl@msedl-OMEN-by-HP-Laptop-15-dc1xxx) (aarch64-buildroot-linux-gnu-gcc.br_real (Buildroot 2020.08) 9.3.0, GNU ld (GNU Binutils) 2.33.1) #1 SMP PREEMPT Sun Oct 22 12:12:41 CEST 2023
+[    0.000000] Machine model: NVIDIA Jetson Xavier NX Developer Kit
+[    0.000000] efi: EFI v2.70 by EDK II
+[    0.000000] efi: RTPROP=0x2788b3f98 SMBIOS=0xc7bb0000 SMBIOS 3.0=0x258820000 MEMATTR=0x259e3f018 ESRT=0x259e7bb98 RNG=0x27c57d818 MEMRESERVE=0x259e40f18 
+[    0.000000] efi: seeding entropy pool
+[    0.000000] esrt: Reserving ESRT space from 0x0000000259e7bb98 to 0x0000000259e7bbd0.
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb0_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb0_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb1_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb1_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb2_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb2_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb3_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] OF: fdt: Reserved memory: failed to reserve memory for node 'fb3_carveout': base 0x0000000000000000, size 0 MiB
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000027fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x00000000aeffffff]
+[    0.000000]   node   0: [mem 0x00000000af010000-0x00000000c79fffff]
+[    0.000000]   node   0: [mem 0x00000000c7b00000-0x00000000c7b9ffff]
+[    0.000000]   node   0: [mem 0x00000000c7ba0000-0x00000000c7bbffff]
+[    0.000000]   node   0: [mem 0x00000000ca000000-0x00000000ca7fffff]
+[    0.000000]   node   0: [mem 0x0000000100000000-0x0000000257f35fff]
+[    0.000000]   node   0: [mem 0x0000000257f36000-0x00000002583cffff]
+[    0.000000]   node   0: [mem 0x00000002583d0000-0x00000002587dffff]
+[    0.000000]   node   0: [mem 0x00000002587e0000-0x00000002587effff]
+[    0.000000]   node   0: [mem 0x00000002587f0000-0x000000025881ffff]
+[    0.000000]   node   0: [mem 0x0000000258820000-0x000000025885ffff]
+[    0.000000]   node   0: [mem 0x0000000258860000-0x0000000259ceffff]
+[    0.000000]   node   0: [mem 0x0000000259cf0000-0x0000000259d8ffff]
+[    0.000000]   node   0: [mem 0x0000000259d90000-0x0000000259dfffff]
+[    0.000000]   node   0: [mem 0x0000000259e00000-0x0000000259e2ffff]
+[    0.000000]   node   0: [mem 0x0000000259e30000-0x0000000259e4ffff]
+[    0.000000]   node   0: [mem 0x0000000259e50000-0x0000000259e6ffff]
+[    0.000000]   node   0: [mem 0x0000000259e70000-0x0000000259efffff]
+[    0.000000]   node   0: [mem 0x0000000259f00000-0x0000000259f1ffff]
+[    0.000000]   node   0: [mem 0x0000000259f20000-0x0000000259f7ffff]
+[    0.000000]   node   0: [mem 0x0000000259f80000-0x000000025a0bffff]
+[    0.000000]   node   0: [mem 0x000000025a0c0000-0x000000025a10ffff]
+[    0.000000]   node   0: [mem 0x000000025a110000-0x000000025a1affff]
+[    0.000000]   node   0: [mem 0x000000025a1b0000-0x000000025a22ffff]
+[    0.000000]   node   0: [mem 0x000000025a230000-0x000000025a2dffff]
+[    0.000000]   node   0: [mem 0x000000025a2e0000-0x000000025a32ffff]
+[    0.000000]   node   0: [mem 0x000000025a330000-0x000000025a55ffff]
+[    0.000000]   node   0: [mem 0x000000025a560000-0x000000025a5effff]
+[    0.000000]   node   0: [mem 0x000000025a5f0000-0x000000025a63ffff]
+[    0.000000]   node   0: [mem 0x000000025a640000-0x000000025a66ffff]
+[    0.000000]   node   0: [mem 0x000000025a670000-0x000000025a70ffff]
+[    0.000000]   node   0: [mem 0x000000025a710000-0x000000025a75ffff]
+[    0.000000]   node   0: [mem 0x000000025a760000-0x000000025a7fffff]
+[    0.000000]   node   0: [mem 0x000000025a800000-0x000000025acdffff]
+[    0.000000]   node   0: [mem 0x000000025ace0000-0x000000025aebffff]
+[    0.000000]   node   0: [mem 0x000000025aec0000-0x000000027c52ffff]
+[    0.000000]   node   0: [mem 0x000000027c530000-0x000000027c57ffff]
+[    0.000000]   node   0: [mem 0x000000027c580000-0x000000027fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x000000027fffffff]
+[    0.000000] On node 0 totalpages: 1868464
+[    0.000000]   DMA zone: 4619 pages used for memmap
+[    0.000000]   DMA zone: 0 pages reserved
+[    0.000000]   DMA zone: 295600 pages, LIFO batch:63
+[    0.000000]   Normal zone: 24576 pages used for memmap
+[    0.000000]   Normal zone: 1572864 pages, LIFO batch:63
+[    0.000000] cma: Reserved 64 MiB at 0x00000000c3800000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 32 pages/cpu s90328 r8192 d32552 u131072
+[    0.000000] pcpu-alloc: s90328 r8192 d32552 u131072 alloc=32*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: kernel page table isolation forced ON by KASLR
+[    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: NVIDIA Carmel CNP erratum
+[    0.000000] alternatives: patching kernel code
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 1839269
+[    0.000000] Kernel command line: root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x00000000b3800000-0x00000000c3800000] (256MB)
+[    0.000000] Memory: 6939632K/7473856K available (18496K kernel code, 3166K rwdata, 7168K rodata, 3968K init, 1416K bss, 468688K reserved, 65536K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] arch_timer: cp15 timer(s) running at 31.25MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0xe6a171046, max_idle_ns: 881590405314 ns
+[    0.000004] sched_clock: 56 bits at 31MHz, resolution 32ns, wraps every 4398046511088ns
+[    0.000749] Console: colour dummy device 80x25
+[    0.002199] printk: console [tty0] enabled
+[    0.002266] Calibrating delay loop (skipped), value calculated using timer frequency.. 62.50 BogoMIPS (lpj=125000)
+[    0.002303] pid_max: default: 32768 minimum: 301
+[    0.002628] LSM: Security Framework initializing
+[    0.002705] Yama: becoming mindful.
+[    0.002765] SELinux:  Initializing.
+[    0.003028] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.003067] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.006319] rcu: Hierarchical SRCU implementation.
+[    0.006576] dyndbg: Ignore empty _ddebug table in a CONFIG_DYNAMIC_DEBUG_CORE build
+[    0.007317] DTS File Name: /home/msedl/nvidia/nvidia_sdk/Jetson_Linux_R35.4.1_aarch64/Linux_for_Tegra/kernel_sources_xaviernx/kernel/kernel-5.10/arch/arm64/boot/dts/../../../../../../hardware/nvidia/platform/t19x/jakku/kernel-dts/tegra194-p3668-0001-p3509-0000.dts
+[    0.007390] DTB Build time: Oct 22 2023 12:20:39
+[    0.010352] Tegra Revision: A02 SKU: 0xde CPU Process: 0 SoC Process: 0
+[    0.010644] Remapping and enabling EFI services.
+[    0.012142] smp: Bringing up secondary CPUs ...
+[    0.041451] Detected PIPT I-cache on CPU1
+[    0.041554] CPU1: Booted secondary processor 0x0000000001 [0x4e0f0040]
+[    0.070858] Detected PIPT I-cache on CPU2
+[    0.070956] CPU2: Booted secondary processor 0x0000000100 [0x4e0f0040]
+[    0.100464] Detected PIPT I-cache on CPU3
+[    0.100556] CPU3: Booted secondary processor 0x0000000101 [0x4e0f0040]
+[    0.130142] Detected PIPT I-cache on CPU4
+[    0.130240] CPU4: Booted secondary processor 0x0000000200 [0x4e0f0040]
+[    0.159782] Detected PIPT I-cache on CPU5
+[    0.159920] CPU5: Booted secondary processor 0x0000000201 [0x4e0f0040]
+[    0.160338] smp: Brought up 1 node, 6 CPUs
+[    0.160548] SMP: Total of 6 processors activated.
+[    0.160619] CPU features: detected: Privileged Access Never
+[    0.160661] CPU features: detected: LSE atomic instructions
+[    0.160675] CPU features: detected: User Access Override
+[    0.160688] CPU features: detected: 32-bit EL0 Support
+[    0.160700] CPU features: detected: RAS Extension Support
+[    0.160713] CPU features: detected: CRC32 instructions
+[    0.160727] CPU features: detected: 32-bit EL1 Support
+[    0.232921] CPU: All CPU(s) started at EL2
+[    0.240466] devtmpfs: initialized
+[    0.298873] Registered cp15_barrier emulation handler
+[    0.299005] Registered setend emulation handler
+[    0.299048] KASLR enabled
+[    0.299359] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.299383] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.300692] pinctrl core: initialized pinctrl subsystem
+[    0.301701] SMBIOS 3.0.0 present.
+[    0.301730] DMI: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[    0.302604] NET: Registered protocol family 16
+[    0.304645] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.305131] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.305834] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.305890] audit: initializing netlink subsys (disabled)
+[    0.306185] audit: type=2000 audit(0.300:1): state=initialized audit_enabled=0 res=1
+[    0.306732] thermal_sys: Registered thermal governor 'step_wise'
+[    0.306739] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.306753] thermal_sys: Registered thermal governor 'pid_thermal_gov'
+[    0.309261] cpuidle: using governor menu
+[    0.309636] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.310237] ASID allocator initialised with 32768 entries
+[    0.310523] Serial: AMBA PL011 UART driver
+[    0.313990] Tegra reboot handler registered.
+[    0.393804] mc: mapped MMIO address: 0xffff800010580000 -> 0x2c10000
+[    0.393847] mc: mapped MMIO address: 0xffff8000105a0000 -> 0x2c20000
+[    0.393876] mc: mapped MMIO address: 0xffff8000105c0000 -> 0x2c30000
+[    0.393904] mc: mapped MMIO address: 0xffff8000105e0000 -> 0x2c40000
+[    0.393933] mc: mapped MMIO address: 0xffff800010600000 -> 0x2c50000
+[    0.393959] mc: mapped MMIO address: 0xffff800010620000 -> 0x2b80000
+[    0.393986] mc: mapped MMIO address: 0xffff800010640000 -> 0x2b90000
+[    0.394011] mc: mapped MMIO address: 0xffff800010660000 -> 0x2ba0000
+[    0.394037] mc: mapped MMIO address: 0xffff800010680000 -> 0x2bb0000
+[    0.394062] mc: mapped MMIO address: 0xffff8000106a0000 -> 0x1700000
+[    0.394088] mc: mapped MMIO address: 0xffff8000106c0000 -> 0x1710000
+[    0.394114] mc: mapped MMIO address: 0xffff8000106e0000 -> 0x1720000
+[    0.394139] mc: mapped MMIO address: 0xffff800010700000 -> 0x1730000
+[    0.394182] mc: mapped MMIO address: 0xffff800010720000 -> 0x1740000
+[    0.394217] mc: mapped MMIO address: 0xffff800010740000 -> 0x1750000
+[    0.394273] mc: mapped MMIO address: 0xffff800010760000 -> 0x1760000
+[    0.394314] mc: mapped MMIO address: 0xffff800010780000 -> 0x1770000
+[    0.394424] mc-err: mcerr ops are set to t19x
+[    0.407033] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.407061] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.407073] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.407085] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.413796] ACPI: Interpreter disabled.
+[    0.415024] vdd-epb-1v0: supplied by vdd-3v3-cvb
+[    0.416862] iommu: Default domain type: Translated 
+[    0.416928] eventlib_kernel: keventlib is initialized, test id: 0
+[    0.417390] SCSI subsystem initialized
+[    0.417566] usbcore: registered new interface driver usbfs
+[    0.417611] usbcore: registered new interface driver hub
+[    0.417645] usbcore: registered new device driver usb
+[    0.418166] mc: Linux media interface: v0.10
+[    0.418200] videodev: Linux video capture interface: v2.00
+[    0.418655] pps_core: LinuxPPS API ver. 1 registered
+[    0.418667] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.418688] PTP clock support registered
+[    0.418941] tegra_wdt_t18x 30c0000.watchdog: Expiry count is deprecated
+[    0.419332] tegra_wdt_t18x 30c0000.watchdog: Tegra WDT init timeout = 120 sec
+[    0.419391] tegra_wdt_t18x 30c0000.watchdog: Registered successfully
+[    0.420006] Registered efivars operations
+[    0.420431] FPGA manager framework
+[    0.420499] Advanced Linux Sound Architecture Driver Initialized.
+[    0.421141] Bluetooth: Core ver 2.22
+[    0.421180] NET: Registered protocol family 31
+[    0.421192] Bluetooth: HCI device and connection manager initialized
+[    0.421207] Bluetooth: HCI socket layer initialized
+[    0.421228] Bluetooth: L2CAP socket layer initialized
+[    0.421249] Bluetooth: SCO socket layer initialized
+[    0.423063] camchar: rtcpu character device driver loaded
+[    0.423877] clocksource: Switched to clocksource arch_sys_counter
+[    0.719443] VFS: Disk quotas dquot_6.6.0
+[    0.719544] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.720307] pnp: PnP ACPI: disabled
+[    0.734912] la/ptsa driver initialized.
+[    0.735091] NET: Registered protocol family 2
+[    0.735281] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.740000] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.740084] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.740402] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes, linear)
+[    0.740831] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.740969] UDP hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.741065] UDP-Lite hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.741346] NET: Registered protocol family 1
+[    0.742232] RPC: Registered named UNIX socket transport module.
+[    0.742247] RPC: Registered udp transport module.
+[    0.742257] RPC: Registered tcp transport module.
+[    0.742266] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.742313] PCI: CLS 0 bytes, default 64
+[    0.742565] Trying to unpack rootfs image as initramfs...
+[    0.962466] Freeing initrd memory: 9552K
+[    0.967377] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    0.967802] kvm [1]: IPA Size Limit: 40 bits
+[    0.968320] kvm [1]: vgic interrupt IRQ9
+[    0.968811] kvm [1]: VHE mode initialized successfully
+[    0.970421] Initialise system trusted keyrings
+[    0.970743] workingset: timestamp_bits=46 max_order=21 bucket_order=0
+[    0.976579] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.977487] NFS: Registering the id_resolver key type
+[    0.977530] Key type id_resolver registered
+[    0.977546] Key type id_legacy registered
+[    0.977628] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.977656] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.977709] ntfs: driver 2.1.32 [Flags: R/W].
+[    0.985936] NET: Registered protocol family 38
+[    0.985961] Key type asymmetric registered
+[    0.985981] Asymmetric key parser 'x509' registered
+[    0.986036] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 239)
+[    0.986252] io scheduler mq-deadline registered
+[    0.986267] io scheduler kyber registered
+[    0.993813] tegra-pwm 3280000.pwm: PWM clk can sleep in ops
+[    0.993873] tegra-pwm c340000.pwm: PWM clk can sleep in ops
+[    0.993931] tegra-pwm 32c0000.pwm: PWM clk can sleep in ops
+[    0.993981] tegra-pwm 32d0000.pwm: PWM clk can sleep in ops
+[    0.994030] tegra-pwm 32f0000.pwm: PWM clk can sleep in ops
+[    0.998649] scrncapt: init (heads:4 wins:6 planes:4)
+[    0.999043] tegradccommon 15200000.display-hub: Nvhost Channel map failed
+[    0.999830] EINJ: ACPI disabled.
+[    1.002572] tegra-pmc c360000.pmc: scratch reg offset dts data not present
+[    1.002593] tegra-pmc: ### PMC reset source: SYS_RESET_N
+[    1.002604] tegra-pmc: ### PMC reset level: L0
+[    1.002613] tegra-pmc: ### PMC reset status reg: 0x0
+[    1.002649] tegra-pmc: PMC Prod config success
+[    1.007424] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    2.492471] printk: console [ttyTCU0] enabled
+[    2.497914] arm-smmu 10000000.iommu: probing hardware configuration...
+[    2.502845] arm-smmu 10000000.iommu: SMMUv2 with:
+[    2.507389] arm-smmu 10000000.iommu: 	stage 1 translation
+[    2.512733] arm-smmu 10000000.iommu: 	stage 2 translation
+[    2.518248] arm-smmu 10000000.iommu: 	nested translation
+[    2.524021] arm-smmu 10000000.iommu: 	stream matching with 128 register groups
+[    2.531191] arm-smmu 10000000.iommu: 	64 context banks (0 stage-2 only)
+[    2.541176] arm-smmu 10000000.iommu: 	Supported page sizes: 0x00001000
+[    2.544226] arm-smmu 10000000.iommu: 	Stage-1: 48-bit VA -> 48-bit IPA
+[    2.550781] arm-smmu 10000000.iommu: 	Stage-2: 48-bit IPA -> 48-bit PA
+[    2.557919] arm-smmu 12000000.iommu: probing hardware configuration...
+[    2.563843] arm-smmu 12000000.iommu: SMMUv2 with:
+[    2.568287] arm-smmu 12000000.iommu: 	stage 1 translation
+[    2.574054] arm-smmu 12000000.iommu: 	stage 2 translation
+[    2.579510] arm-smmu 12000000.iommu: 	nested translation
+[    2.584651] arm-smmu 12000000.iommu: 	stream matching with 128 register groups
+[    2.591826] arm-smmu 12000000.iommu: 	64 context banks (0 stage-2 only)
+[    2.602116] arm-smmu 12000000.iommu: 	Supported page sizes: 0x00001000
+[    2.604965] arm-smmu 12000000.iommu: 	Stage-1: 48-bit VA -> 48-bit IPA
+[    2.611768] arm-smmu 12000000.iommu: 	Stage-2: 48-bit IPA -> 48-bit PA
+[    2.618828] arm-smmu-suspend 12000000.smmu_suspend: arm_smmu_suspend probe successful
+[    2.629071] tegra_profiler: version: 1.151, samples/io: 51/30
+[    2.631991] tegra_profiler: auth: init
+[    2.636391] THERMAL EST: found 3 subdevs
+[    2.639844] THERMAL EST num_resources: 0
+[    2.643725] [THERMAL EST subdev 0]
+[    2.646777] [THERMAL EST subdev 1]
+[    2.650441] [THERMAL EST subdev 2]
+[    2.653427] THERMAL EST: Found 2 profiles, default profile is quiet
+[    2.660151] THERMAL EST: thz register success.
+[    2.664401] THERMAL EST: end of probe, return err: 0
+[    2.669634] nvsciipc: loaded module
+[    2.675972] tun: Universal TUN/TAP device driver, 1.6
+[    2.679036] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    2.685196] hns3: Copyright (c) 2017 Huawei Corporation.
+[    2.690741] e1000e: Intel(R) PRO/1000 Network Driver
+[    2.695962] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    2.701783] igb: Intel(R) Gigabit Ethernet Network Driver
+[    2.707319] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    2.713483] PPP generic driver version 2.4.2
+[    2.717534] PPP BSD Compression module registered
+[    2.722038] PPP Deflate Compression module registered
+[    2.727331] PPP MPPE Compression module registered
+[    2.732314] usbcore: registered new interface driver r8152
+[    2.737800] usbcore: registered new interface driver asix
+[    2.743390] usbcore: registered new interface driver ax88179_178a
+[    2.749519] usbcore: registered new interface driver cdc_ether
+[    2.755474] usbcore: registered new interface driver net1080
+[    2.761084] usbcore: registered new interface driver cdc_subset
+[    2.766856] usbcore: registered new interface driver zaurus
+[    2.772826] usbcore: registered new interface driver cdc_ncm
+[    2.778473] usbcore: registered new interface driver aqc111
+[    2.783902] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    2.789950] ohci-pci: OHCI PCI platform driver
+[    2.794495] ohci-platform: OHCI generic platform driver
+[    2.800058] tegra-xusb 3610000.xhci: Adding to iommu group 0
+[    2.806436] usbcore: registered new interface driver uas
+[    2.810545] usbcore: registered new interface driver usb-storage
+[    2.816853] tegra-xudc 3550000.xudc: Adding to iommu group 1
+[    2.822640] mousedev: PS/2 mouse device common for all mice
+[    2.827938] usbcore: registered new interface driver xpad
+[    2.835693] tegra_rtc c2a0000.rtc: registered as rtc1
+[    2.838693] tegra_rtc c2a0000.rtc: setting system clock to 1970-01-01T00:00:28 UTC (28)
+[    2.846503] tegra_rtc c2a0000.rtc: Tegra internal Real Time Clock
+[    2.852690] i2c /dev entries driver
+[    2.856087] tegra-i2c 3160000.i2c: Adding to iommu group 2
+[    2.861807] tegra-i2c c240000.i2c: Adding to iommu group 2
+[    2.867137] tegra-i2c 3180000.i2c: Adding to iommu group 2
+[    2.872884] tegra-i2c 3190000.i2c: Adding to iommu group 2
+[    2.877863] tegra-i2c 31b0000.i2c: Adding to iommu group 2
+[    2.883635] tegra-i2c 31c0000.i2c: Adding to iommu group 2
+[    2.888831] tegra-i2c c250000.i2c: Adding to iommu group 2
+[    2.899252] tegra-camrtc-capture-vi tegra-capture-vi: Invalid NVCSI stream Id
+[    2.903570] tegra-oc-event d280000.soctherm-oc-event: OC driver initialized
+[    2.908840] device-mapper: uevent: version 1.0.3
+[    2.913119] device-mapper: ioctl: 4.43.0-ioctl (2020-10-01) initialised: dm-devel@redhat.com
+[    2.923225] cpuidle: Initializing cpuidle driver
+[    2.927158] sdhci: Secure Digital Host Controller Interface driver
+[    2.932379] sdhci: Copyright(c) Pierre Ossman
+[    2.936571] Synopsys Designware Multimedia Card Interface Driver
+[    2.942726] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.948743] sdhci-tegra 3460000.sdhci: Adding to iommu group 3
+[    2.954862] sdhci-tegra 3440000.sdhci: Adding to iommu group 4
+[    2.954948] SMCCC: SOC_ID: ID = jep106:036b:0019 Revision = 0x00000102
+[    2.967866] tegra-bpmp bpmp: firmware: 128431eec76692047e1ac1ebc0392266
+[    2.988008] max77620 4-003c: PMIC Version OTP:0x51 and ES:0x1
+[    2.997398] vdd-1v0: supplied by regulator-dummy
+[    3.002754] vdd-1v8-hs: supplied by regulator-dummy
+[    3.007486] vdd-1v8-ls: supplied by regulator-dummy
+[    3.012143] vdd-1v8-ao: supplied by regulator-dummy
+[    3.016065] vddio-ddr-1v1: supplied by regulator-dummy
+[    3.020617] vdd-rtc: supplied by regulator-dummy
+[    3.022510] spmic-ldo1: supplied by regulator-dummy
+[    3.023915] vdd-ao-3v3: supplied by regulator-dummy
+[    3.030245] vddio-emmc-3v3: supplied by regulator-dummy
+[    3.036631] spmic-ldo4: supplied by regulator-dummy
+[    3.038148] vdd-usb-3v3: supplied by regulator-dummy
+[    3.044515] vddio-sdmmc1-3v3: supplied by regulator-dummy
+[    3.050903] vdd-csi-1v2: supplied by vdd-1v8-ls
+[    3.056898] spmic-ldo8: supplied by vdd-1v8-ls
+[    3.058718] gpio-510 (gpio_default): hogged as output/high
+[    3.060563] gpio-511 (gpio_default): hogged as output/high
+[    3.063278] gpiochip0: registered GPIOs 504 to 511 on max77620-gpio
+[    3.199832] max77686-rtc max77620-rtc: registered as rtc0
+[    3.201080] max77620-power max20024-power: Event recorder REG_NVERC : 0x44
+[    3.201383] max77620 4-003c: max77620 probe successful
+[    3.933517] tegra-se-elp 3ad0000.se_elp: tegra_se_elp_probe: complete
+[    3.934555] hid: raw HID events driver (C) Jiri Kosina
+[    3.935319] usbcore: registered new interface driver usbhid
+[    3.935489] usbhid: USB HID core driver
+[    3.937238] tegra186-cam-rtcpu bc00000.rtcpu: Adding to iommu group 5
+[    3.938435] tegra186-cam-rtcpu bc00000.rtcpu: Trace buffer configured at IOVA=0xbff00000
+[    4.023348] tegra-ivc-bus bc00000.rtcpu:ivc-bus: region 0: iova=0xbfec0000-0xbfee01ff size=131584
+[    4.024024] tegra-ivc-bus bc00000.rtcpu:ivc-bus:echo@0: echo: ver=0 grp=1 RX[16x64]=0x1000-0x1480 TX[16x64]=0x1480-0x1900
+[    4.025068] tegra-ivc-bus bc00000.rtcpu:ivc-bus:dbg@1: dbg: ver=0 grp=1 RX[1x448]=0x1900-0x1b40 TX[1x448]=0x1b40-0x1d80
+[    4.025657] tegra-ivc-bus bc00000.rtcpu:ivc-bus:dbg@2: dbg: ver=0 grp=1 RX[1x8192]=0x1d80-0x3e00 TX[1x8192]=0x3e00-0x5e80
+[    4.027235] tegra-ivc-bus bc00000.rtcpu:ivc-bus:ivccontrol@3: ivccontrol: ver=0 grp=1 RX[64x320]=0x5e80-0xaf00 TX[64x320]=0xaf00-0xff80
+[    4.027766] tegra-ivc-bus bc00000.rtcpu:ivc-bus:ivccapture@4: ivccapture: ver=0 grp=1 RX[512x64]=0xff80-0x18000 TX[512x64]=0x18000-0x20080
+[    4.028372] tegra-ivc-bus bc00000.rtcpu:ivc-bus:diag@5: diag: ver=0 grp=1 RX[1x64]=0x20080-0x20140 TX[1x64]=0x20140-0x20200
+[    4.029823] tegra186-cam-rtcpu bc00000.rtcpu: using cam RTCPU IRQ (49)
+[    4.030048] tegra186-cam-rtcpu bc00000.rtcpu: tegra_camrtc_mon_create is successful
+[    4.031786] tegra186-cam-rtcpu bc00000.rtcpu: firmware version cpu=rce cmd=6 sha1=058eec606b43624552a5258fda5b4f3967bdfde1
+[    4.039547] tegra_aon c1a0000.aon: Adding to iommu group 6
+[    4.045983] tegra_aon c1a0000.aon: tegra aon driver probe OK
+[    4.051788] tegra186-aondbg aondbg: aondbg driver probe() OK
+[    4.058138] denver_knobs_init:MTS_VERSION:55637613
+[    4.070216] t19x_cache tegra-cache: probed
+[    4.072566] optee: probing for conduit method.
+[    4.073717] optee: revision 3.21 (d8269f24)
+[    4.193122] optee: dynamic shared memory is enabled
+[    4.195627] optee: initialized driver
+[    4.199666] tegra_hv: get_hvd: not initialized yet
+[    4.200022] user_ivc_mempool: hypervisor not present
+[    4.201314] usbcore: registered new interface driver snd-usb-audio
+[    4.202907] u32 classifier
+[    4.203064]     input device check on
+[    4.203200]     Actions configured
+[    4.203493] Initializing XFRM netlink socket
+[    4.204516] NET: Registered protocol family 10
+[    4.207250] Segment Routing with IPv6
+[    4.207493] NET: Registered protocol family 17
+[    4.207733] NET: Registered protocol family 15
+[    4.208043] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[    4.208923] Bluetooth: RFCOMM socket layer initialized
+[    4.209196] Bluetooth: RFCOMM ver 1.11
+[    4.209375] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    4.209641] Bluetooth: HIDP socket layer initialized
+[    4.210554] 9pnet: Installing 9P2000 support
+[    4.210836] Key type dns_resolver registered
+[    4.212201] registered taskstats version 1
+[    4.212384] Loading compiled-in X.509 certificates
+[    4.255818] Loaded X.509 cert 'Build time autogenerated kernel key: 7191c9a175b18c555a77207caa89295545dbaf6a'
+[    4.259337] tegra194-pcie 14160000.pcie: Adding to iommu group 7
+[    4.265178] tegra194-pcie 14160000.pcie: host bridge /pcie@14160000 ranges:
+[    4.265523] tegra194-pcie 14160000.pcie:       IO 0x0036100000..0x00361fffff -> 0x0036100000
+[    4.265878] tegra194-pcie 14160000.pcie:      MEM 0x1400000000..0x173fffffff -> 0x1400000000
+[    4.266175] tegra194-pcie 14160000.pcie:      MEM 0x1740000000..0x17ffffffff -> 0x0040000000
+[    4.371979] tegra194-pcie 14160000.pcie: Link up
+[    4.375219] tegra194-pcie 14160000.pcie: PCI host bridge to bus 0004:00
+[    4.375452] pci_bus 0004:00: root bus resource [bus 00-ff]
+[    4.375620] pci_bus 0004:00: root bus resource [io  0x0000-0xfffff] (bus address [0x36100000-0x361fffff])
+[    4.375959] pci_bus 0004:00: root bus resource [mem 0x1400000000-0x173fffffff pref]
+[    4.376174] pci_bus 0004:00: root bus resource [mem 0x1740000000-0x17ffffffff] (bus address [0x40000000-0xffffffff])
+[    4.376542] pci 0004:00:00.0: [10de:1ad1] type 01 class 0x060400
+[    4.377135] pci 0004:00:00.0: PME# supported from D0 D3hot D3cold
+[    4.387588] pci 0004:01:00.0: [8086:2526] type 00 class 0x028000
+[    4.388471] pci 0004:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+[    4.390058] pci 0004:01:00.0: PME# supported from D0 D3hot D3cold
+[    4.398913] pci 0004:00:00.0: BAR 14: assigned [mem 0x1740000000-0x17400fffff]
+[    4.399370] pci 0004:01:00.0: BAR 0: assigned [mem 0x1740000000-0x1740003fff 64bit]
+[    4.399858] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
+[    4.400272] pci 0004:00:00.0:   bridge window [mem 0x1740000000-0x17400fffff]
+[    4.400580] pci 0004:00:00.0: Max Payload Size set to  128/ 256 (was  256), Max Read Rq  512
+[    4.400996] pci 0004:01:00.0: Max Payload Size set to  128/ 128 (was  128), Max Read Rq  128
+[    4.403318] pcieport 0004:00:00.0: Adding to iommu group 7
+[    4.408423] pcieport 0004:00:00.0: PME: Signaling with IRQ 24
+[    4.413509] pcieport 0004:00:00.0: AER: enabled with IRQ 24
+[    4.420416] tegra194-pcie 141a0000.pcie: Adding to iommu group 8
+[    4.429407] tegra194-pcie 141a0000.pcie: host bridge /pcie@141a0000 ranges:
+[    4.430979] tegra194-pcie 141a0000.pcie:       IO 0x003a100000..0x003a1fffff -> 0x003a100000
+[    4.439570] tegra194-pcie 141a0000.pcie:      MEM 0x1c00000000..0x1f3fffffff -> 0x1c00000000
+[    4.448177] tegra194-pcie 141a0000.pcie:      MEM 0x1f40000000..0x1fffffffff -> 0x0040000000
+[    5.556125] tegra194-pcie 141a0000.pcie: Phy link never came up
+[    5.556856] tegra194-pcie 141a0000.pcie: PCI host bridge to bus 0005:00
+[    5.557068] pci_bus 0005:00: root bus resource [bus 00-ff]
+[    5.557269] pci_bus 0005:00: root bus resource [io  0x100000-0x1fffff] (bus address [0x3a100000-0x3a1fffff])
+[    5.557515] pci_bus 0005:00: root bus resource [mem 0x1c00000000-0x1f3fffffff pref]
+[    5.557745] pci_bus 0005:00: root bus resource [mem 0x1f40000000-0x1fffffffff] (bus address [0x40000000-0xffffffff])
+[    5.558171] pci 0005:00:00.0: [10de:1ad0] type 01 class 0x060400
+[    5.558600] pci 0005:00:00.0: PME# supported from D0 D3hot D3cold
+[    5.576972] pci 0005:00:00.0: PCI bridge to [bus 01-ff]
+[    5.577384] pci 0005:00:00.0: Max Payload Size set to  256/ 256 (was  256), Max Read Rq  512
+[    5.578915] pcieport 0005:00:00.0: Adding to iommu group 8
+[    5.580523] pcieport 0005:00:00.0: PME: Signaling with IRQ 26
+[    5.582227] pcieport 0005:00:00.0: AER: enabled with IRQ 26
+[    5.583665] pci_bus 0005:01: busn_res: [bus 01-ff] is released
+[    5.584597] pci 0005:00:00.0: Removing from iommu group 8
+[    5.584873] pci_bus 0005:00: busn_res: [bus 00-ff] is released
+[    5.621110] host1x 13e10000.host1x: Adding to iommu group 9
+[    5.645775] host1x 13e10000.host1x: initialized
+[    5.647282] iommu_context_dev 13e10000.host1x:ctx0: Adding to iommu group 10
+[    5.648334] iommu_context_dev 13e10000.host1x:ctx0: initialized (streamid=56, iommu=smmu.0x0000000012000000)
+[    5.649396] iommu_context_dev 13e10000.host1x:ctx1: Adding to iommu group 11
+[    5.650015] iommu_context_dev 13e10000.host1x:ctx1: initialized (streamid=57, iommu=smmu.0x0000000012000000)
+[    5.650964] iommu_context_dev 13e10000.host1x:ctx2: Adding to iommu group 12
+[    5.651566] iommu_context_dev 13e10000.host1x:ctx2: initialized (streamid=58, iommu=smmu.0x0000000012000000)
+[    5.652645] iommu_context_dev 13e10000.host1x:ctx3: Adding to iommu group 13
+[    5.653296] iommu_context_dev 13e10000.host1x:ctx3: initialized (streamid=59, iommu=smmu.0x0000000012000000)
+[    5.654172] iommu_context_dev 13e10000.host1x:ctx4: Adding to iommu group 14
+[    5.656437] iommu_context_dev 13e10000.host1x:ctx4: initialized (streamid=60, iommu=smmu.0x0000000012000000)
+[    5.666464] iommu_context_dev 13e10000.host1x:ctx5: Adding to iommu group 15
+[    5.673155] iommu_context_dev 13e10000.host1x:ctx5: initialized (streamid=61, iommu=smmu.0x0000000012000000)
+[    5.683324] iommu_context_dev 13e10000.host1x:ctx6: Adding to iommu group 16
+[    5.690397] iommu_context_dev 13e10000.host1x:ctx6: initialized (streamid=62, iommu=smmu.0x0000000012000000)
+[    5.700255] iommu_context_dev 13e10000.host1x:ctx7: Adding to iommu group 17
+[    5.707309] iommu_context_dev 13e10000.host1x:ctx7: initialized (streamid=63, iommu=smmu.0x0000000012000000)
+[    5.716927] falcon 15340000.vic: Adding to iommu group 18
+[    5.730322] falcon 15340000.vic: initialized
+[    5.731129] falcon 15380000.nvjpg: Adding to iommu group 18
+[    5.736998] falcon 15380000.nvjpg: initialized
+[    5.737527] falcon 154c0000.nvenc: Adding to iommu group 18
+[    5.749831] falcon 154c0000.nvenc: initialized
+[    5.750398] falcon 15a80000.nvenc1: Adding to iommu group 18
+[    5.759393] falcon 15a80000.nvenc1: initialized
+[    5.760027] nvdec 15480000.nvdec: Adding to iommu group 18
+[    5.771406] nvdec 15480000.nvdec: initialized
+[    5.772012] nvdec 15140000.nvdec1: Adding to iommu group 18
+[    5.781260] nvdec 15140000.nvdec1: initialized
+[    5.781766] tsec 15500000.tsec: Adding to iommu group 19
+[    5.788323] tsec 15500000.tsec: initialized
+[    5.788886] tsec 15100000.tsecb: Adding to iommu group 20
+[    5.797429] tsec 15100000.tsecb: initialized
+[    5.801094] gic 2a41000.agic-controller: GIC IRQ controller registered
+[    5.825734] tegra-aconnect aconnect@2a41000: Tegra ACONNECT bus registered
+[    5.836156] gpio-374 (wifi-enable): hogged as output/high
+[    5.837696] gpiochip1: registered GPIOs 335 to 503 on tegra194-gpio
+[    5.839027] gpiochip2: registered GPIOs 305 to 334 on tegra194-gpio-aon
+[    5.839515] tegra-pwm 3280000.pwm: PWM clk can sleep in ops
+[    5.841047] tegra-pwm c340000.pwm: PWM clk can sleep in ops
+[    5.842156] tegra-pwm 32c0000.pwm: PWM clk can sleep in ops
+[    5.847179] tegra-pwm 32d0000.pwm: PWM clk can sleep in ops
+[    5.852457] tegra-pwm 32f0000.pwm: PWM clk can sleep in ops
+[    5.860360] misc tegra_camera_ctrl: tegra_camera_isomgr_register isp_iso_bw=4687500, vi_iso_bw=4500000, max_bw=4687500
+[    5.867681] tegra194-isp5 13e10000.host1x:isp@14800000: Adding to iommu group 21
+[    5.878881] t194-nvcsi 13e10000.host1x:nvcsi@15a00000: context isolation disabled due to no IOMMU
+[    5.884587] t194-nvcsi 13e10000.host1x:nvcsi@15a00000: initialized
+[    5.890474] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.899359] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.907820] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.916812] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.925929] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.934815] tegra-camrtc-capture-vi tegra-capture-vi: subdev 13e10000.host1x:nvcsi@15a00000- bound
+[    5.944473] tegra194-vi5 15c10000.vi: Adding to iommu group 22
+[    5.951821] scare-pigeon 13e10000.host1x:vi-thi@15f00000: context isolation disabled due to no IOMMU
+[    5.959583] scare-pigeon 13e10000.host1x:vi-thi@15f00000: initialized
+[    5.965537] scare-pigeon 13e10000.host1x:isp-thi@14b00000: context isolation disabled due to no IOMMU
+[    5.975073] scare-pigeon 13e10000.host1x:isp-thi@14b00000: initialized
+[    5.981477] pva 16000000.pva0: Adding to iommu group 23
+[    6.007481] pva 16000000.pva0: initialized
+[    6.013078] pva 16800000.pva1: Adding to iommu group 24
+[    6.023728] pva 16800000.pva1: initialized
+[    6.027991] nvdla 15880000.nvdla0: Adding to iommu group 25
+[    6.040378] nvdla 15880000.nvdla0: initialized
+[    6.041597] nvdla 158c0000.nvdla1: Adding to iommu group 26
+[    6.049980] nvdla 158c0000.nvdla1: initialized
+[    6.052783] tegradccommon 15200000.display-hub: host1x channel mapped
+[    6.053153] tegradccommon 15200000.display-hub: dc_common syncpt # 1 allocated
+[    6.053490] tegradccommon 15200000.display-hub: dma mapping done
+[    6.054862] tegradc 15210000.display: Adding to iommu group 27
+[    6.054874] tegradc 15200000.display: Adding to iommu group 27
+[    6.057364] tegradc 15210000.display: disp0 connected to head1->sor
+[    6.057865] tegradc 15210000.display: parse_dp_settings: No dp-lt-settings node
+[    6.058908] tegra_cec 3960000.tegra_cec: dt=1 start=0x03960000 end=0x03960FFF irq=63
+[    6.065533] tegradc 15210000.display: DT parsed successfully
+[    6.072701] tegra_cec 3960000.tegra_cec: Unpowergated DISP
+[    6.078410] tegradc 15210000.display: dc.1 probe not in device tree order, deferring
+[    6.078621] tegradc 15200000.display: disp0 connected to head0->sor1
+[    6.084476] tegra_cec 3960000.tegra_cec: Enable clock result: 0.
+[    6.091754] generic_infoframe_type: 0x87
+[    6.099221] tegra_cec 3960000.tegra_cec: tegra_cec_init started
+[    6.104239] tegradc 15200000.display: DT parsed successfully
+[    6.108532] tegra_cec 3960000.tegra_cec: cec_add_sysfs ret=0
+[    6.113956] tegradc 15200000.display: Display dc.(____ptrval____) registered with id=0
+[    6.119523] tegra_cec 3960000.tegra_cec: probed
+[    6.139431] tegra-gpcdma 2600000.dma: Adding to iommu group 2
+[    6.139460] tegra_nvdisp_bandwidth_register_max_config: max config iso bw = 15681600 KB/s
+[    6.146512] tegra-gpcdma 2600000.dma: GPC DMA driver register 31 channels
+[    6.152330] tegra_nvdisp_bandwidth_register_max_config: max config EMC floor = 933000000 Hz
+[    6.152339] tegra_nvdisp_bandwidth_register_max_config: max config hubclk = 300000000 Hz
+[    6.167645] tegradc 15200000.display: vblank syncpt # 8 for dc 0
+[    6.175956] kfuse 3830000.kfuse: initialized
+[    6.181431] tegradc 15200000.display: vpulse3 syncpt # 9 for dc 0
+[    6.186491] tegra-fuse-burn efuse-burn: shutdown limit check disabled
+[    6.198645] tegra-fuse-burn efuse-burn: Fuse burn driver initialized
+[    6.205650] serial-tegra 3100000.serial: Adding to iommu group 2
+[    6.205859] tegradc 15200000.display: hdmi: can't get adpater for ddc bus 3
+[    6.211856] 3100000.serial: ttyTHS0 at MMIO 0x3100000 (irq = 31, base_baud = 0) is a TEGRA_UART
+[    6.227099] tegradc 15200000.display: out->type:1 out_ops->init err = -517
+[    6.228511] serial-tegra 3110000.serial: Adding to iommu group 2
+[    6.242100] 3110000.serial: ttyTHS1 at MMIO 0x3110000 (irq = 32, base_baud = 0) is a TEGRA_UART
+[    6.249939] serial-tegra 3140000.serial: Adding to iommu group 2
+[    6.255639] 3140000.serial: ttyTHS4 at MMIO 0x3140000 (irq = 33, base_baud = 0) is a TEGRA_UART
+[    6.274464] tegra-xusb 3610000.xhci: Firmware timestamp: 2022-03-16 11:07:43 UTC, Version: 60.13 release
+[    6.274812] tegra-xusb 3610000.xhci: xHCI Host Controller
+[    6.278403] tegra-xusb 3610000.xhci: new USB bus registered, assigned bus number 1
+[    6.286429] tegra-xusb 3610000.xhci: hcc params 0x0184ff25 hci version 0x110 quirks 0x0000000000050810
+[    6.295020] tegra-xusb 3610000.xhci: irq 188, io mem 0x03610000
+[    6.301811] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[    6.309381] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    6.316287] usb usb1: Product: xHCI Host Controller
+[    6.321501] usb usb1: Manufacturer: Linux 5.10.120-tegra xhci-hcd
+[    6.327793] usb usb1: SerialNumber: 3610000.xhci
+[    6.333513] hub 1-0:1.0: USB hub found
+[    6.336096] hub 1-0:1.0: 4 ports detected
+[    6.340935] tegra-xusb 3610000.xhci: xHCI Host Controller
+[    6.345577] tegra-xusb 3610000.xhci: new USB bus registered, assigned bus number 2
+[    6.353369] tegra-xusb 3610000.xhci: Host supports USB 3.1 Enhanced SuperSpeed
+[    6.361103] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 5.10
+[    6.368689] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    6.375931] usb usb2: Product: xHCI Host Controller
+[    6.381215] usb usb2: Manufacturer: Linux 5.10.120-tegra xhci-hcd
+[    6.387104] usb usb2: SerialNumber: 3610000.xhci
+[    6.392869] hub 2-0:1.0: USB hub found
+[    6.395797] hub 2-0:1.0: 4 ports detected
+[    6.420710] pca954x 2-0070: supply vcc-pullup not found, using dummy regulator
+[    6.421198] pca954x 2-0070: pca954x_probe: forcing device bus number, start 30.
+[    6.421575] pca954x 2-0070: device detect skipped.
+[    6.425001] i2c i2c-2: Added multiplexed i2c bus 30
+[    6.428509] i2c i2c-2: Added multiplexed i2c bus 31
+[    6.432593] i2c i2c-2: Added multiplexed i2c bus 32
+[    6.437302] i2c i2c-2: Added multiplexed i2c bus 33
+[    6.442649] i2c i2c-2: Added multiplexed i2c bus 34
+[    6.448190] i2c i2c-2: Added multiplexed i2c bus 35
+[    6.449247] i2c i2c-2: Added multiplexed i2c bus 36
+[    6.453723] i2c i2c-2: Added multiplexed i2c bus 37
+[    6.458465] pca954x 2-0070: registered 8 multiplexed busses for I2C mux pca9547
+[    6.468330] pca953x 2-0020: using no AI
+[    6.470632] gpio-297 (tca6408_20_outlow): hogged as output/low
+[    6.475530] gpio-299 (tca6408_20_outlow): hogged as output/low
+[    6.481895] gpio-302 (tca6408_20_outlow): hogged as output/low
+[    6.487561] gpio-303 (tca6408_20_outlow): hogged as output/low
+[    6.493246] gpio-304 (tca6408_20_outlow): hogged as output/low
+[    6.499140] gpio-298 (tca6408_20_outhigh): hogged as output/high
+[    6.505294] gpio-300 (tca6408_20_outhigh): hogged as output/high
+[    6.511251] gpio-301 (tca6408_20_outhigh): hogged as output/high
+[    6.517343] gpiochip3: registered GPIOs 297 to 304 on 2-0020
+[    6.542367] tegra-i2c 31e0000.i2c: Adding to iommu group 2
+[    6.559120] cpufreq: cpufreq_online: CPU0: Running at unlisted initial frequency: 1907000 KHz, changing to: 1907200 KHz
+[    6.560133] tegra194-cpufreq ccplex: probed with BWMGR, cl:4
+[    6.562656] sdhci-tegra 3440000.sdhci: BWMGR client registration for eMC Successful
+[    6.562663] sdhci-tegra 3460000.sdhci: BWMGR client registration for eMC Successful
+[    6.563182] irq: IRQ262: trimming hierarchy from :pmc@c360000
+[    6.567353] tegra194-isp5 13e10000.host1x:isp@14800000: initialized
+[    6.578030] mmc0: CQHCI version 5.10
+[    6.579968] tegra194-vi5 15c10000.vi: initialized
+[    6.581114] tegradc 15210000.display: disp0 connected to head1->sor
+[    6.582434] nvethernet 2490000.ethernet: Adding to iommu group 28
+[    6.586354] tegradc 15210000.display: parse_dp_settings: No dp-lt-settings node
+[    6.592967] nvethernet 2490000.ethernet: failed to read skip mac reset flag, default 0
+[    6.599701] tegradc 15210000.display: DT parsed successfully
+[    6.607655] nvethernet 2490000.ethernet: failed to read MDIO address
+[    6.611927] usb 1-2: new high-speed USB device number 2 using tegra-xusb
+[    6.613553] tegradc 15210000.display: dc.1 probe not in device tree order, deferring
+[    6.613900] tegradc 15200000.display: disp0 connected to head0->sor1
+[    6.620036] nvethernet 2490000.ethernet: setting to default DMA bit mask
+[    6.626316] generic_infoframe_type: 0x87
+[    6.626348] tegradc 15200000.display: DT parsed successfully
+[    6.632550] mmc0: SDHCI controller on 3460000.sdhci [3460000.sdhci] using ADMA 64-bit
+[    6.634334] nvethernet 2490000.ethernet: set default TXQ to TC mapping
+[    6.641046] tegradc 15200000.display: Display dc.(____ptrval____) registered with id=0
+[    6.647578] nvethernet 2490000.ethernet: Setting default PTP RX queue
+[    6.671815] tegra_nvdisp_bandwidth_register_max_config: max config iso bw = 15681600 KB/s
+[    6.679527] nvethernet 2490000.ethernet: Failed to read DMA Tx ring size, using default [1024]
+[    6.685888] tegra_nvdisp_bandwidth_register_max_config: max config EMC floor = 933000000 Hz
+[    6.685892] tegra_nvdisp_bandwidth_register_max_config: max config hubclk = 300000000 Hz
+[    6.686243] tegradc 15200000.display: vblank syncpt # 11 for dc 0
+[    6.692215] mmc1: SDHCI controller on 3440000.sdhci [3440000.sdhci] using ADMA 64-bit
+[    6.694400] nvethernet 2490000.ethernet: Failed to read DMA Rx ring size, using default [1024]
+[    6.702883] tegradc 15200000.display: vpulse3 syncpt # 12 for dc 0
+[    6.711131] nvethernet 2490000.ethernet: missing nvidia,pad_auto_cal_pu_offset, setting default 0
+[    6.720578] tegradc 15200000.display: hdmi: invalid prod list prod_list_hdmi_board
+[    6.725351] nvethernet 2490000.ethernet: missing nvidia,pad_auto_cal_pd_offset, setting default 0
+[    6.731939] nvethernet 2490000.ethernet: failed to get eqos_rx_m clk
+[    6.733243] tegradc 15200000.display: hdmi: tegra_hdmi_tmds_range_read(bd) failed
+[    6.741637] nvethernet 2490000.ethernet: failed to get eqos_rx_input clk
+[    6.750829] tegradc 15200000.display: probed
+[    6.756888] nvethernet 2490000.ethernet: failed to get eqos_tx_divider clk
+[    6.761557] mmc0: Command Queue Engine enabled
+[    6.761561] mmc0: periodic cache flush enabled
+[    6.761572] mmc0: new HS400 Enhanced strobe MMC card at address 0001
+[    6.762045] mmcblk0: mmc0:0001 DG4016 14.7 GiB 
+[    6.762185] mmcblk0rpmb: mmc0:0001 DG4016 partition 3 4.00 MiB, chardev (509:0)
+[    6.766114]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21 p22
+[    6.774624] nvethernet 2490000.ethernet: Ethernet MAC address: 48:b0:2d:7a:b3:aa
+[    6.849968] Console: switching to colour frame buffer device 80x30
+[    6.850315] -->macsec_probe()
+[    6.850674] usb 1-2: New USB device found, idVendor=0424, idProduct=2816, bcdDevice= 6.25
+[    6.850679] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    6.850683] usb 1-2: Product: USB2816 Smart Hub
+[    6.850687] usb 1-2: Manufacturer: Microchip
+[    6.851998] hub 1-2:1.0: USB hub found
+[    6.852083] hub 1-2:1.0: 7 ports detected
+[    6.855675] tegradc 15200000.display: fb registered
+[    6.864258] <--macsec_probe()
+[    6.871451] irq: IRQ263: trimming hierarchy from :pmc@c360000
+[    6.875955] nvethernet 2490000.ethernet: Macsec not supported/Not enabled in DT
+[    6.880836] tegradc 15210000.display: disp1 connected to head1->sor
+[    6.912426] tegradc 15210000.display: parse_dp_settings: No dp-lt-settings node
+[    6.913348] nvethernet 2490000.ethernet: eth0 (HW ver: 50) created with 1 DMA channels
+[    6.919991] tegradc 15210000.display: DT parsed successfully
+[    6.929106] irq: IRQ265: trimming hierarchy from :pmc@c360000
+[    6.933470] tegradc 15210000.display: Display dc.(____ptrval____) registered with id=1
+[    6.939163] irq: IRQ266: trimming hierarchy from :interrupt-controller@3881000
+[    6.947054] tegradc 15210000.display: vblank syncpt # 13 for dc 1
+[    6.953863] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    6.959768] tegradc 15210000.display: vpulse3 syncpt # 14 for dc 1
+[    6.974163] tegra-se-nvhost 15810000.se: Adding to iommu group 29
+[    6.979604] tegradc 15210000.display: probed
+[    6.979905] usb 1-3: new full-speed USB device number 3 using tegra-xusb
+[    6.981227] tegra-se-nvhost 15810000.se: initialized
+[    6.989003] tegra-se-nvhost 15810000.se: tegra_se_probe: complete
+[    7.001803] tegradc 15210000.display: fb registered
+[    7.002215] tegra-se-nvhost 15820000.se: Adding to iommu group 30
+[    7.010359] hpd: state 7 (Takeover from bootloader), hpd 0, pending_hpd_evt 1
+[    7.013532] tegra-se-nvhost 15820000.se: initialized
+[    7.020137] hpd: switching from state 7 (Takeover from bootloader) to state 0 (Reset)
+[    7.020147] hpd: state 0 (Reset), hpd 0, pending_hpd_evt 0
+[    7.027141] tegra-se-nvhost 15820000.se: tegra_se_probe: complete
+[    7.044496] tegradc 15210000.display: blank - powerdown
+[    7.044957] tegra-se-nvhost 15830000.se: Adding to iommu group 31
+[    7.049285] extcon-disp-state external-connection:disp-state: cable 44 state 0 already set.
+[    7.049293] Extcon DP: HPD disabled
+[    7.056436] tegra-se-nvhost 15830000.se: initialized
+[    7.063976] hpd: switching from state 0 (Reset) to state 1 (Check Plug)
+[    7.063986] hpd: state 1 (Check Plug), hpd 0, pending_hpd_evt 0
+[    7.068850] tegra-se-nvhost 15830000.se: tegra_se_probe: complete
+[    7.072221] hpd: switching from state 1 (Check Plug) to state 3 (Disabled)
+[    7.098751] tegra-se-nvhost 15840000.se: Adding to iommu group 32
+[    7.105416] tegra-se-nvhost 15840000.se: initialized
+[    7.111292] tegra-se-nvhost 15840000.se: tegra_se_probe: complete
+[    7.117092] tegra_actmon d230000.actmon: in actmon_register()...
+[    7.121678] tegra_actmon d230000.actmon: bwmgr_disable = 0
+[    7.127368] tegra_actmon d230000.actmon: initialization Completed for the device mc_all
+[    7.135543] hvc_sysfs: hypervisor is not present
+[    7.137914] usb 1-3: New USB device found, idVendor=8087, idProduct=0025, bcdDevice= 0.02
+[    7.139938] tegra_cec 3960000.tegra_cec: Can't find physical address.
+[    7.147732] usb 1-3: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[    7.161742] tegra_cec 3960000.tegra_cec: tegra_cec_init Done.
+[    7.195910] ALSA device list:
+[    7.196015]   No soundcards found.
+[    7.197175] Freeing unused kernel memory: 3968K
+[    7.197424] Run /init as init process
+[    7.197526]   with arguments:
+[    7.197530]     /init
+[    7.197534]   with environment:
+[    7.197538]     HOME=/
+[    7.197541]     TERM=linux
+[    7.268180] usb 2-3: new SuperSpeed Gen 1 USB device number 2 using tegra-xusb
+[    7.277861] Root device found: mmcblk0p1
+[    7.288747] usb 2-3: New USB device found, idVendor=0424, idProduct=5816, bcdDevice= 6.25
+[    7.288965] usb 2-3: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    7.289109] usb 2-3: Product: USB5816 Smart Hub
+[    7.289207] usb 2-3: Manufacturer: Microchip
+[    7.292089] hub 2-3:1.0: USB hub found
+[    7.292602] hub 2-3:1.0: 5 ports detected
+[    7.309171] Found dev node: /dev/mmcblk0p1
+[    7.552180] EXT4-fs (mmcblk0p1): 3 orphan inodes deleted
+[    7.552329] EXT4-fs (mmcblk0p1): recovery complete
+[    7.557081] EXT4-fs (mmcblk0p1): mounted filesystem with ordered data mode. Opts: (null)
+[    7.565539] Rootfs mounted over mmcblk0p1
+[    7.579947] usb 1-2.6: new full-speed USB device number 4 using tegra-xusb
+[    7.607302] Switching from initrd to actual rootfs
+[    7.681832] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[    7.682044] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    7.682216] usb 1-2.6: Product: CubeOrange+
+[    7.682321] usb 1-2.6: Manufacturer: CubePilot
+[    7.682417] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[    7.759755] systemd[1]: System time before build time, advancing clock.
+[    7.767923] usb 1-2.7: new high-speed USB device number 5 using tegra-xusb
+[    7.875628] usb 1-2.7: New USB device found, idVendor=0424, idProduct=2840, bcdDevice= 2.04
+[    7.876222] usb 1-2.7: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    7.876406] usb 1-2.7: Product: Hub Feature Controller
+[    7.876528] usb 1-2.7: Manufacturer: Microchip
+[    8.090134] usb 1-2.6: USB disconnect, device number 4
+[    8.091620] systemd[1]: systemd 245.4-4ubuntu3.24 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=hybrid)
+[    8.095063] systemd[1]: Detected architecture arm64.
+[    8.147597] systemd[1]: Set hostname to <dcs>.
+[    8.316721] usb 1-2.6: new full-speed USB device number 6 using tegra-xusb
+[    8.425696] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[    8.426428] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    8.426629] usb 1-2.6: Product: CubeOrange+
+[    8.427116] usb 1-2.6: Manufacturer: CubePilot
+[    8.429448] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[    8.602109] usb 1-2.6: USB disconnect, device number 6
+[    8.831964] usb 1-2.6: new full-speed USB device number 7 using tegra-xusb
+[    8.933965] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[    8.934192] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    8.934355] usb 1-2.6: Product: CubeOrange+
+[    8.934464] usb 1-2.6: Manufacturer: CubePilot
+[    8.934563] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[    9.060797] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.066335] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.066739] systemd[1]: system-modprobe.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    9.067027] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[    9.072601] systemd[1]: Created slice system-modprobe.slice.
+[    9.073400] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.075042] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[    9.077232] systemd[1]: Created slice User and Session Slice.
+[    9.078277] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[    9.080479] systemd[1]: Set up automount Arbitrary Executable File Formats File System Automount Point.
+[    9.081304] systemd[1]: Reached target User and Group Name Lookups.
+[    9.081824] systemd[1]: Reached target Slices.
+[    9.082317] systemd[1]: Reached target Mounting snaps.
+[    9.082733] systemd[1]: Reached target Mounted snaps.
+[    9.083190] systemd[1]: Reached target Swap.
+[    9.084964] systemd[1]: Listening on RPCbind Server Activation Socket.
+[    9.093888] systemd[1]: Listening on Syslog Socket.
+[    9.095118] systemd[1]: Listening on fsck to fsckd communication Socket.
+[    9.096010] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[    9.098339] systemd[1]: Listening on Journal Audit Socket.
+[    9.102214] systemd[1]: Listening on Journal Socket (/dev/log).
+[    9.108757] systemd[1]: Listening on Journal Socket.
+[    9.113071] systemd[1]: Listening on udev Control Socket.
+[    9.114020] usb 1-2.6: USB disconnect, device number 7
+[    9.123932] systemd[1]: Listening on udev Kernel Socket.
+[    9.135710] systemd[1]: Mounting Huge Pages File System...
+[    9.144222] systemd[1]: Mounting POSIX Message Queue File System...
+[    9.151853] systemd[1]: Mounting RPC Pipe File System...
+[    9.160411] systemd[1]: Mounting Kernel Debug File System...
+[    9.168893] systemd[1]: Mounting Kernel Trace File System...
+[    9.179939] systemd[1]: Starting Journal Service...
+[    9.188517] systemd[1]: Starting Set the console keyboard layout...
+[    9.196656] systemd[1]: Starting Create list of static device nodes for the current kernel...
+[    9.204702] systemd[1]: Starting Load Kernel Module chromeos_pstore...
+[    9.205467] systemd[1]: Condition check resulted in Load Kernel Module drm being skipped.
+[    9.212673] systemd[1]: Starting Load Kernel Module efi_pstore...
+[    9.220775] systemd[1]: Starting Load Kernel Module pstore_blk...
+[    9.228979] systemd[1]: Starting Load Kernel Module pstore_zone...
+[    9.237910] systemd[1]: Starting Load Kernel Module ramoops...
+[    9.244684] systemd[1]: Starting NVIDIA specific first-boot udev script...
+[    9.251606] systemd[1]: Started Nameserver information manager.
+[    9.253264] systemd[1]: Reached target Network (Pre).
+[    9.255504] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.
+[    9.256140] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[    9.272420] systemd[1]: Starting Load Kernel Modules...
+[    9.292579] systemd[1]: Starting Remount Root and Kernel File Systems...
+[    9.305666] systemd[1]: Starting udev Coldplug all Devices...
+[    9.330762] systemd[1]: Mounted Huge Pages File System.
+[    9.339595] systemd[1]: Mounted POSIX Message Queue File System.
+[    9.344226] systemd[1]: Mounted RPC Pipe File System.
+[    9.345683] systemd[1]: Mounted Kernel Debug File System.
+[    9.348593] systemd[1]: Mounted Kernel Trace File System.
+[    9.364717] systemd[1]: Finished Create list of static device nodes for the current kernel.
+[    9.367950] usb 1-2.6: new full-speed USB device number 8 using tegra-xusb
+[    9.368300] systemd[1]: modprobe@chromeos_pstore.service: Succeeded.
+[    9.371722] systemd[1]: Finished Load Kernel Module chromeos_pstore.
+[    9.374761] systemd[1]: modprobe@efi_pstore.service: Succeeded.
+[    9.389874] systemd[1]: Finished Load Kernel Module efi_pstore.
+[    9.390071] EXT4-fs (mmcblk0p1): re-mounted. Opts: (null)
+[    9.398280] systemd[1]: modprobe@pstore_blk.service: Succeeded.
+[    9.399763] nvmap_heap_init: nvmap_heap_init: created heap block cache
+[    9.401309] tegra-carveouts tegra-carveouts: vpr :dma coherent mem declare 0x00000000ce000000,704643072
+[    9.401579] tegra-carveouts tegra-carveouts: assigned reserved memory node vpr-carveout
+[    9.401825] nvmap_page_pool_init: Total RAM pages: 1754672
+[    9.401990] nvmap_page_pool_init: nvmap page pool size: 219334 pages (856 MB)
+[    9.402778] misc nvmap: created heap vpr base 0x00000000ce000000 size (688128KiB)
+[    9.403186] misc nvmap: cvsram :dma coherent mem declare 0x0000000050000000,4194304
+[    9.403397] misc nvmap: created heap cvsram base 0x0000000050000000 size (4096KiB)
+[    9.403481] nvmap_background_zero_thread: PP zeroing thread starting.
+[    9.406227] systemd[1]: Finished Load Kernel Module pstore_blk.
+[    9.422521] systemd[1]: modprobe@pstore_zone.service: Succeeded.
+[    9.429286] systemd[1]: Finished Load Kernel Module pstore_zone.
+[    9.438987] systemd[1]: modprobe@ramoops.service: Succeeded.
+[    9.443094] systemd[1]: Finished Load Kernel Module ramoops.
+[    9.446157] systemd[1]: nvfb-udev.service: Succeeded.
+[    9.452364] systemd[1]: Finished NVIDIA specific first-boot udev script.
+[    9.465374] systemd[1]: Finished Remount Root and Kernel File Systems.
+[    9.474061] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[    9.474300] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    9.477220] usb 1-2.6: Product: CubeOrange+
+[    9.481558] usb 1-2.6: Manufacturer: CubePilot
+[    9.486207] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[    9.495829] systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+[    9.500747] systemd[1]: Condition check resulted in Platform Persistent Storage Archival being skipped.
+[    9.516631] systemd[1]: Starting Load/Save Random Seed...
+[    9.523337] nvgpu: 17000000.gv11b          nvgpu_nvhost_syncpt_init:135  [INFO]  syncpt_unit_base 60000000 syncpt_unit_size 400000 size 1000
+
+[    9.523941] systemd[1]: Starting Create System Users...
+[    9.561196] systemd[1]: Finished Load Kernel Modules.
+[    9.569589] systemd[1]: Condition check resulted in FUSE Control File System being skipped.
+[    9.590900] systemd[1]: Mounting Kernel Configuration File System...
+[    9.601880] systemd[1]: Started OP-TEE Client Supplicant.
+[    9.610785] systemd[1]: Starting Apply Kernel Variables...
+[    9.618273] systemd[1]: Mounted Kernel Configuration File System.
+[    9.644605] systemd[1]: Finished Create System Users.
+[    9.658700] systemd[1]: Starting Create Static Device Nodes in /dev...
+[    9.673576] systemd[1]: Finished Set the console keyboard layout.
+[    9.714429] systemd[1]: Finished Apply Kernel Variables.
+[    9.750879] systemd[1]: Finished Create Static Device Nodes in /dev.
+[    9.752281] systemd[1]: Reached target Local File Systems (Pre).
+[    9.752723] systemd[1]: Reached target Local File Systems.
+[    9.753272] systemd[1]: Condition check resulted in Load AppArmor profiles being skipped.
+[    9.759653] systemd[1]: Starting Enable support for additional executable binary formats...
+[    9.766371] systemd[1]: Starting Set console font and keymap...
+[    9.774686] systemd[1]: Starting Preprocess NFS configuration...
+[    9.781237] systemd[1]: Starting Tell Plymouth To Write Out Runtime Data...
+[    9.781697] systemd[1]: Condition check resulted in Load AppArmor profiles managed internally by snapd being skipped.
+[    9.782271] systemd[1]: Condition check resulted in Commit a transient machine-id on disk being skipped.
+[    9.788109] systemd[1]: Starting udev Kernel Device Manager...
+[    9.798806] systemd[1]: Finished Set console font and keymap.
+[    9.802323] systemd[1]: nfs-config.service: Succeeded.
+[    9.805786] systemd[1]: Finished Preprocess NFS configuration.
+[    9.807328] systemd[1]: proc-sys-fs-binfmt_misc.automount: Got automount request for /proc/sys/fs/binfmt_misc, triggered by 305 (update-binfmts)
+[    9.810236] systemd[1]: plymouth-read-write.service: Succeeded.
+[    9.813836] systemd[1]: Finished Tell Plymouth To Write Out Runtime Data.
+[    9.833745] systemd[1]: Mounting Arbitrary Executable File Formats File System...
+[    9.834501] systemd[1]: Condition check resulted in RPC security service for NFS client and server being skipped.
+[    9.834914] systemd[1]: Reached target NFS client services.
+[    9.882223] usb 1-2.6: USB disconnect, device number 8
+[    9.896237] systemd[1]: Mounted Arbitrary Executable File Formats File System.
+[    9.906953] systemd[1]: Finished Enable support for additional executable binary formats.
+[    9.984101] systemd[1]: Started Journal Service.
+[   10.033173] systemd-journald[266]: Received client request to flush runtime journal.
+[   10.111933] random: crng init done
+[   10.112247] random: 86 urandom warning(s) missed due to ratelimiting
+[   10.112464] usb 1-2.6: new full-speed USB device number 9 using tegra-xusb
+[   10.213959] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   10.213971] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   10.213977] usb 1-2.6: Product: CubeOrange+
+[   10.213981] usb 1-2.6: Manufacturer: CubePilot
+[   10.213986] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   10.394060] usb 1-2.6: USB disconnect, device number 9
+[   10.623933] usb 1-2.6: new full-speed USB device number 10 using tegra-xusb
+[   10.732345] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   10.732359] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   10.732364] usb 1-2.6: Product: CubeOrange+
+[   10.732370] usb 1-2.6: Manufacturer: CubePilot
+[   10.732376] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   10.906256] usb 1-2.6: USB disconnect, device number 10
+[   11.155952] usb 1-2.6: new full-speed USB device number 11 using tegra-xusb
+[   11.257991] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   11.258006] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   11.258012] usb 1-2.6: Product: CubeOrange+
+[   11.258017] usb 1-2.6: Manufacturer: CubePilot
+[   11.258022] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   11.376463] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   11.377867] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   11.378778] usbcore: registered new interface driver cdc_acm
+[   11.378786] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[   11.674108] usb 1-2.6: USB disconnect, device number 11
+[   11.912008] usb 1-2.6: new full-speed USB device number 12 using tegra-xusb
+[   12.035464] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   12.035484] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   12.035490] usb 1-2.6: Product: CubeOrange+
+[   12.035495] usb 1-2.6: Manufacturer: CubePilot
+[   12.035499] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   12.051194] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   12.051812] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   12.056206] spi-tegra114 3210000.spi: Adding to iommu group 2
+[   12.119504] imx219 30-0010: tegracam sensor driver:imx219_v2.0.6
+[   12.146626] imx219 30-0010: imx219_board_setup: error during i2c read probe (-121)
+[   12.147511] imx477 32-001a: tegracam sensor driver:imx477_v2.0.6
+[   12.152774] imx219 30-0010: board setup failed
+[   12.153014] imx219: probe of 30-0010 failed with error -121
+[   12.153795] imx219 31-0010: tegracam sensor driver:imx219_v2.0.6
+[   12.164701] imx219 31-0010: imx219_board_setup: error during i2c read probe (-121)
+[   12.170241] imx219 31-0010: board setup failed
+[   12.170478] imx219: probe of 31-0010 failed with error -121
+[   12.171027] imx219 35-0010: tegracam sensor driver:imx219_v2.0.6
+[   12.179184] spi-tegra114 3230000.spi: Adding to iommu group 2
+[   12.186052] usb 1-2.6: USB disconnect, device number 12
+[   12.191091] imx219 35-0010: imx219_board_setup: error during i2c read probe (-121)
+[   12.196635] imx219 35-0010: board setup failed
+[   12.196881] imx219: probe of 35-0010 failed with error -121
+[   12.250943] tegra-hda 3510000.hda: Adding to iommu group 33
+[   12.252077] tegra-hda 3510000.hda: Override SDO lines to 4
+[   12.267670] cpu-throttle-alert cooling device registered.
+[   12.268258] gpu-throttle-alert cooling device registered.
+[   12.268651] aux-throttle-alert cooling device registered.
+[   12.269019] hot-surface-alert cooling device registered.
+[   12.306681] tegra-adma 2930000.adma: Tegra210 ADMA driver registered 16 channels
+[   12.320379] nvadsp 2993000.adsp: Adding to iommu group 34
+[   12.320601] nvadsp 2993000.adsp: in probe()...
+[   12.321413] nvadsp 2993000.adsp: nvadsp_app_module_probe
+[   12.331139] Intel(R) Wireless WiFi driver for Linux
+[   12.349131] iwlwifi 0004:01:00.0: Adding to iommu group 7
+[   12.350208] iwlwifi 0004:01:00.0: enabling device (0000 -> 0002)
+[   12.381123] input: NVIDIA Jetson Xavier NX HDA HDMI/DP,pcm=3 as /devices/platform/3510000.hda/sound/card0/input1
+[   12.386707] input: NVIDIA Jetson Xavier NX HDA HDMI/DP,pcm=7 as /devices/platform/3510000.hda/sound/card0/input2
+[   12.386960] input: NVIDIA Jetson Xavier NX HDA HDMI/DP,pcm=8 as /devices/platform/3510000.hda/sound/card0/input3
+[   12.387193] input: NVIDIA Jetson Xavier NX HDA HDMI/DP,pcm=9 as /devices/platform/3510000.hda/sound/card0/input4
+[   12.418988] tegra210-adsp aconnect@2a41000:adsp_audio: Adding to iommu group 34
+[   12.419044] tegra210_adsp_audio_probe: platform probe started
+[   12.420353] tegra210-adsp tegra210-adsp: Default param-type to BYTE for mp3-dec1
+[   12.420364] iwlwifi 0004:01:00.0: WRT: Overriding region id 0
+[   12.420383] iwlwifi 0004:01:00.0: WRT: Overriding region id 1
+[   12.420698] iwlwifi 0004:01:00.0: WRT: Overriding region id 2
+[   12.420831] iwlwifi 0004:01:00.0: WRT: Overriding region id 3
+[   12.420955] iwlwifi 0004:01:00.0: WRT: Overriding region id 4
+[   12.421081] iwlwifi 0004:01:00.0: WRT: Overriding region id 6
+[   12.421204] iwlwifi 0004:01:00.0: WRT: Overriding region id 8
+[   12.421326] iwlwifi 0004:01:00.0: WRT: Overriding region id 9
+[   12.421450] iwlwifi 0004:01:00.0: WRT: Overriding region id 10
+[   12.421585] iwlwifi 0004:01:00.0: WRT: Overriding region id 11
+[   12.421612] tegra210-adsp tegra210-adsp: Default param-type to BYTE for spkprot
+[   12.421714] iwlwifi 0004:01:00.0: WRT: Overriding region id 15
+[   12.421848] iwlwifi 0004:01:00.0: WRT: Overriding region id 16
+[   12.421977] iwlwifi 0004:01:00.0: WRT: Overriding region id 18
+[   12.422104] iwlwifi 0004:01:00.0: WRT: Overriding region id 19
+[   12.422270] iwlwifi 0004:01:00.0: WRT: Overriding region id 20
+[   12.422695] iwlwifi 0004:01:00.0: WRT: Overriding region id 21
+[   12.422777] tegra210-adsp tegra210-adsp: Default param-type to BYTE for src
+[   12.423133] iwlwifi 0004:01:00.0: WRT: Overriding region id 28
+[   12.428771] usb 1-2.6: new full-speed USB device number 13 using tegra-xusb
+[   12.429604] tegra210-adsp tegra210-adsp: Default param-type to BYTE for aac-dec1
+[   12.430843] tegra210-adsp tegra210-adsp: Default param-type to BYTE for aec
+[   12.432052] tegra210-adsp tegra210-adsp: Default param-type to BYTE for wire
+[   12.432065] tegra210-adsp tegra210-adsp: adma channel page address dt entry not found
+[   12.432071] tegra210-adsp tegra210-adsp: using adma channel page 0
+[   12.432194] nvadsp 2993000.adsp: ADSP OS firmware already loaded
+[   12.445671] iwlwifi 0004:01:00.0: loaded firmware version 46.4d093a30.0 9260-th-b0-jf-b0-46.ucode op_mode iwlmvm
+[   12.449030] imx477 32-001a: imx477_board_setup: error during i2c read probe (-121)
+[   12.449478] imx477 32-001a: board setup failed
+[   12.449754] imx477: probe of 32-001a failed with error -121
+[   12.450227] imx477 33-001a: tegracam sensor driver:imx477_v2.0.6
+[   12.534053] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   12.534068] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   12.534074] usb 1-2.6: Product: CubeOrange+
+[   12.534081] usb 1-2.6: Manufacturer: CubePilot
+[   12.534086] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   12.538812] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   12.539471] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   12.698064] usb 1-2.6: USB disconnect, device number 13
+[   12.751109] imx477 33-001a: imx477_board_setup: error during i2c read probe (-121)
+[   12.751639] imx477 33-001a: board setup failed
+[   12.751895] imx477: probe of 33-001a failed with error -121
+[   12.752445] imx477 34-001a: tegracam sensor driver:imx477_v2.0.6
+[   12.782954] tegra-asoc: sound: Adding to iommu group 34
+[   12.801848] tegra210-adsp tegra210-adsp: Loaded app wire
+[   12.801860] tegra210-adsp tegra210-adsp: Loaded app apm
+[   12.801866] tegra210-adsp tegra210-adsp: Loaded app adma
+[   12.801871] tegra210-adsp tegra210-adsp: Loaded app adma_tx
+[   12.801878] nvadsp_set_adma_dump_reg: callback for adma reg dump is sent to 000000005f51d274
+[   12.822884] tegra210-adsp tegra210-adsp: Tegra210 ADSP driver successfully registered
+[   12.933466] usb 1-2.6: new full-speed USB device number 14 using tegra-xusb
+[   13.054795] imx477 34-001a: imx477_board_setup: error during i2c read probe (-121)
+[   13.064956] imx477 34-001a: board setup failed
+[   13.065318] imx477: probe of 34-001a failed with error -121
+[   13.067753] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   13.067765] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   13.067770] usb 1-2.6: Product: CubeOrange+
+[   13.067775] usb 1-2.6: Manufacturer: CubePilot
+[   13.067780] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   13.079972] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   13.082497] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   13.143342] cryptd: max_cpu_qlen set to 1000
+[   13.210085] usb 1-2.6: USB disconnect, device number 14
+[   13.286032] using random self ethernet address
+[   13.286159] using random host ethernet address
+[   13.447983] usb 1-2.6: new full-speed USB device number 15 using tegra-xusb
+[   13.550368] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   13.550456] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   13.550464] usb 1-2.6: Product: CubeOrange+
+[   13.550469] usb 1-2.6: Manufacturer: CubePilot
+[   13.550473] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   13.559030] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   13.560074] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   13.722111] usb 1-2.6: USB disconnect, device number 15
+[   13.959958] usb 1-2.6: new full-speed USB device number 16 using tegra-xusb
+[   14.066692] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   14.066723] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   14.066735] usb 1-2.6: Product: CubeOrange+
+[   14.066747] usb 1-2.6: Manufacturer: CubePilot
+[   14.066758] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   14.089030] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   14.089917] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   14.234403] usb 1-2.6: USB disconnect, device number 16
+[   14.440750] loop: module loaded
+[   14.499965] usb 1-2.6: new full-speed USB device number 17 using tegra-xusb
+[   14.547588] ------------[ cut here ]------------
+[   14.547788] /spi@3210000/spi@0: buggy DT: spidev listed directly in DT
+[   14.547859] WARNING: CPU: 3 PID: 335 at drivers/spi/spidev.c:781 spidev_probe+0x110/0x230 [spidev]
+[   14.548074] Modules linked in: spidev(+) loop aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce snd_soc_spdif_tx snd_soc_tegra_machine_driver snd_soc_tegra210_adsp max77620_thermal snd_soc_tegra_utils snd_hda_codec_hdmi snd_soc_simple_card_utils snd_soc_tegra210_ahub tegra_bpmp_thermal nvadsp tegra210_adma iwlwifi userspace_alert snd_hda_tegra snd_hda_codec cfg80211 snd_hda_core nv_imx477 nv_imx219 spi_tegra114 cdc_acm binfmt_misc ina3221 pwm_fan nvgpu nvmap ip_tables x_tables
+[   14.548217] CPU: 3 PID: 335 Comm: systemd-udevd Not tainted 5.10.120-tegra #1
+[   14.548222] Hardware name: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[   14.548230] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
+[   14.548239] pc : spidev_probe+0x110/0x230 [spidev]
+[   14.548246] lr : spidev_probe+0x110/0x230 [spidev]
+[   14.548250] sp : ffff800010ff38b0
+[   14.548260] x29: ffff800010ff38b0 x28: ffffc487bbfea958 
+[   14.548275] x27: 000000000000000c x26: ffffc48774071310 
+[   14.548287] x25: ffffc487bccb7610 x24: 00000000000000a6 
+[   14.548297] x23: ffffc48774071058 x22: 0000000000000000 
+[   14.548307] x21: ffffc48774071038 x20: ffff0d21484a6000 
+[   14.548317] x19: 0000000000000000 x18: 0000000000000010 
+[   14.548327] x17: 000000000000020e x16: ffffc487bbf96128 
+[   14.548337] x15: ffff0d21466eddf0 x14: ffffffffffffffff 
+[   14.548347] x13: ffff800090ff34e7 x12: ffff800010ff34ef 
+[   14.548356] x11: 0000000000000030 x10: 0101010101010101 
+[   14.548368] x9 : 00000000fffffffe x8 : 6572696420646574 
+[   14.548378] x7 : 73696c2076656469 x6 : c0000000ffffefff 
+[   14.548390] x5 : ffff0d22bfdff958 x4 : ffffc487bcae7a48 
+[   14.548399] x3 : 0000000000000001 x2 : ffff0d22bfdff960 
+[   14.548409] x1 : 0000000000000000 x0 : 0000000000000000 
+[   14.548419] Call trace:
+[   14.548427]  spidev_probe+0x110/0x230 [spidev]
+[   14.548438]  spi_drv_probe+0x8c/0xf0
+[   14.548447]  really_probe+0xf8/0x3d0
+[   14.548453]  driver_probe_device+0x60/0xc0
+[   14.548459]  device_driver_attach+0x78/0x80
+[   14.548464]  __driver_attach+0x68/0xf0
+[   14.548470]  bus_for_each_dev+0x84/0xe0
+[   14.548475]  driver_attach+0x34/0x40
+[   14.548481]  bus_add_driver+0x150/0x1f0
+[   14.548487]  driver_register+0x68/0x120
+[   14.548492]  __spi_register_driver+0x60/0x70
+[   14.548500]  spidev_init+0xac/0x1000 [spidev]
+[   14.548508]  do_one_initcall+0x50/0x2f0
+[   14.548516]  do_init_module+0x50/0x200
+[   14.548521]  load_module+0x2000/0x22f0
+[   14.548527]  __do_sys_finit_module+0xb4/0x100
+[   14.548533]  __arm64_sys_finit_module+0x2c/0x40
+[   14.548541]  el0_svc_common.constprop.0+0x80/0x1d0
+[   14.548546]  do_el0_svc+0x38/0xb0
+[   14.548554]  el0_svc+0x1c/0x30
+[   14.548559]  el0_sync_handler+0xa8/0xb0
+[   14.548564]  el0_sync+0x16c/0x180
+[   14.548569] ---[ end trace 296a77a73017a9a3 ]---
+[   14.560649] ------------[ cut here ]------------
+[   14.560803] /spi@3210000/spi@1: buggy DT: spidev listed directly in DT
+[   14.560861] WARNING: CPU: 3 PID: 335 at drivers/spi/spidev.c:781 spidev_probe+0x110/0x230 [spidev]
+[   14.561074] Modules linked in: spidev(+) loop aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce snd_soc_spdif_tx snd_soc_tegra_machine_driver snd_soc_tegra210_adsp max77620_thermal snd_soc_tegra_utils snd_hda_codec_hdmi snd_soc_simple_card_utils snd_soc_tegra210_ahub tegra_bpmp_thermal nvadsp tegra210_adma iwlwifi userspace_alert snd_hda_tegra snd_hda_codec cfg80211 snd_hda_core nv_imx477 nv_imx219 spi_tegra114 cdc_acm binfmt_misc ina3221 pwm_fan nvgpu nvmap ip_tables x_tables
+[   14.561224] CPU: 3 PID: 335 Comm: systemd-udevd Tainted: G        W         5.10.120-tegra #1
+[   14.561230] Hardware name: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[   14.561237] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
+[   14.561246] pc : spidev_probe+0x110/0x230 [spidev]
+[   14.561254] lr : spidev_probe+0x110/0x230 [spidev]
+[   14.561258] sp : ffff800010ff38b0
+[   14.561262] x29: ffff800010ff38b0 x28: ffffc487bbfea958 
+[   14.561273] x27: 000000000000000c x26: ffffc48774071310 
+[   14.561283] x25: ffffc487bccb7610 x24: 00000000000000a7 
+[   14.561294] x23: ffffc48774071058 x22: 0000000000000000 
+[   14.561304] x21: ffffc48774071038 x20: ffff0d2148562000 
+[   14.561314] x19: 0000000000000000 x18: 0000000000000010 
+[   14.561324] x17: 0000000000000000 x16: ffffc487bbf96128 
+[   14.561333] x15: ffff0d21466eddf0 x14: ffffffffffffffff 
+[   14.561343] x13: ffff800090ff34e7 x12: ffff800010ff34ef 
+[   14.561353] x11: 0000000000000030 x10: 0101010101010101 
+[   14.561364] x9 : 00000000fffffffe x8 : 206e6920796c7463 
+[   14.561374] x7 : 6572696420646574 x6 : c0000000ffffefff 
+[   14.561384] x5 : ffff0d22bfdff958 x4 : ffffc487bcae7a48 
+[   14.561393] x3 : 0000000000000001 x2 : ffff0d22bfdff960 
+[   14.561405] x1 : 0000000000000000 x0 : 0000000000000000 
+[   14.561415] Call trace:
+[   14.561423]  spidev_probe+0x110/0x230 [spidev]
+[   14.561435]  spi_drv_probe+0x8c/0xf0
+[   14.561443]  really_probe+0xf8/0x3d0
+[   14.561449]  driver_probe_device+0x60/0xc0
+[   14.561455]  device_driver_attach+0x78/0x80
+[   14.561461]  __driver_attach+0x68/0xf0
+[   14.561467]  bus_for_each_dev+0x84/0xe0
+[   14.561472]  driver_attach+0x34/0x40
+[   14.561478]  bus_add_driver+0x150/0x1f0
+[   14.561484]  driver_register+0x68/0x120
+[   14.561490]  __spi_register_driver+0x60/0x70
+[   14.561497]  spidev_init+0xac/0x1000 [spidev]
+[   14.561504]  do_one_initcall+0x50/0x2f0
+[   14.561512]  do_init_module+0x50/0x200
+[   14.561518]  load_module+0x2000/0x22f0
+[   14.561524]  __do_sys_finit_module+0xb4/0x100
+[   14.561530]  __arm64_sys_finit_module+0x2c/0x40
+[   14.561538]  el0_svc_common.constprop.0+0x80/0x1d0
+[   14.561544]  do_el0_svc+0x38/0xb0
+[   14.561551]  el0_svc+0x1c/0x30
+[   14.561557]  el0_sync_handler+0xa8/0xb0
+[   14.561562]  el0_sync+0x16c/0x180
+[   14.561566] ---[ end trace 296a77a73017a9a4 ]---
+[   14.591346] ------------[ cut here ]------------
+[   14.591531] /spi@3230000/spi@0: buggy DT: spidev listed directly in DT
+[   14.591589] WARNING: CPU: 3 PID: 335 at drivers/spi/spidev.c:781 spidev_probe+0x110/0x230 [spidev]
+[   14.591821] Modules linked in: spidev(+) loop aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce snd_soc_spdif_tx snd_soc_tegra_machine_driver snd_soc_tegra210_adsp max77620_thermal snd_soc_tegra_utils snd_hda_codec_hdmi snd_soc_simple_card_utils snd_soc_tegra210_ahub tegra_bpmp_thermal nvadsp tegra210_adma iwlwifi userspace_alert snd_hda_tegra snd_hda_codec cfg80211 snd_hda_core nv_imx477 nv_imx219 spi_tegra114 cdc_acm binfmt_misc ina3221 pwm_fan nvgpu nvmap ip_tables x_tables
+[   14.591972] CPU: 3 PID: 335 Comm: systemd-udevd Tainted: G        W         5.10.120-tegra #1
+[   14.591977] Hardware name: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[   14.591984] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
+[   14.591993] pc : spidev_probe+0x110/0x230 [spidev]
+[   14.592001] lr : spidev_probe+0x110/0x230 [spidev]
+[   14.592005] sp : ffff800010ff38b0
+[   14.592010] x29: ffff800010ff38b0 x28: ffffc487bbfea958 
+[   14.592020] x27: 000000000000000c x26: ffffc48774071310 
+[   14.592033] x25: ffffc487bccb7610 x24: 00000000000000a8 
+[   14.592045] x23: ffffc48774071058 x22: 0000000000000000 
+[   14.592056] x21: ffffc48774071038 x20: ffff0d2148563000 
+[   14.592066] x19: 0000000000000000 x18: 0000000000000010 
+[   14.592076] x17: 0000000000000000 x16: ffffc487bbf96128 
+[   14.592087] x15: ffff0d21466eddf0 x14: ffffffffffffffff 
+[   14.592098] x13: ffff800090ff34e7 x12: ffff800010ff34ef 
+[   14.592108] x11: 0000000000000030 x10: 0101010101010101 
+[   14.592119] x9 : 00000000fffffffe x8 : 6572696420646574 
+[   14.592129] x7 : 73696c2076656469 x6 : c0000000ffffefff 
+[   14.592139] x5 : ffff0d22bfdff958 x4 : ffffc487bcae7a48 
+[   14.592149] x3 : 0000000000000001 x2 : ffff0d22bfdff960 
+[   14.592159] x1 : 0000000000000000 x0 : 0000000000000000 
+[   14.592169] Call trace:
+[   14.592179]  spidev_probe+0x110/0x230 [spidev]
+[   14.592193]  spi_drv_probe+0x8c/0xf0
+[   14.592202]  really_probe+0xf8/0x3d0
+[   14.592209]  driver_probe_device+0x60/0xc0
+[   14.592215]  device_driver_attach+0x78/0x80
+[   14.592220]  __driver_attach+0x68/0xf0
+[   14.592226]  bus_for_each_dev+0x84/0xe0
+[   14.592233]  driver_attach+0x34/0x40
+[   14.592238]  bus_add_driver+0x150/0x1f0
+[   14.592244]  driver_register+0x68/0x120
+[   14.592250]  __spi_register_driver+0x60/0x70
+[   14.592258]  spidev_init+0xac/0x1000 [spidev]
+[   14.592266]  do_one_initcall+0x50/0x2f0
+[   14.592274]  do_init_module+0x50/0x200
+[   14.592279]  load_module+0x2000/0x22f0
+[   14.592285]  __do_sys_finit_module+0xb4/0x100
+[   14.592291]  __arm64_sys_finit_module+0x2c/0x40
+[   14.592299]  el0_svc_common.constprop.0+0x80/0x1d0
+[   14.592305]  do_el0_svc+0x38/0xb0
+[   14.592313]  el0_svc+0x1c/0x30
+[   14.592320]  el0_sync_handler+0xa8/0xb0
+[   14.592326]  el0_sync+0x16c/0x180
+[   14.592331] ---[ end trace 296a77a73017a9a5 ]---
+[   14.609209] ------------[ cut here ]------------
+[   14.609554] /spi@3230000/spi@1: buggy DT: spidev listed directly in DT
+[   14.609639] WARNING: CPU: 3 PID: 335 at drivers/spi/spidev.c:781 spidev_probe+0x110/0x230 [spidev]
+[   14.610604] Modules linked in: spidev(+) loop aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce snd_soc_spdif_tx snd_soc_tegra_machine_driver snd_soc_tegra210_adsp max77620_thermal snd_soc_tegra_utils snd_hda_codec_hdmi snd_soc_simple_card_utils snd_soc_tegra210_ahub tegra_bpmp_thermal nvadsp tegra210_adma iwlwifi userspace_alert snd_hda_tegra snd_hda_codec cfg80211 snd_hda_core nv_imx477 nv_imx219 spi_tegra114 cdc_acm binfmt_misc ina3221 pwm_fan nvgpu nvmap ip_tables x_tables
+[   14.611550] CPU: 3 PID: 335 Comm: systemd-udevd Tainted: G        W         5.10.120-tegra #1
+[   14.611567] Hardware name: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[   14.611598] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
+[   14.611634] pc : spidev_probe+0x110/0x230 [spidev]
+[   14.611652] lr : spidev_probe+0x110/0x230 [spidev]
+[   14.611671] sp : ffff800010ff38b0
+[   14.611689] x29: ffff800010ff38b0 x28: ffffc487bbfea958 
+[   14.611712] x27: 000000000000000c x26: ffffc48774071310 
+[   14.611751] x25: ffffc487bccb7610 x24: 00000000000000a9 
+[   14.611769] x23: ffffc48774071058 x22: 0000000000000000 
+[   14.611784] x21: ffffc48774071038 x20: ffff0d2148562800 
+[   14.611803] x19: 0000000000000000 x18: 0000000000000010 
+[   14.611821] x17: 0000000000000000 x16: ffffc487bbf96128 
+[   14.611837] x15: ffff0d21466eddf0 x14: ffffffffffffffff 
+[   14.611851] x13: ffff800090ff34e7 x12: ffff800010ff34ef 
+[   14.611864] x11: 0000000000000030 x10: 0101010101010101 
+[   14.611876] x9 : 00000000fffffffe x8 : 206e6920796c7463 
+[   14.611888] x7 : 6572696420646574 x6 : c0000000ffffefff 
+[   14.611900] x5 : ffff0d22bfdff958 x4 : ffffc487bcae7a48 
+[   14.611911] x3 : 0000000000000001 x2 : ffff0d22bfdff960 
+[   14.611922] x1 : 0000000000000000 x0 : 0000000000000000 
+[   14.611933] Call trace:
+[   14.611947]  spidev_probe+0x110/0x230 [spidev]
+[   14.611961]  spi_drv_probe+0x8c/0xf0
+[   14.611973]  really_probe+0xf8/0x3d0
+[   14.611982]  driver_probe_device+0x60/0xc0
+[   14.611990]  device_driver_attach+0x78/0x80
+[   14.612001]  __driver_attach+0x68/0xf0
+[   14.612009]  bus_for_each_dev+0x84/0xe0
+[   14.612017]  driver_attach+0x34/0x40
+[   14.612027]  bus_add_driver+0x150/0x1f0
+[   14.612034]  driver_register+0x68/0x120
+[   14.612041]  __spi_register_driver+0x60/0x70
+[   14.612055]  spidev_init+0xac/0x1000 [spidev]
+[   14.612063]  do_one_initcall+0x50/0x2f0
+[   14.612072]  do_init_module+0x50/0x200
+[   14.612078]  load_module+0x2000/0x22f0
+[   14.612084]  __do_sys_finit_module+0xb4/0x100
+[   14.612090]  __arm64_sys_finit_module+0x2c/0x40
+[   14.612098]  el0_svc_common.constprop.0+0x80/0x1d0
+[   14.612104]  do_el0_svc+0x38/0xb0
+[   14.612111]  el0_svc+0x1c/0x30
+[   14.612117]  el0_sync_handler+0xa8/0xb0
+[   14.612125]  el0_sync+0x16c/0x180
+[   14.612130] ---[ end trace 296a77a73017a9a6 ]---
+[   14.614649] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   14.614662] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   14.614668] usb 1-2.6: Product: CubeOrange+
+[   14.614672] usb 1-2.6: Manufacturer: CubePilot
+[   14.614677] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   14.619973] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   14.620734] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   14.732230] ------------[ cut here ]------------
+[   14.732416] /spi@3230000/spi@2: buggy DT: spidev listed directly in DT
+[   14.732477] WARNING: CPU: 3 PID: 335 at drivers/spi/spidev.c:781 spidev_probe+0x110/0x230 [spidev]
+[   14.732699] Modules linked in: snd_soc_tegra210_admaif snd_soc_tegra_pcm spidev(+) loop aes_ce_blk crypto_simd cryptd aes_ce_cipher ghash_ce sha2_ce sha256_arm64 sha1_ce snd_soc_spdif_tx snd_soc_tegra_machine_driver snd_soc_tegra210_adsp max77620_thermal snd_soc_tegra_utils snd_hda_codec_hdmi snd_soc_simple_card_utils snd_soc_tegra210_ahub tegra_bpmp_thermal nvadsp tegra210_adma iwlwifi userspace_alert snd_hda_tegra snd_hda_codec cfg80211 snd_hda_core nv_imx477 nv_imx219 spi_tegra114 cdc_acm binfmt_misc ina3221 pwm_fan nvgpu nvmap ip_tables x_tables
+[   14.732862] CPU: 3 PID: 335 Comm: systemd-udevd Tainted: G        W         5.10.120-tegra #1
+[   14.732867] Hardware name: Unknown NVIDIA Jetson Xavier NX Developer Kit/NVIDIA Jetson Xavier NX Developer Kit, BIOS 4.1-33958178 08/01/2023
+[   14.732874] pstate: 60400009 (nZCv daif +PAN -UAO -TCO BTYPE=--)
+[   14.732883] pc : spidev_probe+0x110/0x230 [spidev]
+[   14.732890] lr : spidev_probe+0x110/0x230 [spidev]
+[   14.732894] sp : ffff800010ff38b0
+[   14.732898] x29: ffff800010ff38b0 x28: ffffc487bbfea958 
+[   14.732909] x27: 000000000000000c x26: ffffc48774071310 
+[   14.732920] x25: ffffc487bccb7610 x24: 00000000000000b0 
+[   14.732932] x23: ffffc48774071058 x22: 0000000000000000 
+[   14.732942] x21: ffffc48774071038 x20: ffff0d2148565800 
+[   14.732952] x19: 0000000000000000 x18: 0000000000000010 
+[   14.732962] x17: 0000000000000000 x16: ffffc487bbf96128 
+[   14.732971] x15: ffff0d21466eddf0 x14: ffffffffffffffff 
+[   14.732982] x13: ffff800090ff34e7 x12: ffff800010ff34ef 
+[   14.732991] x11: 0000000000000030 x10: 0101010101010101 
+[   14.733002] x9 : 00000000fffffffe x8 : 6572696420646574 
+[   14.733015] x7 : 73696c2076656469 x6 : c0000000ffffefff 
+[   14.733025] x5 : ffff0d22bfdff958 x4 : ffffc487bcae7a48 
+[   14.733035] x3 : 0000000000000001 x2 : ffff0d22bfdff960 
+[   14.733066] x1 : 0000000000000000 x0 : 0000000000000000 
+[   14.733076] Call trace:
+[   14.733085]  spidev_probe+0x110/0x230 [spidev]
+[   14.733097]  spi_drv_probe+0x8c/0xf0
+[   14.733106]  really_probe+0xf8/0x3d0
+[   14.733113]  driver_probe_device+0x60/0xc0
+[   14.733119]  device_driver_attach+0x78/0x80
+[   14.733125]  __driver_attach+0x68/0xf0
+[   14.733130]  bus_for_each_dev+0x84/0xe0
+[   14.733136]  driver_attach+0x34/0x40
+[   14.733141]  bus_add_driver+0x150/0x1f0
+[   14.733147]  driver_register+0x68/0x120
+[   14.733153]  __spi_register_driver+0x60/0x70
+[   14.733161]  spidev_init+0xac/0x1000 [spidev]
+[   14.733168]  do_one_initcall+0x50/0x2f0
+[   14.733176]  do_init_module+0x50/0x200
+[   14.733182]  load_module+0x2000/0x22f0
+[   14.733188]  __do_sys_finit_module+0xb4/0x100
+[   14.733194]  __arm64_sys_finit_module+0x2c/0x40
+[   14.733202]  el0_svc_common.constprop.0+0x80/0x1d0
+[   14.733208]  do_el0_svc+0x38/0xb0
+[   14.733215]  el0_svc+0x1c/0x30
+[   14.733221]  el0_sync_handler+0xa8/0xb0
+[   14.733226]  el0_sync+0x16c/0x180
+[   14.733231] ---[ end trace 296a77a73017a9a7 ]---
+[   15.002026] usb 1-2.6: USB disconnect, device number 17
+[   15.167776] irq: IRQ274: trimming hierarchy from :interrupt-controller@3881000
+[   15.231998] usb 1-2.6: new full-speed USB device number 18 using tegra-xusb
+[   15.334323] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   15.334337] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   15.334342] usb 1-2.6: Product: CubeOrange+
+[   15.334347] usb 1-2.6: Manufacturer: CubePilot
+[   15.334354] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   15.346309] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   15.346952] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   15.364740] iwlwifi 0004:01:00.0: Detected Intel(R) Wireless-AC 9260 160MHz, REV=0x324
+[   15.447530] iwlwifi 0004:01:00.0: base HW address: 60:dd:8e:a6:e4:7e
+[   15.514081] usb 1-2.6: USB disconnect, device number 18
+[   15.514609] ieee80211 phy0: Selected rate control algorithm 'iwl-mvm-rs'
+[   15.515782] thermal thermal_zone6: failed to read out thermal zone (-61)
+[   15.616950] usbcore: registered new interface driver btusb
+[   15.624599] Bluetooth: hci0: Bootloader revision 0.1 build 42 week 52 2015
+[   15.625991] Bluetooth: hci0: Device revision is 2
+[   15.626007] Bluetooth: hci0: Secure boot is enabled
+[   15.626012] Bluetooth: hci0: OTP lock is enabled
+[   15.626030] Bluetooth: hci0: API lock is enabled
+[   15.626034] Bluetooth: hci0: Debug lock is disabled
+[   15.626039] Bluetooth: hci0: Minimum firmware build 1 week 10 2014
+[   15.632002] Bluetooth: hci0: Found device firmware: intel/ibt-18-16-1.sfi
+[   15.755968] usb 1-2.6: new full-speed USB device number 19 using tegra-xusb
+[   15.838878] Mass Storage Function, version: 2009/09/11
+[   15.838897] LUN: removable file: (no medium)
+[   15.859323] using random self ethernet address
+[   15.859720] using random host ethernet address
+[   15.865972] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   15.865985] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   15.865991] usb 1-2.6: Product: CubeOrange+
+[   15.865996] usb 1-2.6: Manufacturer: CubePilot
+[   15.866000] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   15.871478] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   15.872376] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   15.933293] ACPI: <n/a>: failed to evaluate _DSM (0x1001)
+[   15.933557] ACPI: <n/a>: failed to evaluate _DSM (0x1001)
+[   16.002081] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   16.002103] Bluetooth: BNEP socket layer initialized
+[   16.080523] rndis0: HOST MAC ba:c1:d3:53:b1:04
+[   16.080595] rndis0: MAC ba:c1:d3:53:b1:05
+[   16.107626] usb0: HOST MAC ba:c1:d3:53:b1:06
+[   16.107724] usb0: MAC ba:c1:d3:53:b1:07
+[   16.107813] tegra-xudc 3550000.xudc: EP 0 (type: ctrl, dir: out) enabled
+[   16.178381] l4tbr0: port 1(rndis0) entered blocking state
+[   16.178476] l4tbr0: port 1(rndis0) entered disabled state
+[   16.179568] device rndis0 entered promiscuous mode
+[   16.270403] l4tbr0: port 2(usb0) entered blocking state
+[   16.270505] l4tbr0: port 2(usb0) entered disabled state
+[   16.271472] device usb0 entered promiscuous mode
+[   16.283781] usb 1-2.6: USB disconnect, device number 19
+[   16.515954] usb 1-2.6: new full-speed USB device number 20 using tegra-xusb
+[   16.539390] tegra-xudc 3550000.xudc: EP 5 (type: intr, dir: in) enabled
+[   16.539421] tegra-xudc 3550000.xudc: EP 3 (type: bulk, dir: in) enabled
+[   16.539434] tegra-xudc 3550000.xudc: EP 2 (type: bulk, dir: out) enabled
+[   16.539527] tegra-xudc 3550000.xudc: EP 9 (type: intr, dir: in) enabled
+[   16.539542] tegra-xudc 3550000.xudc: EP 7 (type: bulk, dir: in) enabled
+[   16.539553] tegra-xudc 3550000.xudc: EP 4 (type: bulk, dir: out) enabled
+[   16.539587] tegra-xudc 3550000.xudc: EP 15 (type: intr, dir: in) enabled
+[   16.539703] tegra-xudc 3550000.xudc: EP 11 (type: bulk, dir: in) enabled
+[   16.539717] tegra-xudc 3550000.xudc: EP 6 (type: bulk, dir: out) enabled
+[   16.539797] IPv6: ADDRCONF(NETDEV_CHANGE): rndis0: link becomes ready
+[   16.599183] tegra-xudc 3550000.xudc: EP 13 (type: bulk, dir: in) enabled
+[   16.599203] tegra-xudc 3550000.xudc: EP 8 (type: bulk, dir: out) enabled
+[   16.599821] IPv6: ADDRCONF(NETDEV_CHANGE): usb0: link becomes ready
+[   16.600690] tegra-xudc 3550000.xudc: ep 13 disabled
+[   16.600776] tegra-xudc 3550000.xudc: ep 8 disabled
+[   16.618057] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   16.618072] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   16.618077] usb 1-2.6: Product: CubeOrange+
+[   16.618082] usb 1-2.6: Manufacturer: CubePilot
+[   16.618087] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   16.621260] tegra-xudc 3550000.xudc: EP 13 (type: bulk, dir: in) enabled
+[   16.621279] tegra-xudc 3550000.xudc: EP 8 (type: bulk, dir: out) enabled
+[   16.624128] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   16.624948] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   16.794026] usb 1-2.6: USB disconnect, device number 20
+[   17.027941] usb 1-2.6: new full-speed USB device number 21 using tegra-xusb
+[   17.129847] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   17.129859] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   17.129865] usb 1-2.6: Product: CubeOrange+
+[   17.129870] usb 1-2.6: Manufacturer: CubePilot
+[   17.129874] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   17.134773] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   17.135682] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   17.306041] usb 1-2.6: USB disconnect, device number 21
+[   17.535956] usb 1-2.6: new full-speed USB device number 22 using tegra-xusb
+[   17.583722] Bluetooth: hci0: Waiting for firmware download to complete
+[   17.584050] Bluetooth: hci0: Firmware loaded in 1921319 usecs
+[   17.584155] Bluetooth: hci0: Waiting for device to boot
+[   17.597929] Bluetooth: hci0: Device booted in 13532 usecs
+[   17.616171] Bluetooth: hci0: Found Intel DDC parameters: intel/ibt-18-16-1.ddc
+[   17.618926] Bluetooth: hci0: Applying Intel DDC parameters completed
+[   17.621913] Bluetooth: hci0: Firmware revision 0.1 build 26 week 11 2020
+[   17.646188] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   17.646198] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   17.646204] usb 1-2.6: Product: CubeOrange+
+[   17.646209] usb 1-2.6: Manufacturer: CubePilot
+[   17.646233] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   17.652677] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   17.653998] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   17.818049] usb 1-2.6: USB disconnect, device number 22
+[   18.047909] usb 1-2.6: new full-speed USB device number 23 using tegra-xusb
+[   18.149952] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   18.149964] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   18.149971] usb 1-2.6: Product: CubeOrange+
+[   18.149976] usb 1-2.6: Manufacturer: CubePilot
+[   18.149980] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   18.161243] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   18.161909] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   18.330081] usb 1-2.6: USB disconnect, device number 23
+[   18.392969] pstore: Using crash dump compression: deflate
+[   18.393059] printk: console [ramoops-1] enabled
+[   18.393066] pstore: Registered ramoops as persistent store backend
+[   18.393073] ramoops: using 0x200000@0xc8200000, ecc: 0
+[   18.461019] IRQ267: set affinity failed(-22).
+[   18.461197] IRQ268: set affinity failed(-22).
+[   18.461303] IRQ269: set affinity failed(-22).
+[   18.461428] IRQ270: set affinity failed(-22).
+[   18.461526] IRQ271: set affinity failed(-22).
+[   18.461624] IRQ272: set affinity failed(-22).
+[   18.462029] CPU4: shutdown
+[   18.462131] psci: CPU4 killed (polled 0 ms)
+[   18.573074] IRQ267: set affinity failed(-22).
+[   18.573212] IRQ268: set affinity failed(-22).
+[   18.573313] IRQ269: set affinity failed(-22).
+[   18.573412] IRQ270: set affinity failed(-22).
+[   18.574643] CPU5: shutdown
+[   18.574761] psci: CPU5 killed (polled 0 ms)
+[   18.576059] usb 1-2.6: new full-speed USB device number 24 using tegra-xusb
+[   18.678138] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   18.678152] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   18.678159] usb 1-2.6: Product: CubeOrange+
+[   18.678165] usb 1-2.6: Manufacturer: CubePilot
+[   18.678170] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   18.683396] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   18.684379] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   18.724396] nvgpu: 17000000.gv11b                  gk20a_scale_init:541  [INFO]  enabled scaling for GPU
+
+[   19.098899] usb 1-2.6: USB disconnect, device number 24
+[   19.343917] usb 1-2.6: new full-speed USB device number 25 using tegra-xusb
+[   19.453942] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   19.453956] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   19.453961] usb 1-2.6: Product: CubeOrange+
+[   19.453967] usb 1-2.6: Manufacturer: CubePilot
+[   19.453971] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   19.460457] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   19.461377] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   19.866027] usb 1-2.6: USB disconnect, device number 25
+[   20.095956] usb 1-2.6: new full-speed USB device number 26 using tegra-xusb
+[   20.197778] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   20.197790] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   20.197796] usb 1-2.6: Product: CubeOrange+
+[   20.197800] usb 1-2.6: Manufacturer: CubePilot
+[   20.197805] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   20.202602] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   20.203622] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   20.378011] usb 1-2.6: USB disconnect, device number 26
+[   20.607981] usb 1-2.6: new full-speed USB device number 27 using tegra-xusb
+[   20.709922] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   20.709934] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   20.709940] usb 1-2.6: Product: CubeOrange+
+[   20.709944] usb 1-2.6: Manufacturer: CubePilot
+[   20.709949] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   20.714575] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   20.715200] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   20.890059] usb 1-2.6: USB disconnect, device number 27
+[   21.119930] usb 1-2.6: new full-speed USB device number 28 using tegra-xusb
+[   21.225948] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   21.225962] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   21.225968] usb 1-2.6: Product: CubeOrange+
+[   21.225990] usb 1-2.6: Manufacturer: CubePilot
+[   21.225995] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   21.230882] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   21.231623] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   21.402132] usb 1-2.6: USB disconnect, device number 28
+[   21.635937] usb 1-2.6: new full-speed USB device number 29 using tegra-xusb
+[   21.737919] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   21.737931] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   21.737937] usb 1-2.6: Product: CubeOrange+
+[   21.737941] usb 1-2.6: Manufacturer: CubePilot
+[   21.737946] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   21.742793] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   21.743513] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   21.914055] usb 1-2.6: USB disconnect, device number 29
+[   22.143933] usb 1-2.6: new full-speed USB device number 30 using tegra-xusb
+[   22.245931] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   22.245944] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   22.245950] usb 1-2.6: Product: CubeOrange+
+[   22.245955] usb 1-2.6: Manufacturer: CubePilot
+[   22.245983] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   22.250569] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   22.251337] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   22.426032] usb 1-2.6: USB disconnect, device number 30
+[   22.651917] usb 1-2.6: new full-speed USB device number 31 using tegra-xusb
+[   22.753857] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   22.753870] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   22.753876] usb 1-2.6: Product: CubeOrange+
+[   22.753881] usb 1-2.6: Manufacturer: CubePilot
+[   22.753886] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   22.758441] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   22.759114] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   22.938063] usb 1-2.6: USB disconnect, device number 31
+[   23.163927] usb 1-2.6: new full-speed USB device number 32 using tegra-xusb
+[   23.265793] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   23.265804] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   23.265810] usb 1-2.6: Product: CubeOrange+
+[   23.265815] usb 1-2.6: Manufacturer: CubePilot
+[   23.265820] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   23.270431] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   23.271038] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   23.450061] usb 1-2.6: USB disconnect, device number 32
+[   23.679923] usb 1-2.6: new full-speed USB device number 33 using tegra-xusb
+[   23.781908] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   23.781921] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   23.781927] usb 1-2.6: Product: CubeOrange+
+[   23.781932] usb 1-2.6: Manufacturer: CubePilot
+[   23.781936] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   23.787083] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   23.787656] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   23.962911] usb 1-2.6: USB disconnect, device number 33
+[   24.191936] usb 1-2.6: new full-speed USB device number 34 using tegra-xusb
+[   24.293826] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   24.293837] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   24.293843] usb 1-2.6: Product: CubeOrange+
+[   24.293848] usb 1-2.6: Manufacturer: CubePilot
+[   24.293853] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   24.298767] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   24.299717] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   24.474044] usb 1-2.6: USB disconnect, device number 34
+[   24.707941] usb 1-2.6: new full-speed USB device number 35 using tegra-xusb
+[   24.815040] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   24.815101] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   24.815115] usb 1-2.6: Product: CubeOrange+
+[   24.815120] usb 1-2.6: Manufacturer: CubePilot
+[   24.815125] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   24.821928] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   24.823037] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   24.986053] usb 1-2.6: USB disconnect, device number 35
+[   25.223929] usb 1-2.6: new full-speed USB device number 36 using tegra-xusb
+[   25.333765] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   25.333778] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   25.333784] usb 1-2.6: Product: CubeOrange+
+[   25.333789] usb 1-2.6: Manufacturer: CubePilot
+[   25.333794] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   25.338617] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   25.339677] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   25.754057] usb 1-2.6: USB disconnect, device number 36
+[   25.991968] usb 1-2.6: new full-speed USB device number 37 using tegra-xusb
+[   26.097961] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   26.097975] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   26.097981] usb 1-2.6: Product: CubeOrange+
+[   26.097986] usb 1-2.6: Manufacturer: CubePilot
+[   26.097990] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   26.102790] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   26.103654] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   26.522050] usb 1-2.6: USB disconnect, device number 37
+[   26.751944] usb 1-2.6: new full-speed USB device number 38 using tegra-xusb
+[   26.857920] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   26.857932] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   26.857938] usb 1-2.6: Product: CubeOrange+
+[   26.857943] usb 1-2.6: Manufacturer: CubePilot
+[   26.857948] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   26.862820] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   26.863744] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   27.034026] usb 1-2.6: USB disconnect, device number 38
+[   27.263911] usb 1-2.6: new full-speed USB device number 39 using tegra-xusb
+[   27.365817] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   27.365829] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   27.365835] usb 1-2.6: Product: CubeOrange+
+[   27.365840] usb 1-2.6: Manufacturer: CubePilot
+[   27.365845] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   27.370714] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   27.371356] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   27.546047] usb 1-2.6: USB disconnect, device number 39
+[   27.779939] usb 1-2.6: new full-speed USB device number 40 using tegra-xusb
+[   27.885913] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   27.885939] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   27.885945] usb 1-2.6: Product: CubeOrange+
+[   27.885951] usb 1-2.6: Manufacturer: CubePilot
+[   27.885955] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   27.890570] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   27.891107] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   28.065815] usb 1-2.6: USB disconnect, device number 40
+[   28.307942] usb 1-2.6: new full-speed USB device number 41 using tegra-xusb
+[   28.409832] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   28.409845] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   28.409850] usb 1-2.6: Product: CubeOrange+
+[   28.409857] usb 1-2.6: Manufacturer: CubePilot
+[   28.409862] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   28.414732] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   28.415344] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   28.826072] usb 1-2.6: USB disconnect, device number 41
+[   29.059944] usb 1-2.6: new full-speed USB device number 42 using tegra-xusb
+[   29.161824] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   29.161835] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   29.161841] usb 1-2.6: Product: CubeOrange+
+[   29.161846] usb 1-2.6: Manufacturer: CubePilot
+[   29.161851] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   29.166678] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   29.167277] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   29.338064] usb 1-2.6: USB disconnect, device number 42
+[   29.567907] usb 1-2.6: new full-speed USB device number 43 using tegra-xusb
+[   29.669917] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   29.669929] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   29.669935] usb 1-2.6: Product: CubeOrange+
+[   29.669939] usb 1-2.6: Manufacturer: CubePilot
+[   29.669944] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   29.675083] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   29.675673] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   29.850073] usb 1-2.6: USB disconnect, device number 43
+[   30.075954] usb 1-2.6: new full-speed USB device number 44 using tegra-xusb
+[   30.186328] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   30.186395] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   30.186410] usb 1-2.6: Product: CubeOrange+
+[   30.186415] usb 1-2.6: Manufacturer: CubePilot
+[   30.186420] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   30.193800] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   30.194539] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   30.362085] usb 1-2.6: USB disconnect, device number 44
+[   30.595427] usb 1-2.6: new full-speed USB device number 45 using tegra-xusb
+[   30.623708] l4tbr0: port 2(usb0) entered blocking state
+[   30.623726] l4tbr0: port 2(usb0) entered forwarding state
+[   30.623816] l4tbr0: port 1(rndis0) entered blocking state
+[   30.623827] l4tbr0: port 1(rndis0) entered forwarding state
+[   30.642522] IPv6: ADDRCONF(NETDEV_CHANGE): l4tbr0: link becomes ready
+[   30.698050] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   30.698065] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   30.698072] usb 1-2.6: Product: CubeOrange+
+[   30.698077] usb 1-2.6: Manufacturer: CubePilot
+[   30.698082] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   30.703317] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   30.704201] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   30.815034] zram: Added device: zram0
+[   30.828332] zram: Added device: zram1
+[   30.829440] zram: Added device: zram2
+[   30.835264] zram: Added device: zram3
+[   30.874083] usb 1-2.6: USB disconnect, device number 45
+[   31.107936] usb 1-2.6: new full-speed USB device number 46 using tegra-xusb
+[   31.195295] zram0: detected capacity change from 0 to 898392064
+[   31.217937] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   31.217953] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   31.217960] usb 1-2.6: Product: CubeOrange+
+[   31.217965] usb 1-2.6: Manufacturer: CubePilot
+[   31.217970] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   31.223085] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   31.223712] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   31.324034] Adding 877332k swap on /dev/zram0.  Priority:5 extents:1 across:877332k SS
+[   31.330057] zram1: detected capacity change from 0 to 898392064
+[   31.386105] usb 1-2.6: USB disconnect, device number 46
+[   31.424064] Adding 877332k swap on /dev/zram1.  Priority:5 extents:1 across:877332k SS
+[   31.430624] zram2: detected capacity change from 0 to 898392064
+[   31.550261] Adding 877332k swap on /dev/zram2.  Priority:5 extents:1 across:877332k SS
+[   31.552970] zram3: detected capacity change from 0 to 898392064
+[   31.615939] usb 1-2.6: new full-speed USB device number 47 using tegra-xusb
+[   31.636066] Adding 877332k swap on /dev/zram3.  Priority:5 extents:1 across:877332k SS
+[   31.729963] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   31.729980] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   31.729986] usb 1-2.6: Product: CubeOrange+
+[   31.729994] usb 1-2.6: Manufacturer: CubePilot
+[   31.730001] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   31.735005] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   31.735627] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   31.898169] usb 1-2.6: USB disconnect, device number 47
+[   32.127963] usb 1-2.6: new full-speed USB device number 48 using tegra-xusb
+[   32.230045] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   32.230069] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   32.230076] usb 1-2.6: Product: CubeOrange+
+[   32.230081] usb 1-2.6: Manufacturer: CubePilot
+[   32.230086] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   32.245736] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   32.246830] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   32.410055] usb 1-2.6: USB disconnect, device number 48
+[   32.643966] usb 1-2.6: new full-speed USB device number 49 using tegra-xusb
+[   32.745908] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   32.745923] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   32.745930] usb 1-2.6: Product: CubeOrange+
+[   32.745935] usb 1-2.6: Manufacturer: CubePilot
+[   32.745939] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   32.756855] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   32.757865] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   32.922064] usb 1-2.6: USB disconnect, device number 49
+[   33.155984] usb 1-2.6: new full-speed USB device number 50 using tegra-xusb
+[   33.257978] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   33.257993] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   33.258000] usb 1-2.6: Product: CubeOrange+
+[   33.258004] usb 1-2.6: Manufacturer: CubePilot
+[   33.258009] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   33.263586] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   33.265008] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   33.435050] usb 1-2.6: USB disconnect, device number 50
+[   33.595774] fuse: init (API version 7.32)
+[   33.601601] tegradc 15200000.display: blank - powerdown
+[   33.601633] tegradc 15210000.display: blank - powerdown
+[   33.680114] usb 1-2.6: new full-speed USB device number 51 using tegra-xusb
+[   33.788413] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   33.788428] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   33.788434] usb 1-2.6: Product: CubeOrange+
+[   33.788441] usb 1-2.6: Manufacturer: CubePilot
+[   33.788445] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   33.799784] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   33.800947] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   33.815983] nvidia: loading out-of-tree module taints kernel.
+[   33.819646] nvidia: module verification failed: signature and/or required key missing - tainting kernel
+[   33.833262] NVRM: No NVIDIA GPU found.
+[   34.202054] usb 1-2.6: USB disconnect, device number 51
+[   34.438810] usb 1-2.6: new full-speed USB device number 52 using tegra-xusb
+[   34.555007] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   34.555033] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   34.555039] usb 1-2.6: Product: CubeOrange+
+[   34.555044] usb 1-2.6: Manufacturer: CubePilot
+[   34.555049] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   34.569027] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   34.569785] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   34.714047] usb 1-2.6: USB disconnect, device number 52
+[   34.956468] usb 1-2.6: new full-speed USB device number 53 using tegra-xusb
+[   35.066218] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   35.066289] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   35.066303] usb 1-2.6: Product: CubeOrange+
+[   35.066312] usb 1-2.6: Manufacturer: CubePilot
+[   35.066324] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   35.073699] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   35.074805] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   35.226037] usb 1-2.6: USB disconnect, device number 53
+[   35.467958] usb 1-2.6: new full-speed USB device number 54 using tegra-xusb
+[   35.573823] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   35.573837] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   35.573842] usb 1-2.6: Product: CubeOrange+
+[   35.573847] usb 1-2.6: Manufacturer: CubePilot
+[   35.573852] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   35.584837] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   35.586879] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   35.666048] can: controller area network core
+[   35.666180] NET: Registered protocol family 29
+[   35.738039] usb 1-2.6: USB disconnect, device number 54
+[   35.775257] can: raw protocol
+[   35.817968] CAN device driver interface
+[   35.847015] 	 Message RAM Configuration
+               	| base addr   |0x0c312000|
+               	| sidfc_flssa |0x00000000|
+               	| xidfc_flesa |0x00000040|
+               	| rxf0c_f0sa  |0x000000c0|
+               	| rxf1c_f1sa  |0x000009c0|
+               	| rxbc_rbsa   |0x000009c0|
+               	| txefc_efsa  |0x000009c0|
+               	| txbc_tbsa   |0x00000a40|
+               	| tmc_tmsa    |0x00000ec0|
+               	| mram size   |0x00001000|
+[   35.848178] Release 3.2.0 from 19.12.2014
+[   35.853299] net can0: mttcan device registered (regs=0000000076614ae1, irq=47)
+[   35.987953] usb 1-2.6: new full-speed USB device number 55 using tegra-xusb
+[   36.019152] nvgpu: 17000000.gv11b             railgate_enable_store:323  [INFO]  railgate is disabled.
+[   36.103810] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   36.103845] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   36.103855] usb 1-2.6: Product: CubeOrange+
+[   36.104003] usb 1-2.6: Manufacturer: CubePilot
+[   36.104017] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   36.123250] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   36.133320] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   36.506408] usb 1-2.6: USB disconnect, device number 55
+[   36.743937] usb 1-2.6: new full-speed USB device number 56 using tegra-xusb
+[   36.857954] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   36.857969] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   36.857975] usb 1-2.6: Product: CubeOrange+
+[   36.857980] usb 1-2.6: Manufacturer: CubePilot
+[   36.857985] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   36.871982] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   36.873145] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   37.018035] usb 1-2.6: USB disconnect, device number 56
+[   37.251941] usb 1-2.6: new full-speed USB device number 57 using tegra-xusb
+[   37.361943] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   37.361956] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   37.361962] usb 1-2.6: Product: CubeOrange+
+[   37.361967] usb 1-2.6: Manufacturer: CubePilot
+[   37.361972] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   37.366861] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   37.369167] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   37.530179] usb 1-2.6: USB disconnect, device number 57
+[   37.767961] usb 1-2.6: new full-speed USB device number 58 using tegra-xusb
+[   37.863960] vdd-1v8-sd: disabling
+[   37.863971] vdd-1v8-cvb: disabling
+[   37.863977] vdd-epb-1v0: disabling
+[   37.863982] vdd-fan: disabling
+[   37.863987] vdd_sys_en: disabling
+[   37.863992] aepilot1_3v3: disabling
+[   37.863996] aepilot1_1v8: disabling
+[   37.873930] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   37.873943] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   37.873950] usb 1-2.6: Product: CubeOrange+
+[   37.873954] usb 1-2.6: Manufacturer: CubePilot
+[   37.873959] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   37.884853] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   37.885485] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   38.042011] usb 1-2.6: USB disconnect, device number 58
+[   38.279979] usb 1-2.6: new full-speed USB device number 59 using tegra-xusb
+[   38.389968] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   38.389982] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   38.389987] usb 1-2.6: Product: CubeOrange+
+[   38.389992] usb 1-2.6: Manufacturer: CubePilot
+[   38.389997] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   38.395324] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   38.397181] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   38.554051] usb 1-2.6: USB disconnect, device number 59
+[   38.783994] usb 1-2.6: new full-speed USB device number 60 using tegra-xusb
+[   38.885956] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   38.885971] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   38.885978] usb 1-2.6: Product: CubeOrange+
+[   38.885982] usb 1-2.6: Manufacturer: CubePilot
+[   38.885988] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   38.890564] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   38.891137] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   39.066070] usb 1-2.6: USB disconnect, device number 60
+[   39.299978] usb 1-2.6: new full-speed USB device number 61 using tegra-xusb
+[   39.401940] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   39.401954] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   39.401961] usb 1-2.6: Product: CubeOrange+
+[   39.401965] usb 1-2.6: Manufacturer: CubePilot
+[   39.401971] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   39.407142] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   39.408264] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   39.578177] usb 1-2.6: USB disconnect, device number 61
+[   39.815965] usb 1-2.6: new full-speed USB device number 62 using tegra-xusb
+[   39.925837] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   39.925851] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   39.925857] usb 1-2.6: Product: CubeOrange+
+[   39.925862] usb 1-2.6: Manufacturer: CubePilot
+[   39.925867] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   39.934757] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   39.935810] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   40.090041] usb 1-2.6: USB disconnect, device number 62
+[   40.331948] usb 1-2.6: new full-speed USB device number 63 using tegra-xusb
+[   40.441909] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   40.441922] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   40.441928] usb 1-2.6: Product: CubeOrange+
+[   40.441932] usb 1-2.6: Manufacturer: CubePilot
+[   40.441937] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   40.447284] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   40.448301] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   40.861234] usb 1-2.6: USB disconnect, device number 63
+[   41.095996] usb 1-2.6: new full-speed USB device number 64 using tegra-xusb
+[   41.201922] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   41.201936] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   41.201962] usb 1-2.6: Product: CubeOrange+
+[   41.201967] usb 1-2.6: Manufacturer: CubePilot
+[   41.201972] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   41.207550] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   41.208939] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   41.372664] usb 1-2.6: USB disconnect, device number 64
+[   41.611998] usb 1-2.6: new full-speed USB device number 65 using tegra-xusb
+[   41.721934] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   41.721948] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   41.721954] usb 1-2.6: Product: CubeOrange+
+[   41.721959] usb 1-2.6: Manufacturer: CubePilot
+[   41.721964] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   41.730659] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   41.731343] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   42.138030] usb 1-2.6: USB disconnect, device number 65
+[   42.363962] usb 1-2.6: new full-speed USB device number 66 using tegra-xusb
+[   42.465916] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   42.465955] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   42.465970] usb 1-2.6: Product: CubeOrange+
+[   42.465982] usb 1-2.6: Manufacturer: CubePilot
+[   42.465991] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   42.471001] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   42.471635] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device
+[   42.650751] usb 1-2.6: USB disconnect, device number 66
+[   42.883938] usb 1-2.6: new full-speed USB device number 67 using tegra-xusb
+[   42.985941] usb 1-2.6: New USB device found, idVendor=2dae, idProduct=1058, bcdDevice= 2.00
+[   42.985972] usb 1-2.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   42.985984] usb 1-2.6: Product: CubeOrange+
+[   42.985996] usb 1-2.6: Manufacturer: CubePilot
+[   42.986004] usb 1-2.6: SerialNumber: 3C0049000951303439323731
+[   42.998326] cdc_acm 1-2.6:1.0: ttyACM0: USB ACM device
+[   42.999006] cdc_acm 1-2.6:1.2: ttyACM1: USB ACM device

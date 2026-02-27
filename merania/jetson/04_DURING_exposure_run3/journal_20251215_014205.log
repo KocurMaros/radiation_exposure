@@ -1,0 +1,101 @@
+-- Logs begin at Mon 2024-06-17 20:29:40 UTC, end at Mon 2025-12-15 15:03:36 UTC. --
+Dec 15 15:02:28 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:28 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:32 dcs sshd[6796]: Accepted publickey for dcs_user from 192.168.55.100 port 44166 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:32 dcs sshd[6796]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:32 dcs systemd-logind[479]: New session 50 of user dcs_user.
+Dec 15 15:02:32 dcs systemd[1]: Started Session 50 of user dcs_user.
+Dec 15 15:02:33 dcs sshd[6864]: Received disconnect from 192.168.55.100 port 44166:11: disconnected by user
+Dec 15 15:02:33 dcs sshd[6864]: Disconnected from user dcs_user 192.168.55.100 port 44166
+Dec 15 15:02:33 dcs sshd[6796]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 15:02:33 dcs systemd[1]: session-50.scope: Succeeded.
+Dec 15 15:02:33 dcs systemd-logind[479]: Session 50 logged out. Waiting for processes to exit.
+Dec 15 15:02:33 dcs systemd-logind[479]: Removed session 50.
+Dec 15 15:02:33 dcs sshd[6866]: Accepted publickey for dcs_user from 192.168.55.100 port 44174 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:33 dcs sshd[6866]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:33 dcs systemd-logind[479]: New session 51 of user dcs_user.
+Dec 15 15:02:33 dcs systemd[1]: Started Session 51 of user dcs_user.
+Dec 15 15:02:34 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:02:34 dcs sudo[6915]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --boot --no-pager
+Dec 15 15:02:34 dcs sudo[6915]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 15:02:34 dcs sudo[6915]: pam_unix(sudo:session): session closed for user root
+Dec 15 15:02:34 dcs sudo[6913]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg
+Dec 15 15:02:34 dcs sudo[6913]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 15:02:34 dcs sudo[6913]: pam_unix(sudo:session): session closed for user root
+Dec 15 15:02:34 dcs sshd[6912]: Received disconnect from 192.168.55.100 port 44174:11: disconnected by user
+Dec 15 15:02:34 dcs sshd[6912]: Disconnected from user dcs_user 192.168.55.100 port 44174
+Dec 15 15:02:34 dcs sshd[6866]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 15:02:34 dcs systemd[1]: session-51.scope: Succeeded.
+Dec 15 15:02:34 dcs systemd-logind[479]: Session 51 logged out. Waiting for processes to exit.
+Dec 15 15:02:34 dcs systemd-logind[479]: Removed session 51.
+Dec 15 15:02:34 dcs sshd[6920]: Accepted publickey for dcs_user from 192.168.55.100 port 44196 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:34 dcs sshd[6920]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:34 dcs sshd[6921]: Accepted publickey for dcs_user from 192.168.55.100 port 44212 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:34 dcs sshd[6921]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:34 dcs sshd[6919]: Accepted publickey for dcs_user from 192.168.55.100 port 44182 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:34 dcs sshd[6919]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:34 dcs sshd[6922]: Accepted publickey for dcs_user from 192.168.55.100 port 44210 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:34 dcs sshd[6922]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:34 dcs systemd-logind[479]: New session 52 of user dcs_user.
+Dec 15 15:02:34 dcs systemd[1]: Started Session 52 of user dcs_user.
+Dec 15 15:02:34 dcs systemd-logind[479]: New session 53 of user dcs_user.
+Dec 15 15:02:34 dcs systemd[1]: Started Session 53 of user dcs_user.
+Dec 15 15:02:34 dcs systemd-logind[479]: New session 54 of user dcs_user.
+Dec 15 15:02:34 dcs systemd[1]: Started Session 54 of user dcs_user.
+Dec 15 15:02:34 dcs systemd-logind[479]: New session 55 of user dcs_user.
+Dec 15 15:02:34 dcs systemd[1]: Started Session 55 of user dcs_user.
+Dec 15 15:02:35 dcs sudo[7105]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/dmesg --follow
+Dec 15 15:02:35 dcs sudo[7105]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 15:02:35 dcs sshd[7088]: Received disconnect from 192.168.55.100 port 44210:11: disconnected by user
+Dec 15 15:02:35 dcs sshd[7088]: Disconnected from user dcs_user 192.168.55.100 port 44210
+Dec 15 15:02:35 dcs sshd[6922]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 15:02:35 dcs systemd-logind[479]: Session 55 logged out. Waiting for processes to exit.
+Dec 15 15:02:35 dcs systemd[1]: session-55.scope: Succeeded.
+Dec 15 15:02:35 dcs systemd-logind[479]: Removed session 55.
+Dec 15 15:02:35 dcs sudo[7112]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --no-pager --lines=100
+Dec 15 15:02:35 dcs sudo[7112]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 15:02:35 dcs sudo[7113]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/tegrastats --interval 1000
+Dec 15 15:02:35 dcs sudo[7113]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 15 15:02:35 dcs sudo[7112]: pam_unix(sudo:session): session closed for user root
+Dec 15 15:02:35 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:35 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:35 dcs sshd[7107]: Received disconnect from 192.168.55.100 port 44212:11: disconnected by user
+Dec 15 15:02:35 dcs sshd[7107]: Disconnected from user dcs_user 192.168.55.100 port 44212
+Dec 15 15:02:35 dcs sshd[6921]: pam_unix(sshd:session): session closed for user dcs_user
+Dec 15 15:02:35 dcs systemd-logind[479]: Session 53 logged out. Waiting for processes to exit.
+Dec 15 15:02:35 dcs systemd[1]: session-53.scope: Succeeded.
+Dec 15 15:02:35 dcs systemd-logind[479]: Removed session 53.
+Dec 15 15:02:35 dcs sshd[7111]: Accepted publickey for dcs_user from 192.168.55.100 port 45638 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:02:35 dcs sshd[7111]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:02:35 dcs systemd-logind[479]: New session 56 of user dcs_user.
+Dec 15 15:02:35 dcs systemd[1]: Started Session 56 of user dcs_user.
+Dec 15 15:02:43 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:43 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:50 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:02:50 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:50 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:58 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:02:58 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:03 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:06 via l4tbr0: lease 192.168.55.100 unavailable.
+Dec 15 15:03:03 dcs dhcpd[6220]: DHCPNAK on 192.168.55.100 to ba:c1:d3:53:b1:06 via l4tbr0
+Dec 15 15:03:03 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:03:05 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:05 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:06 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:03:11 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:03:13 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:13 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:20 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:03:20 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:20 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:28 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:28 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:35 dcs dhcpd[6220]: DHCPREQUEST for 192.168.55.100 from ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:35 dcs dhcpd[6220]: DHCPACK on 192.168.55.100 to ba:c1:d3:53:b1:04 (raspberrypi) via l4tbr0
+Dec 15 15:03:35 dcs sshd[7171]: Accepted publickey for dcs_user from 192.168.55.100 port 35652 ssh2: RSA SHA256:nz14/TRadsKVDrNN9OgydpJRsFcCXCo0QnVmSVWwtto
+Dec 15 15:03:35 dcs sshd[7171]: pam_unix(sshd:session): session opened for user dcs_user by (uid=0)
+Dec 15 15:03:35 dcs systemd-logind[479]: New session 57 of user dcs_user.
+Dec 15 15:03:35 dcs systemd[1]: Started Session 57 of user dcs_user.
+Dec 15 15:03:36 dcs dhcpd[6220]: DHCPDISCOVER from ba:c1:d3:53:b1:06 via l4tbr0: network 192.168.55.0/24: no free leases
+Dec 15 15:03:36 dcs sudo[7218]: dcs_user : TTY=unknown ; PWD=/home/dcs_user ; USER=root ; COMMAND=/usr/bin/journalctl --no-pager --lines=100
+Dec 15 15:03:36 dcs sudo[7218]: pam_unix(sudo:session): session opened for user root by (uid=0)
