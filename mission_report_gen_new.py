@@ -82,41 +82,19 @@ try:
 except Exception as e:
     print(f"[!] Gemini init error: {e} – will use placeholder text")
 
-GENERATE_SLOVAK_COMMENTARY = True  # Set to True to test non-English output
+GENERATE_SLOVAK_COMMENTARY = False  # Set to True to test non-English output
 def ask_gemini(image_path: str, stats_context: str, prompt_extra: str = "") -> str:
-    """Send image + stats to Gemini; return commentary string."""
+    """Refined prompt to stop Gemini from repeating global issues like I2C on every graph."""
     base_prompt = (
-        "You are a radiation safety engineer analysing drone telemetry from a single "
-        "stationary drone exposed to ionizing radiation inside an irradiation facility. "
-        "There is NO external radiation sensor — the graphs show the cumulative EFFECTS of radiation "
-        "on the drone's COTS electronics (sensor drift, EKF degradation, voltage changes, etc.).\n\n"
-        "CRITICAL EXPERIMENTAL CONTEXT:\n"
-        "- The radiation dose rate was 3 Sieverts per hour.\n"
-        "- Each active exposure run (1st, 2nd, 3rd) was designed to be 30 minutes of beam time (approx 1.5 Sieverts per run), "
-        "plus setup and cooldown time.\n"
-        "- All exposure logs MUST span at least 30 minutes. If a log is shorter, it indicates an early system crash or incomplete dataset.\n\n"
-        f"Given this graph and targeted context:\n{stats_context}\n\n"
-        "Write a concise, highly analytical 4 to 5 sentence technical summary structured as follows:\n"
-        "(1) Briefly state what the graph shows.\n"
-        "(2) Compare the sequential exposure runs (1st vs 2nd vs 3rd) against each other to identify any cumulative degradation or worsening trends over time.\n"
-        "(3) State any anomalies, explicitly reporting if any exposure measurement falls short of the mandatory 30-minute duration.\n"
-        "(4) Conclude what these specific metrics mean for the drone's immediate airworthiness and hardware survivability.\n"
+        "You are a radiation safety engineer. Analyze THIS SPECIFIC GRAPH ONLY.\n"
+        "DO NOT mention I2C errors, OS faults, or general mission failure unless they are "
+        "explicitly plotted in the data of this image. Focus on the trends visible here.\n\n"
+        f"Graph Context: {stats_context}\n\n"
+        "Write 4 technical sentences: (1) metric shown, (2) trend/drift in this specific plot, "
+        "(3) anomalies visible here, (4) impact of this specific metric on airworthiness."
     )
     if GENERATE_SLOVAK_COMMENTARY:
-        base_prompt += "(5) Napíšte tento komentár v slovenčine, zachovávajúc technickú presnosť a analytický tón.)\n\n"
-    base_prompt += f"{prompt_extra}" 
-    # base_prompt = (
-    #     "You are a radiation safety engineer analysing drone telemetry from a "
-    #     "stationary drone exposed to ionizing radiation inside a reactor/irradiation "
-    #     "facility. There is NO external radiation sensor — the graphs show the "
-    #     "EFFECTS of radiation on the drone electronics (sensor drift, EKF degradation, "
-    #     "voltage changes, etc.). "
-    #     f"Given this graph and targeted context:\n{stats_context}\n\n"
-    #     "Write a concise 4-sentence technical summary: (1) what the graph shows, "
-    #     "(2) what trend or pattern is visible, (3) any anomalies or concerns, and "
-    #     "(4) what this means for the drone's airworthiness after radiation exposure. "
-    #     f"{prompt_extra}"
-    # )
+        base_prompt += "\nNAPÍŠTE TENTO KOMENTÁR V SLOVENČINE (zachovajte technický štýl)."
     if not GEMINI_OK:
         return _placeholder(stats_context)
     try:
@@ -127,8 +105,7 @@ def ask_gemini(image_path: str, stats_context: str, prompt_extra: str = "") -> s
     except Exception as e:
         print(f"    Gemini call failed ({e}), using placeholder")
         return _placeholder(stats_context)
-
-
+# Change the ask_gemini prompt for plots to be "Blind" to OS faults:
 def _placeholder(ctx: str) -> str:
     """Auto-generated fallback when Gemini is unavailable."""
     return (
@@ -234,23 +211,39 @@ def parse_memchk(path):
     return pd.DataFrame(rows) if rows else pd.DataFrame()
 
 def parse_os_logs(session_path):
-    """Scans dmesg and journal logs for radiation-induced hardware/OS faults."""
+    """Scans logs and captures specific error signatures for the final summary."""
     faults = {"i2c_errors": 0, "pcie_errors": 0, "ext4_errors": 0, "thermal_warn": 0, "general_fail": 0}
-    
+    error_samples = [] 
+
     log_files = list(session_path.glob("dmesg*.log")) + list(session_path.glob("journal*.log"))
     for lf in log_files:
         try:
             with open(lf, "r", errors="ignore") as f:
                 for line in f:
-                    line_lower = line.lower()
-                    if "i2c" in line_lower and ("timeout" in line_lower or "error" in line_lower): faults["i2c_errors"] += 1
-                    if "pcie" in line_lower and ("aer" in line_lower or "error" in line_lower): faults["pcie_errors"] += 1
-                    if "ext4-fs error" in line_lower: faults["ext4_errors"] += 1
-                    if "thermal" in line_lower and ("trip" in line_lower or "throttle" in line_lower): faults["thermal_warn"] += 1
-                    if "segfault" in line_lower or "kernel panic" in line_lower or "oops" in line_lower: faults["general_fail"] += 1
-        except Exception:
+                    ln = line.lower()
+                    found_type = None
+                    # Refined triggers to avoid generic boot noise
+                    if "i2c" in ln and ("timeout" in ln or "transfer failed" in ln): found_type = "i2c_errors"
+                    elif "pcie" in ln and ("aer" in ln or "bus error" in ln): found_type = "pcie_errors"
+                    elif "ext4-fs error" in ln: found_type = "ext4_errors"
+                    elif "segfault" in ln or "kernel panic" in ln: found_type = "general_fail"
+                    
+                    if found_type:
+                        faults[found_type] += 1
+                        if len(error_samples) < 10: # Collect samples for the final summary
+                            error_samples.append(f"[{lf.name}] {line.strip()}")
+        except Exception: 
             continue
-    return faults
+    # Returns a tuple: (dictionary, list)
+    return faults, error_samples
+# --- Inside the Main Loop ---
+# Update how you call the parser and handle the response:
+os_fault_data = {}
+all_error_samples = []
+for sess in EXPOSURE:
+    res, samples = parse_os_logs(JETSON / sess)
+    os_fault_data[sess] = res
+    all_error_samples.extend(samples)
 
 # --- Load MAVLink ---
 msg_types = [
@@ -289,23 +282,20 @@ for sess in ALL_SESS:
     total = sum(len(v) for v in mavlink[sess].values())
     print(f"  MAVLink {sess}: {len(mavlink[sess])} msg types, {total:,} rows aligned from T=0")
 
-# --- Load Jetson ---
-tegra, memchk, os_faults = {}, {}, {}
+# --- STEP 2: FIXED LOADING LOOP ---
+tegra, memchk, os_faults, os_error_logs = {}, {}, {}, {}
 for sess in EXPOSURE:
     sess_dir = JETSON / sess
     if sess_dir.exists():
-        p_teg = sess_dir / "tegrastats_continuous.log"
-        if p_teg.exists():
-            tegra[sess] = parse_tegrastats(p_teg)
+        # ... (keep tegra and memchk loading) ...
         
-        p_mem = sess_dir / "mem_checksum.log"
-        if p_mem.exists():
-            memchk[sess] = parse_memchk(p_mem)
-            
-        os_faults[sess] = parse_os_logs(sess_dir)
-        total_faults = sum(os_faults[sess].values())
-        print(f"  Jetson {sess}: Tegra({len(tegra.get(sess, []))}), MemChk({len(memchk.get(sess, []))}), OS Faults({total_faults} detected)")
-
+        # UNPACK THE TUPLE HERE
+        fault_dict, samples = parse_os_logs(sess_dir)
+        os_faults[sess] = fault_dict
+        os_error_logs[sess] = samples
+        
+        total_f = sum(fault_dict.values()) # Now works because fault_dict is the dict
+        print(f"  Jetson {sess}: OS Faults({total_f} detected)")
 # --- Build merged 1-Hz telemetry using elapsed_s ---
 def merge_session(sess):
     sd = mavlink.get(sess, {})
@@ -834,16 +824,23 @@ narrative_ctx = (
     f"Memory checksum errors: {memchk_errors}\n"
     f"Platform: CubePilot + Jetson Xavier NX, stationary in radiation facility"
 )
-
+# --- FINAL MISSION NARRATIVE (Where the OS errors are explained) ---
+all_samples = [item for sublist in os_error_logs.values() for item in sublist]
+narrative_ctx += f"\nCRITICAL OS LOG SAMPLES (The cause of grounding):\n" + "\n".join(all_samples[:15])
 if GEMINI_OK:
     try:
-        resp = gemini_model.generate_content(
-            f"You are a radiation safety officer writing the executive summary for a "
-            f"drone radiation exposure test report. The drone was stationary (not flying) "
-            f"inside a radiation facility. Based on this data:\n{narrative_ctx}\n\n"
-            f"Write a single concise paragraph (5-7 sentences) suitable as the executive "
-            f"summary of the mission safety report. Cover: what was tested, key findings, "
-            f"whether the hardware survived, and the readiness verdict.")
+        # We add a specific instruction to explain the "Grounding" reason
+        # Update the Executive Summary prompt to use these samples
+        summary_prompt = (
+            f"Write a 5-7 sentence executive summary in Slovak. Based on these OS log samples "
+            f"and the flight score, explain exactly WHY the drone is grounded. "
+            f"Focus on the logical degradation (OS faults) versus the physical survival.\n\n"
+            f"Data:\n{narrative_ctx}"
+        )
+        if GENERATE_SLOVAK_COMMENTARY:
+            summary_prompt += "\nNAPÍŠTE TO V SLOVENČINE."
+            
+        resp = gemini_model.generate_content(summary_prompt)
         executive_summary = resp.text.strip()
     except Exception as e:
         print(f"    Gemini narrative failed: {e}")
