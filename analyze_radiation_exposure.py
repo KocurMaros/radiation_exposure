@@ -14,6 +14,7 @@ Sessions after exposure/reboot: 2nd_after_reboot, 3rd_after_boot, 4th-8th
 import os
 import re
 import warnings
+import argparse
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -23,6 +24,14 @@ import matplotlib.dates as mdates
 from matplotlib.gridspec import GridSpec
 from datetime import datetime, timedelta
 from scipy import stats
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--lang', choices=['en', 'sk'], default='en', help='Language for output (en or sk)')
+args = parser.parse_args()
+LANG = args.lang
+
+def _t(en_text, sk_text):
+    return sk_text if LANG == 'sk' else en_text
 
 warnings.filterwarnings('ignore')
 
@@ -36,13 +45,13 @@ OUTPUT = '/home/frajer/Projects/radiation_exposure/output'
 
 os.makedirs(OUTPUT, exist_ok=True)
 
-EXPOSURE_SESSIONS = ['1st', '2nd', '3rd']
-POST_SESSIONS = ['4th', '5th', '6th', '8th']
+EXPOSURE_SESSIONS = ['02_DURING_exposure_run1', '03_DURING_exposure_run2', '04_DURING_exposure_run3']
+POST_SESSIONS = ['01_PRE_baseline', '02_PRE_baseline', '05_POST_recovery_day1', '06_POST_recovery_day1']
 ALL_SESSIONS = EXPOSURE_SESSIONS + POST_SESSIONS
 
 SESSION_COLORS = {
-    '1st': '#e74c3c', '2nd': '#e67e22', '3rd': '#f1c40f',
-    '4th': '#2ecc71', '5th': '#1abc9c', '6th': '#3498db', '8th': '#9b59b6'
+    '02_DURING_exposure_run1': '#e74c3c', '03_DURING_exposure_run2': '#e67e22', '04_DURING_exposure_run3': '#f1c40f',
+    '01_PRE_baseline': '#2ecc71', '02_PRE_baseline': '#1abc9c', '05_POST_recovery_day1': '#3498db', '06_POST_recovery_day1': '#9b59b6'
 }
 
 plt.rcParams.update({
@@ -399,8 +408,7 @@ print("=" * 60)
 #  we plot the IMU sensor drift as the primary indicator of radiation effects)
 print("  1. sensor_drift_vs_time.png")
 fig, axes = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
-fig.suptitle('Sensor Drift During Radiation Exposure\n(Deviation from initial readings — stationary drone)', 
-             fontsize=14, fontweight='bold')
+fig.suptitle(_t('Sensor Drift During Radiation Exposure\n(Deviation from initial readings — stationary drone)', 'Posun senzorov počas vystavenia radiácii\n(Odchýlka od počiatočných hodnôt — stacionárny dron)'), fontsize=14, fontweight='bold')
 
 for session in EXPOSURE_SESSIONS:
     mask = merged['session'] == session
@@ -411,24 +419,24 @@ for session in EXPOSURE_SESSIONS:
     
     if 'acc_magnitude_drift' in merged.columns:
         axes[0].plot(t, merged.loc[mask, 'acc_magnitude_drift'], 
-                    color=color, alpha=0.7, label=f'{session} exposure', linewidth=0.8)
+                    color=color, alpha=0.7, label=f"{session} {_t('exposure', 'expozícia')}", linewidth=0.8)
     if 'gyro_magnitude_drift' in merged.columns:
         axes[1].plot(t, merged.loc[mask, 'gyro_magnitude_drift'],
-                    color=color, alpha=0.7, label=f'{session} exposure', linewidth=0.8)
+                    color=color, alpha=0.7, label=f"{session} {_t('exposure', 'expozícia')}", linewidth=0.8)
     if 'mag_magnitude_drift' in merged.columns:
         axes[2].plot(t, merged.loc[mask, 'mag_magnitude_drift'],
-                    color=color, alpha=0.7, label=f'{session} exposure', linewidth=0.8)
+                    color=color, alpha=0.7, label=f"{session} {_t('exposure', 'expozícia')}", linewidth=0.8)
 
-axes[0].set_ylabel('Accel Drift (mg)')
-axes[0].set_title('Accelerometer Magnitude Drift')
+axes[0].set_ylabel(_t('Accel Drift (mg)', 'Posun akcelerometra (mg)'))
+axes[0].set_title(_t('Accelerometer Magnitude Drift', 'Posun magnitúdy akcelerometra'))
 axes[0].legend(loc='upper right')
-axes[1].set_ylabel('Gyro Drift (mrad/s)')
-axes[1].set_title('Gyroscope Magnitude Drift')
+axes[1].set_ylabel(_t('Gyro Drift (mrad/s)', 'Posun gyroskopu (mrad/s)'))
+axes[1].set_title(_t('Gyroscope Magnitude Drift', 'Posun magnitúdy gyroskopu'))
 axes[1].legend(loc='upper right')
-axes[2].set_ylabel('Mag Drift (mGauss)')
-axes[2].set_title('Magnetometer Magnitude Drift')
+axes[2].set_ylabel(_t('Mag Drift (mGauss)', 'Posun magnetometra (mGauss)'))
+axes[2].set_title(_t('Magnetometer Magnitude Drift', 'Posun magnitúdy magnetometra'))
 axes[2].legend(loc='upper right')
-axes[2].set_xlabel('Time (UTC)')
+axes[2].set_xlabel(_t('Time (UTC)', 'Čas (UTC)'))
 
 for ax in axes:
     ax.axhline(y=0, color='k', linestyle='--', alpha=0.3)
@@ -459,7 +467,7 @@ for session in ALL_SESSIONS:
             marker = 'o' if is_exp else 's'
             alpha = 0.6 if is_exp else 0.3
             ax.scatter(x[valid], y[valid], c=SESSION_COLORS.get(session, 'gray'),
-                      label=f'{session} {"(exposure)" if is_exp else "(post)"}',
+                      label=f"{session} {'(expozícia)' if (LANG=='sk' and is_exp) else ('(po expozícii)' if LANG=='sk' and not is_exp else ('(exposure)' if is_exp else '(post)'))}",
                       alpha=alpha, s=3, marker=marker)
 
 # Add trend line for exposure data
@@ -472,12 +480,11 @@ if 'imu_temp_C' in merged.columns and 'relative_alt_m' in merged.columns:
         slope, intercept, r, p, se = stats.linregress(x_all, y_all)
         x_line = np.linspace(x_all.min(), x_all.max(), 100)
         ax.plot(x_line, slope * x_line + intercept, 'r--', linewidth=2,
-               label=f'Trend (R²={r**2:.3f})')
+               label=f"{_t('Trend', 'Trend')} (R²={r**2:.3f})")
 
-ax.set_xlabel('IMU Temperature (°C)')
-ax.set_ylabel('Barometric Relative Altitude (m)')
-ax.set_title('Barometric Altitude Drift vs IMU Temperature\n(Stationary drone — altitude should be constant)',
-            fontsize=13, fontweight='bold')
+ax.set_xlabel(_t('IMU Temperature (°C)', 'Teplota IMU (°C)'))
+ax.set_ylabel(_t('Barometric Relative Altitude (m)', 'Barometrická relatívna výška (m)'))
+ax.set_title(_t('Barometric Altitude Drift vs IMU Temperature\n(Stationary drone — altitude should be constant)', 'Posun barometrickej výšky vs Teplota IMU\n(Stacionárny dron — výška by mala byť konštantná)'), fontsize=13, fontweight='bold')
 ax.legend(loc='best', fontsize=8)
 plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT, 'radiation_vs_altitude.png'))
@@ -488,12 +495,10 @@ plt.close()
 # (Adapted from flight_path_radiation — EKF health as proxy for navigation degradation)
 print("  3. ekf_variance_timeline.png")
 fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-fig.suptitle('EKF Navigation Filter Health During Radiation Exposure\n(Higher variance = degraded estimation quality)',
-            fontsize=14, fontweight='bold')
+fig.suptitle(_t('EKF Navigation Filter Health During Radiation Exposure\n(Higher variance = degraded estimation quality)', 'Stav navigačného filtra EKF počas vystavenia radiácii\n(Vyššia variancia = zhoršená kvalita odhadu)'), fontsize=14, fontweight='bold')
 
 ekf_vars = ['compass_variance', 'pos_horiz_variance', 'pos_vert_variance', 'velocity_variance']
-ekf_labels = ['Compass Variance', 'Horizontal Position Variance', 
-              'Vertical Position Variance', 'Velocity Variance']
+ekf_labels = [_t('Compass Variance', 'Variancia kompasu'), _t('Horizontal Position Variance', 'Variancia horiz. pozície'), _t('Vertical Position Variance', 'Variancia vertikálnej pozície'), _t('Velocity Variance', 'Variancia rýchlosti')]
 
 for idx, (var, label) in enumerate(zip(ekf_vars, ekf_labels)):
     ax = axes.flat[idx]
@@ -517,7 +522,7 @@ for idx, (var, label) in enumerate(zip(ekf_vars, ekf_labels)):
                label=f'{session}{"*" if is_exp else ""}')
     
     ax.set_title(label)
-    ax.set_ylabel('Variance')
+    ax.set_ylabel(_t('Variance', 'Variancia'))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
     ax.legend(fontsize=7, loc='upper right')
 
@@ -526,55 +531,10 @@ plt.savefig(os.path.join(OUTPUT, 'flight_path_radiation.png'))
 plt.close()
 
 
-# --------------- PLOT 4: 3D Sensor State Space ---------------
-# (Adapted from radiation_3d — 3D view of IMU state during exposure)
-print("  4. sensor_3d_state.png")
-fig = plt.figure(figsize=(14, 10))
-ax = fig.add_subplot(111, projection='3d')
-
-for session in EXPOSURE_SESSIONS:
-    mask = merged['session'] == session
-    if not mask.any():
-        continue
-    
-    cols_needed = ['xacc', 'yacc', 'zacc']
-    if not all(c in merged.columns for c in cols_needed):
-        continue
-    
-    valid = mask
-    for c in cols_needed:
-        valid = valid & merged[c].notna()
-    
-    if not valid.any():
-        continue
-    
-    # Color by elapsed time to show progression
-    elapsed = merged.loc[valid, 'elapsed_min']
-    scatter = ax.scatter(merged.loc[valid, 'xacc'],
-                        merged.loc[valid, 'yacc'], 
-                        merged.loc[valid, 'zacc'],
-                        c=elapsed, cmap='plasma', s=2, alpha=0.5,
-                        label=f'{session}')
-
-ax.set_xlabel('X Accel (mg)')
-ax.set_ylabel('Y Accel (mg)')
-ax.set_zlabel('Z Accel (mg)')
-ax.set_title('3D Accelerometer State Space During Radiation Exposure\n(Color = elapsed time in session)',
-            fontsize=13, fontweight='bold')
-if 'scatter' in dir():
-    cbar = plt.colorbar(scatter, ax=ax, shrink=0.6, pad=0.1)
-    cbar.set_label('Elapsed Time (min)')
-ax.legend(fontsize=8)
-plt.tight_layout()
-plt.savefig(os.path.join(OUTPUT, 'radiation_3d.png'))
-plt.close()
-
-
 # --------------- PLOT 5: Cumulative Effects Over Exposure ---------------
 print("  5. cumulative_effects.png")
 fig, axes = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
-fig.suptitle('Cumulative Radiation Exposure Effects on Hardware\n(Across all 3 exposure sessions)',
-            fontsize=14, fontweight='bold')
+fig.suptitle(_t('Cumulative Radiation Exposure Effects on Hardware\n(Across all 3 exposure sessions)', 'Kumulatívne účinky radiácie na hardvér\n(Naprieč všetkými 3 sekciami expozície)'), fontsize=14, fontweight='bold')
 
 for session in EXPOSURE_SESSIONS:
     mask = merged['session'] == session
@@ -598,16 +558,16 @@ for session in EXPOSURE_SESSIONS:
         axes[2].plot(t, merged.loc[mask, 'compass_variance'],
                     color=color, alpha=0.7, label=f'{session}', linewidth=0.8)
 
-axes[0].set_ylabel('Baro Temp (°C)')
-axes[0].set_title('Barometric Sensor Temperature')
+axes[0].set_ylabel(_t('Baro Temp (°C)', 'Teplota baro (°C)'))
+axes[0].set_title(_t('Barometric Sensor Temperature', 'Teplota barometrického senzora'))
 axes[0].legend(loc='upper right', fontsize=8)
-axes[1].set_ylabel('Vibration (m/s²)')
-axes[1].set_title('Total Vibration Level')
+axes[1].set_ylabel(_t('Vibration (m/s²)', 'Vibrácie (m/s²)'))
+axes[1].set_title(_t('Total Vibration Level', 'Celková úroveň vibrácií'))
 axes[1].legend(loc='upper right', fontsize=8)
-axes[2].set_ylabel('Compass Var.')
-axes[2].set_title('Compass Variance (Navigation Degradation)')
+axes[2].set_ylabel(_t('Compass Var.', 'Variancia kompasu'))
+axes[2].set_title(_t('Compass Variance (Navigation Degradation)', 'Variancia kompasu (Zhoršenie navigácie)'))
 axes[2].legend(loc='upper right', fontsize=8)
-axes[2].set_xlabel('Time (UTC)')
+axes[2].set_xlabel(_t('Time (UTC)', 'Čas (UTC)'))
 
 for ax in axes:
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
@@ -620,8 +580,7 @@ plt.close()
 # --------------- PLOT 6: Telemetry Overview (Voltage, Temperature, EKF) ---------------
 print("  6. telemetry_overview.png")
 fig, axes = plt.subplots(4, 1, figsize=(14, 12), sharex=True)
-fig.suptitle('Telemetry Overview — All Sessions\n(Red-shaded = exposure sessions, White = post-exposure)',
-            fontsize=14, fontweight='bold')
+fig.suptitle(_t('Telemetry Overview — All Sessions\n(Red-shaded = exposure sessions, White = post-exposure)', 'Prehľad telemetrie — Všetky sekcie\n(Červená = expozícia, Biela = po expozícii)'), fontsize=14, fontweight='bold')
 
 for session in ALL_SESSIONS:
     mask = merged['session'] == session
@@ -653,15 +612,15 @@ for session in ALL_SESSIONS:
         axes[3].plot(t, merged.loc[mask, 'relative_alt_m'], color=color, alpha=alpha,
                     linewidth=lw, label=f'{session}{"*" if is_exp else ""}')
 
-axes[0].set_ylabel('Voltage (V)')
-axes[0].set_title('Board Voltage (Vcc)')
-axes[1].set_ylabel('Temp (°C)')
+axes[0].set_ylabel(_t('Voltage (V)', 'Napätie (V)'))
+axes[0].set_title(_t('Board Voltage (Vcc)', 'Napätie dosky (Vcc)'))
+axes[1].set_ylabel(_t('Temp (°C)', 'Teplota (°C)'))
 axes[1].set_title('IMU Temperature')
-axes[2].set_ylabel('Pressure (hPa)')
-axes[2].set_title('Barometric Pressure')
-axes[3].set_ylabel('Rel. Alt (m)')
-axes[3].set_title('Barometric Relative Altitude (drift from home)')
-axes[3].set_xlabel('Time (UTC)')
+axes[2].set_ylabel(_t('Pressure (hPa)', 'Tlak (hPa)'))
+axes[2].set_title(_t('Barometric Pressure', 'Barometrický tlak'))
+axes[3].set_ylabel(_t('Rel. Alt (m)', 'Rel. výška (m)'))
+axes[3].set_title(_t('Barometric Relative Altitude (drift from home)', 'Barometrická relatívna výška (odchýlka od domova)'))
+axes[3].set_xlabel(_t('Time (UTC)', 'Čas (UTC)'))
 
 # Shade exposure periods
 for ax in axes:
@@ -682,8 +641,7 @@ plt.close()
 # --------------- PLOT 7: Vibration Distribution Histogram ---------------
 print("  7. vibration_histogram.png")
 fig, axes = plt.subplots(1, 3, figsize=(16, 6))
-fig.suptitle('Distribution of Vibration Readings — Exposure vs Post-Exposure',
-            fontsize=14, fontweight='bold')
+fig.suptitle(_t('Distribution of Vibration Readings — Exposure vs Post-Exposure', 'Distribúcia údajov o vibráciách — Expozícia vs Po expozícii'), fontsize=14, fontweight='bold')
 
 for idx, var in enumerate(['vibration_x', 'vibration_y', 'vibration_z']):
     ax = axes[idx]
@@ -695,20 +653,20 @@ for idx, var in enumerate(['vibration_x', 'vibration_y', 'vibration_z']):
     post_data = merged.loc[~merged['is_exposure'] & merged[var].notna(), var]
     
     if len(exp_data) > 0:
-        ax.hist(exp_data, bins=80, alpha=0.6, color='red', label='During Exposure', density=True)
+        ax.hist(exp_data, bins=80, alpha=0.6, color='red', label=_t('During Exposure', 'Počas expozície'), density=True)
         mean_exp = exp_data.mean()
         std_exp = exp_data.std()
-        ax.axvline(mean_exp, color='darkred', linestyle='--', linewidth=2, label=f'Exp μ={mean_exp:.4f}')
+        ax.axvline(mean_exp, color='darkred', linestyle='--', linewidth=2, label=f"{_t('Exp', 'Exp')} μ={mean_exp:.4f}")
         ax.axvline(mean_exp + 2*std_exp, color='darkred', linestyle=':', linewidth=1.5, 
-                  label=f'Exp μ+2σ={mean_exp+2*std_exp:.4f}')
+                  label=f"{_t('Exp', 'Exp')} μ+2σ={mean_exp+2*std_exp:.4f}")
     
     if len(post_data) > 0:
-        ax.hist(post_data, bins=80, alpha=0.4, color='blue', label='Post-Exposure', density=True)
+        ax.hist(post_data, bins=80, alpha=0.4, color='blue', label=_t('Post-Exposure', 'Po expozícii'), density=True)
         mean_post = post_data.mean()
-        ax.axvline(mean_post, color='darkblue', linestyle='--', linewidth=2, label=f'Post μ={mean_post:.4f}')
+        ax.axvline(mean_post, color='darkblue', linestyle='--', linewidth=2, label=f"{_t('Post', 'Post')} μ={mean_post:.4f}")
     
     ax.set_xlabel(f'{var} (m/s²)')
-    ax.set_ylabel('Density')
+    ax.set_ylabel(_t('Density', 'Hustota'))
     ax.set_title(f'{var.replace("_", " ").title()}')
     ax.legend(fontsize=7)
 
@@ -720,11 +678,10 @@ plt.close()
 # --------------- PLOT 8: Anomaly Detection ---------------
 print("  8. anomaly_flagged.png")
 fig, axes = plt.subplots(3, 1, figsize=(14, 10), sharex=True)
-fig.suptitle('Anomaly Detection — Readings Exceeding μ ± 2σ Highlighted in Red\n(Based on exposure session statistics)',
-            fontsize=14, fontweight='bold')
+fig.suptitle(_t('Anomaly Detection — Readings Exceeding μ ± 2σ Highlighted in Red\n(Based on exposure session statistics)', 'Detekcia anomálií — Hodnoty nad μ ± 2σ zvýraznené červenou\n(Založené na štatistikách expozície)'), fontsize=14, fontweight='bold')
 
 anomaly_vars = ['vibration_total', 'compass_variance', 'relative_alt_m']
-anomaly_labels = ['Total Vibration (m/s²)', 'Compass Variance', 'Relative Altitude (m)']
+anomaly_labels = [_t('Total Vibration (m/s²)', 'Celkové vibrácie (m/s²)'), _t('Compass Variance', 'Variancia kompasu'), _t('Relative Altitude (m)', 'Relatívna výška (m)')]
 anomaly_count = 0
 
 for idx, (var, label) in enumerate(zip(anomaly_vars, anomaly_labels)):
@@ -785,7 +742,7 @@ for idx, (var, label) in enumerate(zip(anomaly_vars, anomaly_labels)):
     ax.legend(fontsize=7, loc='upper right')
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
 
-axes[-1].set_xlabel('Time (UTC)')
+axes[-1].set_xlabel(_t('Time (UTC)', 'Čas (UTC)'))
 plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT, 'anomaly_flagged.png'))
 plt.close()
@@ -799,8 +756,7 @@ print(f"  Total anomalous points flagged during exposure: {anomaly_count}")
 print("  BONUS: jetson_health.png")
 if tegra_data:
     fig, axes = plt.subplots(4, 1, figsize=(14, 12), sharex=False)
-    fig.suptitle('Jetson Xavier NX Health During Radiation Exposure',
-                fontsize=14, fontweight='bold')
+    fig.suptitle(_t('Jetson Xavier NX Health During Radiation Exposure', 'Zdravie Jetson Xavier NX počas vystavenia radiácii'), fontsize=14, fontweight='bold')
     
     for session in EXPOSURE_SESSIONS:
         if session not in tegra_data:
@@ -824,19 +780,19 @@ if tegra_data:
         if 'pwr_vdd_in_inst_mw' in df.columns:
             axes[3].plot(t, df['pwr_vdd_in_inst_mw'], color=color, label=f'{session}', linewidth=1)
     
-    axes[0].set_ylabel('RAM Used (MB)')
-    axes[0].set_title('RAM Usage')
+    axes[0].set_ylabel(_t('RAM Used (MB)', 'Využitá RAM (MB)'))
+    axes[0].set_title(_t('RAM Usage', 'Využitie RAM'))
     axes[0].legend(fontsize=8)
-    axes[1].set_ylabel('CPU Load (%)')
-    axes[1].set_title('Average CPU Utilization')
+    axes[1].set_ylabel(_t('CPU Load (%)', 'Záťaž CPU (%)'))
+    axes[1].set_title(_t('Average CPU Utilization', 'Priemerné využitie CPU'))
     axes[1].legend(fontsize=8)
-    axes[2].set_ylabel('Temperature (°C)')
-    axes[2].set_title('CPU/GPU Temperature')
+    axes[2].set_ylabel(_t('Temperature (°C)', 'Teplota (°C)'))
+    axes[2].set_title(_t('CPU/GPU Temperature', 'Teplota CPU/GPU'))
     axes[2].legend(fontsize=7)
-    axes[3].set_ylabel('Power (mW)')
-    axes[3].set_title('Total Board Power (VDD_IN)')
+    axes[3].set_ylabel(_t('Power (mW)', 'Príkon (mW)'))
+    axes[3].set_title(_t('Total Board Power (VDD_IN)', 'Celkový príkon dosky (VDD_IN)'))
     axes[3].legend(fontsize=8)
-    axes[3].set_xlabel('Time (UTC)')
+    axes[3].set_xlabel(_t('Time (UTC)', 'Čas (UTC)'))
     
     for ax in axes:
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
@@ -885,7 +841,8 @@ for session in ALL_SESSIONS:
     t_max = merged.loc[mask, 'timestamp'].max()
     dur = (t_max - t_min).total_seconds() / 60
     n = mask.sum()
-    is_exp = "EXPOSURE" if session in EXPOSURE_SESSIONS else "POST"
+    is_exp_key = 'EXPOSURE' if session in EXPOSURE_SESSIONS else 'POST'
+    is_exp = _t('EXPOSURE', 'EXPOZÍCIA') if is_exp_key == 'EXPOSURE' else _t('POST', 'PO-EXPOZÍCII')
     session_summaries.append(f"| {session} | {is_exp} | {t_min.strftime('%H:%M:%S')} | {t_max.strftime('%H:%M:%S')} | {dur:.1f} min | {n:,} |")
 
 # Vcc stats
@@ -915,7 +872,81 @@ for var in ['vibration_total', 'compass_variance', 'relative_alt_m']:
 
 now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-report = f"""# Drone Radiation Exposure Analysis Report
+if LANG == 'sk':
+    report = f"""# Správa o analýze vystavenia dronu radiácii
+
+**Vygenerované:** {now}  
+**Celková doba expozície:** {total_exposure_min:.1f} minút | **Dátové body:** {total_datapoints:,}  
+**Platforma:** Autopilot CubePilot + Jetson Xavier NX na stacionárnom drone  
+**Dátum experimentu:** 2025-12-14/15  
+**Sekcie expozície:** 1st, 2nd, 3rd | **Sekcie po expozícii:** 4th, 5th, 6th, 8th
+
+---
+
+## Inventár dát
+
+### Telemetria MAVLink (z CubePilot cez Raspberry Pi logger)
+- **Typy správ:** GLOBAL_POSITION_INT, SYS_STATUS, VFR_HUD, HEARTBEAT, VIBRATION, SCALED_IMU, EKF_STATUS_REPORT, HWSTATUS, SCALED_PRESSURE, POWER_STATUS, RAW_IMU + ďalšie
+- **Vzorkovacia frekvencia:** ~10 Hz (100 ms intervaly)
+- **GPS:** Bez fixu (vo vnútri ožarovacej miestnosti) — lat/lon = 0
+
+### Logy Jetson Xavier NX
+- **tegrastats:** 1 Hz monitorovanie (RAM, CPU, GPU, teploty, výkon)
+- **dmesg:** Kontinuálny kernel log
+- **mem_checksum:** Kontroly integrity pamäte (alokácia + SHA256)
+- **journal:** systemd journal každých ~60s
+
+### Časová os (UTC)
+| Sekcia | Typ | Štart | Koniec | Trvanie | Dátové body |
+|---------|------|-------|-----|----------|-------------|
+{chr(10).join(session_summaries)}
+
+### Kľúčové zistenia
+- **Bez externého dozimetra** — experiment sleduje ÚČINKY radiácie na elektroniku
+- **Stacionárny dron** — senzory by mali ukazovať konštantné hodnoty
+- **Kontrolné súčty pamäte:** {memchk_total_checks} kontrol, **{memchk_total_errors} chýb**
+
+---
+## Špecifické zistenia a grafy
+
+## 1. Posun senzorov počas vystavenia radiácii
+![radiation_vs_time](radiation_vs_time.png)
+
+## 2. Posun barometrickej výšky vs Teplota IMU
+![radiation_vs_altitude](radiation_vs_altitude.png)
+
+## 3. Stav navigačného filtra EKF
+![flight_path_radiation](flight_path_radiation.png)
+
+## 4. 3D stavový priestor akcelerometra
+![radiation_3d](radiation_3d.png)
+
+## 5. Kumulatívne účinky radiácie na hardvér
+![cumulative_dose](cumulative_dose.png)
+
+## 6. Prehľad telemetrie — Všetky sekcie
+![telemetry_overview](telemetry_overview.png)
+
+## 7. Distribúcia údajov o vibráciách
+![radiation_histogram](radiation_histogram.png)
+
+## 8. Detekcia anomálií — Štatistické odchýlky
+![anomaly_flagged](anomaly_flagged.png)
+
+## Dodatok: Zdravie Jetson Xavier NX
+![jetson_health](jetson_health.png)
+
+---
+## Súhrn zistení
+
+| Metrika | Počas expozície | Po expozícii | Stav |
+|--------|----------------|---------------|------------|
+| Napätie dosky (Vcc) | {vcc_exp.mean():.3f} ± {vcc_exp.std():.4f} V | {vcc_post.mean():.3f} ± {vcc_post.std():.4f} V | {"Stabilné ✓" if abs(vcc_exp.mean() - vcc_post.mean()) < 0.05 else "Zmenené ⚠"} |
+| Kontrola pamäte | {memchk_total_errors} chýb / {memchk_total_checks} kontrol | N/A | {"Bez bit-flipov ✓" if memchk_total_errors == 0 else f"{memchk_total_errors} bit-flipov ⚠"} |
+| Jetson Systém | Operatívny | Operatívny | Žiadne pády ✓ |
+"""
+else:
+    report = f"""# Drone Radiation Exposure Analysis Report
 
 **Generated:** {now}  
 **Total exposure duration:** {total_exposure_min:.1f} minutes | **Data points:** {total_datapoints:,}  
