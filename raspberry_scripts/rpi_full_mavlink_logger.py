@@ -19,7 +19,8 @@ import os
 import sys
 import time
 from datetime import datetime
-from typing import Dict, Tuple, List
+from typing import Dict, List, Tuple
+
 from pymavlink import mavutil
 
 
@@ -63,11 +64,15 @@ class RpiMavlinkLogger:
             dialect="ardupilotmega",
         )
         self._mav.wait_heartbeat(timeout=20)
-        print(f"Heartbeat from system {self._mav.target_system} component {self._mav.target_component}")
+        print(
+            f"Heartbeat from system {self._mav.target_system} component {self._mav.target_component}"
+        )
 
     def _request_all_intervals(self) -> None:
         interval_us = int(1_000_000 / self.rate_hz) if self.rate_hz > 0 else 0
-        print(f"Requesting per-message intervals for all known IDs at {self.rate_hz} Hz (interval {interval_us} us)")
+        print(
+            f"Requesting per-message intervals for all known IDs at {self.rate_hz} Hz (interval {interval_us} us)"
+        )
         all_ids = discover_message_ids()
         for msg_name, msg_id in all_ids:
             try:
@@ -86,7 +91,11 @@ class RpiMavlinkLogger:
                 )
                 # Non-blocking ack check; many autopilots may not ACK every ID
                 ack = self._mav.recv_match(type="COMMAND_ACK", blocking=False, timeout=0)
-                if ack and ack.command == mavutil.mavlink.MAV_CMD_SET_MESSAGE_INTERVAL and ack.result != mavutil.mavlink.MAV_RESULT_ACCEPTED:
+                if (
+                    ack
+                    and ack.command == mavutil.mavlink.MAV_CMD_SET_MESSAGE_INTERVAL
+                    and ack.result != mavutil.mavlink.MAV_RESULT_ACCEPTED
+                ):
                     print(f"  {msg_name:<25} id={msg_id:<4} -> result {ack.result}")
             except Exception as exc:
                 # Keep going even if some IDs are not supported
@@ -112,12 +121,19 @@ class RpiMavlinkLogger:
         print(f"Logging to: {self.log_dir}")
 
     def _create_writer(self, msg_type: str, row: dict) -> None:
-        fieldnames = self.common_fieldnames + sorted([k for k in row.keys() if k not in self.common_fieldnames])
+        fieldnames = self.common_fieldnames + sorted(
+            [k for k in row.keys() if k not in self.common_fieldnames]
+        )
         file_path = os.path.join(self.log_dir, f"{msg_type}.csv")
-        print(f"   -> Creating log file: {msg_type}.csv")
-        f = open(file_path, "w", newline="")
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
+        if os.path.exists(file_path):
+            print(f"   -> Reopening log file (append): {msg_type}.csv")
+            f = open(file_path, "a", newline="")
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+        else:
+            print(f"   -> Creating log file: {msg_type}.csv")
+            f = open(file_path, "w", newline="")
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+            writer.writeheader()
         self._csv_files[msg_type] = f
         self._csv_writers[msg_type] = writer
 
@@ -144,39 +160,78 @@ class RpiMavlinkLogger:
         # Flush every write to satisfy "save after every read" requirement
         self._csv_files[msg_type].flush()
 
+    def _log_disconnect(self, reason: str) -> None:
+        timestamp = datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        disconnect_path = os.path.join(self.log_dir, "disconnects.log")
+        line = f"{timestamp} | {reason}\n"
+        with open(disconnect_path, "a") as f:
+            f.write(line)
+        print(f"DISCONNECT logged: {reason}")
+
+    def _close_connection(self) -> None:
+        if self._mav:
+            try:
+                self._mav.close()
+            except Exception:
+                pass
+            self._mav = None
+
+    def _close_csv_files(self) -> None:
+        for f in self._csv_files.values():
+            try:
+                f.close()
+            except Exception:
+                pass
+        self._csv_files.clear()
+        self._csv_writers.clear()
+
     def run(self) -> None:
         self._prepare_logging()
-        self._open_connection()
-        self._request_all_intervals()
+        reconnect_delay = 2
 
-        print("Starting log loop. Press Ctrl+C to stop.")
-        try:
-            while True:
-                msg = self._mav.recv_match(blocking=True, timeout=1.0)
-                if msg is not None:
-                    self._log_message(msg)
-        except KeyboardInterrupt:
-            print("\nStopping (Ctrl+C)")
-        finally:
-            for f in self._csv_files.values():
+        while True:
+            try:
+                self._open_connection()
+                self._request_all_intervals()
+
+                print("Starting log loop. Press Ctrl+C to stop.")
+                while True:
+                    msg = self._mav.recv_match(blocking=True, timeout=1.0)
+                    if msg is not None:
+                        self._log_message(msg)
+
+            except KeyboardInterrupt:
+                print("\nStopping (Ctrl+C)")
+                break
+
+            except Exception as exc:
+                self._log_disconnect(str(exc))
+                self._close_connection()
+                self._close_csv_files()
+                print(f"Reconnecting in {reconnect_delay}s...")
                 try:
-                    f.close()
-                except Exception:
-                    pass
-            if self._mav:
-                try:
-                    self._mav.close()
-                except Exception:
-                    pass
-            print(f"Logs saved under {self.log_dir}")
+                    time.sleep(reconnect_delay)
+                except KeyboardInterrupt:
+                    print("\nStopping (Ctrl+C)")
+                    break
+
+        self._close_csv_files()
+        self._close_connection()
+        print(f"Logs saved under {self.log_dir}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Local Raspberry Pi MAVLink full logger")
-    parser.add_argument("--device", default="/dev/ttyACM0", help="Serial device for Cube (default: /dev/ttyACM0)")
+    parser.add_argument(
+        "--device", default="/dev/ttyACM0", help="Serial device for Cube (default: /dev/ttyACM0)"
+    )
     parser.add_argument("--baud", type=int, default=921600, help="Baud rate (default: 921600)")
-    parser.add_argument("--log-dir", default="mavlink_logs", help="Base log directory (default: mavlink_logs)")
-    parser.add_argument("--rate-hz", type=float, default=10.0, help="Requested per-message rate in Hz (default: 10)")
+    parser.add_argument(
+        "--log-dir", default="mavlink_logs", help="Base log directory (default: mavlink_logs)"
+    )
+    parser.add_argument(
+        "--rate-hz", type=float, default=10.0, help="Requested per-message rate in Hz (default: 10)"
+    )
     return parser.parse_args()
 
 
