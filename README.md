@@ -11,6 +11,14 @@ Two scripts run on the Raspberry Pi as systemd services and log everything to a 
 
 Both are grouped under `radiation-logging.target` and start automatically on boot.
 
+
+## Requirements 
+
+``` bash
+sudo apt install sshpass
+TODO: pymavlink, pyserial ...
+```
+
 ## Deployment (first time on a new RPi)
 
 ```bash

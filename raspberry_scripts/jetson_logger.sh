@@ -9,6 +9,7 @@
 # ── Configuration ──────────────────────────────────────────────────────────────
 JETSON_USER="dcs_user"
 JETSON_IP="192.168.55.1"
+PASSWORD="dronecore"
 LOG_BASE_DIR="/mnt/log_usb/jetson"
 MEMCHK_SCRIPT_LOCAL="/opt/radiation_logging/mem_checksum_guard.py"
 MEMCHK_SCRIPT_REMOTE="/tmp/mem_checksum_guard.py"
@@ -24,11 +25,11 @@ RETRY_DELAY=10               # seconds between reconnect attempts
 
 # SSH/SCP options shared by all remote calls
 SSH_OPTS=(
-    -o BatchMode=yes
     -o ConnectTimeout=10
     -o ServerAliveInterval=10
     -o ServerAliveCountMax=3
-    -o StrictHostKeyChecking=accept-new
+    -o StrictHostKeyChecking=no
+    -o UserKnownHostsFile=/dev/null
 )
 
 # ── Wait for USB log drive ─────────────────────────────────────────────────────
@@ -72,7 +73,7 @@ trap cleanup SIGTERM SIGINT
 
 # ── Wait for initial SSH connection ───────────────────────────────────────────
 log_sup "Waiting for Jetson SSH at ${JETSON_IP}..."
-until ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" "true" 2>/dev/null; do
+until sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" "true" 2>/dev/null; do
     log_sup "  SSH unavailable, retrying in ${RETRY_DELAY}s..."
     sleep $RETRY_DELAY
 done
@@ -86,14 +87,14 @@ while true; do
     > "${BOOT_TMP}"
 
     echo "--- START JOURNAL_BOOT $(date +%Y%m%d_%H%M%S) ---" >> "${BOOT_TMP}"
-    if ! ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+    if ! sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
             "sudo journalctl --boot --no-pager" >> "${BOOT_TMP}" 2>&1; then
         log_sup "  journalctl capture failed, retrying in ${RETRY_DELAY}s..."
         rm -f "${BOOT_TMP}"; sleep $RETRY_DELAY; continue
     fi
 
     echo "--- START DMESG_BOOT $(date +%Y%m%d_%H%M%S) ---" >> "${BOOT_TMP}"
-    if ! ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+    if ! sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
             "sudo dmesg" >> "${BOOT_TMP}" 2>&1; then
         log_sup "  dmesg capture failed, retrying in ${RETRY_DELAY}s..."
         rm -f "${BOOT_TMP}"; sleep $RETRY_DELAY; continue
@@ -106,7 +107,7 @@ done
 
 # ── Copy mem_checksum_guard.py to Jetson ──────────────────────────────────────
 log_sup "Copying mem_checksum_guard.py to Jetson..."
-until scp -q "${SSH_OPTS[@]}" "${MEMCHK_SCRIPT_LOCAL}" \
+until sshpass -p "${PASSWORD}" scp -q "${SSH_OPTS[@]}" "${MEMCHK_SCRIPT_LOCAL}" \
         "${JETSON_USER}@${JETSON_IP}:${MEMCHK_SCRIPT_REMOTE}" 2>/dev/null; do
     log_sup "  scp failed, retrying in ${RETRY_DELAY}s..."
     sleep $RETRY_DELAY
@@ -122,7 +123,7 @@ log_sup "mem_checksum_guard.py copied."
 (
     while true; do
         log_sup "TASK[tegrastats] connecting..."
-        ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+        sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
             "sudo tegrastats --interval ${TEGRASTAT_INTERVAL_MS}" \
             >> "${LOG_DIR}/tegrastats_continuous.log" 2>&1
         RC=$?
@@ -136,7 +137,7 @@ CHILD_PIDS+=($!)
 (
     while true; do
         log_sup "TASK[dmesg] connecting..."
-        ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+        sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
             "sudo dmesg --follow" \
             >> "${LOG_DIR}/dmesg_continuous.log" 2>&1
         RC=$?
@@ -152,7 +153,7 @@ CHILD_PIDS+=($!)
     while true; do
         SNAP_TS=$(date +%Y%m%d_%H%M%S)
         SNAP_FILE="${LOG_DIR}/journal_${SNAP_TS}.log"
-        if ! ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+        if ! sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
                 "sudo journalctl --no-pager --lines=100" > "${SNAP_FILE}" 2>&1; then
             log_sup "TASK[journal] snapshot at ${SNAP_TS} failed"
             rm -f "${SNAP_FILE}"
@@ -167,7 +168,7 @@ CHILD_PIDS+=($!)
 (
     while true; do
         log_sup "TASK[memchk] connecting..."
-        ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
+        sshpass -p "${PASSWORD}" ssh -n "${SSH_OPTS[@]}" "${JETSON_USER}@${JETSON_IP}" \
             "export MEMCHK_SIZE_MB=${MEMCHK_SIZE_MB} \
                     MEMCHK_ALLOC_INTERVAL=${MEMCHK_ALLOC_INTERVAL} \
                     MEMCHK_CHECK_INTERVAL=${MEMCHK_CHECK_INTERVAL} \
@@ -177,7 +178,7 @@ CHILD_PIDS+=($!)
         RC=$?
         log_sup "TASK[memchk] exited (${RC}), retrying in ${RETRY_DELAY}s..."
         # Re-copy script before next attempt (may have been purged from /tmp)
-        scp -q "${SSH_OPTS[@]}" "${MEMCHK_SCRIPT_LOCAL}" \
+        sshpass -p "${PASSWORD}" scp -q "${SSH_OPTS[@]}" "${MEMCHK_SCRIPT_LOCAL}" \
             "${JETSON_USER}@${JETSON_IP}:${MEMCHK_SCRIPT_REMOTE}" 2>/dev/null || true
         sleep $RETRY_DELAY
     done
