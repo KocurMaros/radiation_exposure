@@ -39,6 +39,8 @@ until mountpoint -q /mnt/log_usb 2>/dev/null && touch /mnt/log_usb/.write_test 2
 done
 rm -f /mnt/log_usb/.write_test
 
+echo "/mnt/log_usb is ready. Starting Jetson logging service."
+
 # ── Session setup ─────────────────────────────────────────────────────────────
 SESSION_TS=$(date +%Y%m%d_%H%M%S)
 LOG_DIR="${LOG_BASE_DIR}/${SESSION_TS}"
