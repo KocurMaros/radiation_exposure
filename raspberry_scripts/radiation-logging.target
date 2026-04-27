@@ -1,0 +1,7 @@
+[Unit]
+Description=Radiation Experiment Logging
+After=local-fs.target network.target
+Wants=cube-mavlink-logger.service jetson-logger.service
+
+[Install]
+WantedBy=multi-user.target

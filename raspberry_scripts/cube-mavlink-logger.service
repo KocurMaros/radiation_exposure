@@ -1,0 +1,27 @@
+[Unit]
+Description=MAVLink Logger for Orange Cube (radiation experiment)
+# Ordering is handled by radiation-logging.target.
+# Disable the default burst restart limit so the service always retries
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/radiation_logging/rpi_full_mavlink_logger.py --log-dir /mnt/log_usb/mavlink --device /dev/ttyACM0 --baud 921600 --rate-hz 10
+# Flush Python stdout immediately so print() output appears in journalctl
+Environment=PYTHONUNBUFFERED=1
+# Always restart — the script's internal retry loops handle transient failures,
+# but if it ever exits (e.g. unhandled exception), systemd restarts it.
+Restart=always
+RestartSec=10
+# All stdout/stderr go to journal: visible with: journalctl -u cube-mavlink-logger -f
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cube-mavlink-logger
+# Kill the entire cgroup on stop (catches any orphaned child processes)
+KillMode=control-group
+KillSignal=SIGTERM
+# Give the script 30s to flush and close CSV files cleanly before SIGKILL
+TimeoutStopSec=30
+
+[Install]
+WantedBy=radiation-logging.target

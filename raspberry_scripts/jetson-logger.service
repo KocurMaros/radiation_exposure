@@ -1,0 +1,27 @@
+[Unit]
+Description=Jetson Xavier Logger (radiation experiment)
+# Ordering is handled by radiation-logging.target.
+# The script itself waits for /mnt/log_usb and for SSH to become available.
+# Disable burst restart limit so the service always retries
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /opt/radiation_logging/jetson_logger.sh
+# Always restart — the script's internal retry loops handle transient failures.
+Restart=always
+RestartSec=10
+# stdout/stderr go to journal. Supervisor events also go to supervisor.log on USB.
+# Monitor with: journalctl -u jetson-logger -f
+# Or: tail -f /mnt/log_usb/jetson/<session>/supervisor.log
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=jetson-logger
+# Kill entire cgroup on stop — cleans up any lingering SSH connections to Jetson
+KillMode=control-group
+KillSignal=SIGTERM
+# Give the script 30s to kill subshells and log a clean shutdown before SIGKILL
+TimeoutStopSec=30
+
+[Install]
+WantedBy=radiation-logging.target

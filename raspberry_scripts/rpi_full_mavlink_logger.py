@@ -16,6 +16,7 @@ running until stopped with Ctrl+C.
 import argparse
 import csv
 import os
+import signal
 import sys
 import time
 from datetime import datetime
@@ -41,6 +42,24 @@ def discover_message_ids() -> List[Tuple[str, int]]:
     for msg_name, msg_id in msg_ids:
         unique[msg_id] = msg_name
     return [(name, msg_id) for msg_id, name in sorted(unique.items(), key=lambda x: x[0])]
+
+
+def wait_for_usb_mount(mount_point: str, check_interval: int = 10) -> None:
+    """Block until mount_point is mounted and writable. Retries every check_interval seconds."""
+    while True:
+        if os.path.ismount(mount_point):
+            test_file = os.path.join(mount_point, ".write_test")
+            try:
+                with open(test_file, "w") as f:
+                    f.write("ok")
+                os.unlink(test_file)
+                print(f"{mount_point} is mounted and writable.")
+                return
+            except OSError:
+                print(f"{mount_point} is not writable yet, retrying in {check_interval}s...")
+        else:
+            print(f"Waiting for {mount_point} to be mounted...")
+        time.sleep(check_interval)
 
 
 class RpiMavlinkLogger:
@@ -187,7 +206,7 @@ class RpiMavlinkLogger:
 
     def run(self) -> None:
         self._prepare_logging()
-        reconnect_delay = 2
+        reconnect_delay = 10
 
         while True:
             try:
@@ -227,7 +246,9 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--baud", type=int, default=921600, help="Baud rate (default: 921600)")
     parser.add_argument(
-        "--log-dir", default="mavlink_logs", help="Base log directory (default: mavlink_logs)"
+        "--log-dir",
+        default="/mnt/log_usb/mavlink",
+        help="Base log directory (default: /mnt/log_usb/mavlink)",
     )
     parser.add_argument(
         "--rate-hz", type=float, default=10.0, help="Requested per-message rate in Hz (default: 10)"
@@ -236,7 +257,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    def _sigterm_handler(signum, frame):
+        raise KeyboardInterrupt
+
+    signal.signal(signal.SIGTERM, _sigterm_handler)
+
     args = parse_args()
+    # Wait until the USB log drive is mounted and writable before doing anything
+    wait_for_usb_mount("/mnt/log_usb")
     logger = RpiMavlinkLogger(args.device, args.baud, args.log_dir, args.rate_hz)
     logger.run()
 
