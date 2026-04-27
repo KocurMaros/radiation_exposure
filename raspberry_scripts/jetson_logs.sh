@@ -4,7 +4,7 @@
 
 # --- Configuration ---
 RPI_USER="rpi"  # Change to your Raspberry Pi username
-RPI_IP="192.168.88.15"  # Your Raspberry Pi ethernet IP
+RPI_IP="192.168.1.102"  # Your Raspberry Pi ethernet IP
 JETSON_USER="dcs_user"
 JETSON_IP="192.168.55.1"  # Jetson IP on its WiFi network
 LOG_BASE_DIR="jetson_logs"

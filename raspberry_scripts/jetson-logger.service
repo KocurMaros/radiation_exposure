@@ -6,6 +6,9 @@ Description=Jetson Xavier Logger (radiation experiment)
 StartLimitIntervalSec=0
 
 [Service]
+User=rpi
+Group=rpi
+Environment=HOME=/home/rpi
 Type=simple
 ExecStart=/bin/bash /opt/radiation_logging/jetson_logger.sh
 # Always restart — the script's internal retry loops handle transient failures.

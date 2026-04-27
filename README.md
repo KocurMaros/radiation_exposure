@@ -91,3 +91,10 @@ sudo -n /bin/journalctl --boot --no-pager | head
 sudo -n /bin/dmesg | head
 sudo -n /usr/bin/tegrastats --interval 1000
 ```
+
+
+## Polish from GPT
+``` bash
+ssh-keygen -t ed25519
+ssh-copy-id dcs_user@192.168.55.1
+```
