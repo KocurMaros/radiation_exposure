@@ -9,7 +9,7 @@ User=rpi
 Group=rpi
 Environment=HOME=/home/rpi
 Type=simple
-ExecStart=/opt/radiation_logging/venv/bin/python /opt/radiation_logging/rpi_full_mavlink_logger.py --log-dir /mnt/log_usb/mavlink --device /dev/ttyACM0 --baud 921600 --rate-hz 10
+ExecStart=/opt/radiation_logging/venv/bin/python /opt/radiation_logging/rpi_full_mavlink_logger.py --log-dir /mnt/log_usb/mavlink --device auto --baud 921600 --rate-hz 10
 # Flush Python stdout immediately so print() output appears in journalctl
 Environment=PYTHONUNBUFFERED=1
 # Always restart — the script's internal retry loops handle transient failures,
