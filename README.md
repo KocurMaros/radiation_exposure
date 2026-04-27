@@ -82,14 +82,13 @@ All actual experiment data goes to the USB drive, not to the journal, so this ca
 If the scripts wont run on a new drone, it is possible that they need sudo priviliges and you may need to add rules to visudo (don't add to main file): 
 
 ``` bash
-sudo visudo -f /etc/sudoers.d/zz-jetson-logger
-
-### Put this line in it
-dcs_user ALL=(ALL:ALL) NOPASSWD: /bin/journalctl, /bin/dmesg, /usr/bin/tegrastats, /usr/bin/python3
-### Put this line in it
+cat <<'EOF' | sudo tee /etc/sudoers.d/zz-jetson-logger
+dcs_user ALL=(ALL:ALL) NOPASSWD: /usr/bin/journalctl, /usr/bin/dmesg, /usr/bin/tegrastats, /usr/bin/python3, /usr/bin/timeout
+EOF
 
 sudo chown root:root /etc/sudoers.d/zz-jetson-logger
 sudo chmod 440 /etc/sudoers.d/zz-jetson-logger
+sudo visudo -cf /etc/sudoers.d/zz-jetson-logger
 ```
 
 You can test if it works by running this on jetson:
