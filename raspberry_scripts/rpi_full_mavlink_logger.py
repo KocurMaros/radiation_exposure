@@ -25,6 +25,29 @@ from typing import Dict, List, Tuple
 from pymavlink import mavutil
 
 
+def detect_device() -> str:
+    """Auto-detect the Cube serial device by scanning available ports."""
+    import serial.tools.list_ports
+
+    print("Auto-detecting Cube connection...")
+    cube_ports = [
+        p.device
+        for p in serial.tools.list_ports.comports()
+        if p.vid == 0x2DAE or "Cube" in (p.description or "")
+    ]
+    if cube_ports:
+        device = sorted(cube_ports)[0]
+        print(f"Detected Cube on {device}")
+        return device
+    # Fallback: first ACM port that isn't a Steam controller etc.
+    for p in serial.tools.list_ports.comports():
+        if "ACM" in p.device and "Steam" not in (p.description or ""):
+            print(f"No specific Cube found, trying first available ACM port: {p.device}")
+            return p.device
+    print("No specific Cube found, falling back to /dev/ttyACM0")
+    return "/dev/ttyACM0"
+
+
 def discover_message_ids() -> List[Tuple[str, int]]:
     """Collect all MAVLink message IDs exposed by pymavlink (ardupilotmega dialect)."""
     msg_ids: List[Tuple[str, int]] = []
@@ -64,6 +87,7 @@ def wait_for_usb_mount(mount_point: str, check_interval: int = 10) -> None:
 
 class RpiMavlinkLogger:
     def __init__(self, device: str, baud: int, log_base_dir: str, rate_hz: float) -> None:
+        self._raw_device = device  # may be "auto"
         self.device = device
         self.baud = baud
         self.rate_hz = rate_hz
@@ -210,6 +234,8 @@ class RpiMavlinkLogger:
 
         while True:
             try:
+                if self._raw_device == "auto":
+                    self.device = detect_device()
                 self._open_connection()
                 self._request_all_intervals()
 
@@ -242,7 +268,9 @@ class RpiMavlinkLogger:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Local Raspberry Pi MAVLink full logger")
     parser.add_argument(
-        "--device", default="auto", help="Serial device for Cube (default: auto, or specify /dev/ttyACM1)"
+        "--device",
+        default="auto",
+        help="Serial device for Cube (default: auto, or specify /dev/ttyACM1)",
     )
     parser.add_argument("--baud", type=int, default=921600, help="Baud rate (default: 921600)")
     parser.add_argument(
@@ -265,27 +293,8 @@ def main() -> None:
     args = parse_args()
     # Wait until the USB log drive is mounted and writable before doing anything
     wait_for_usb_mount("/mnt/log_usb")
-    
-    device = args.device
-    if device == "auto":
-        import serial.tools.list_ports
-        print("Auto-detecting Cube connection...")
-        cube_ports = [p.device for p in serial.tools.list_ports.comports() 
-                      if p.vid == 0x2DAE or "Cube" in (p.description or "")]
-        if cube_ports:
-            # Usually the first enumerated port is MAVLink
-            device = sorted(cube_ports)[0]
-            print(f"Detected Cube on {device}")
-        else:
-            # Fallback to ttyACM0 if nothing obvious is found
-            device = "/dev/ttyACM0"
-            for p in serial.tools.list_ports.comports():
-                if "ACM" in p.device and "Steam" not in (p.description or ""):
-                    device = p.device
-                    break
-            print(f"No specific Cube found, trying first available ACM port: {device}")
 
-    logger = RpiMavlinkLogger(device, args.baud, args.log_dir, args.rate_hz)
+    logger = RpiMavlinkLogger(args.device, args.baud, args.log_dir, args.rate_hz)
     logger.run()
 
 
